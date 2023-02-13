@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Link from 'next/Link';
+import Link from 'next/link';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';

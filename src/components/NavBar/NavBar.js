@@ -12,7 +12,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+
+import { getAuth, signOut, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const pages = [
 	{ title: 'Landlords', link: '/' },
@@ -39,11 +41,46 @@ export default function ResponsiveAppBar() {
 		setAnchorElUser(null);
 	};
 
+	const auth = getAuth();
+	const login = () => {
+		signInWithPopup(auth, new GoogleAuthProvider())
+			.then((result) => {
+				// This gives you a Google Access Token. You can use it to access the Google API.
+				const credential = GoogleAuthProvider.credentialFromResult(result);
+				const token = credential.accessToken;
+				// The signed-in user info.
+				const user = result.user;
+				// IdP data available using getAdditionalUserInfo(result)
+				// ...
+				const details = getAdditionalUserInfo(result);
+				console.log(user);
+				console.log('is new:', details.isNewUser);
+			})
+			.catch((error) => {
+				// Handle Errors here.
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				// The AuthCredential type that was used.
+				const credential = GoogleAuthProvider.credentialFromError(error);
+				// ...
+				console.log(errorCode, errorMessage);
+			});
+	};
+	const signout = () => {
+		signOut(auth)
+			.then(() => {
+				// Sign-out successful.
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+	const [user, loading] = useAuthState(auth);
+
 	return (
 		<AppBar position="static">
 			<Container maxWidth="xl">
-				<Toolbar disableGutters>
-					<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+				<Toolbar>
 					<Typography
 						variant="h6"
 						noWrap
@@ -58,9 +95,9 @@ export default function ResponsiveAppBar() {
 							color: 'inherit',
 							textDecoration: 'none',
 						}}>
-						LOGO
+						Roomie
 					</Typography>
-
+					{/* For small screen */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
 							size="large"
@@ -97,7 +134,6 @@ export default function ResponsiveAppBar() {
 							))}
 						</Menu>
 					</Box>
-					<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
 					<Typography
 						variant="h5"
 						noWrap
@@ -113,8 +149,9 @@ export default function ResponsiveAppBar() {
 							color: 'inherit',
 							textDecoration: 'none',
 						}}>
-						LOGO
+						Roomie
 					</Typography>
+					{/* For large screen */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
 							<Button key={page.title} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
@@ -122,35 +159,42 @@ export default function ResponsiveAppBar() {
 							</Button>
 						))}
 					</Box>
-
-					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Open settings">
-							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-							</IconButton>
-						</Tooltip>
-						<Menu
-							sx={{ mt: '45px' }}
-							id="menu-appbar"
-							anchorEl={anchorElUser}
-							anchorOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							open={Boolean(anchorElUser)}
-							onClose={handleCloseUserMenu}>
-							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseUserMenu}>
-									<Typography textAlign="center">{setting}</Typography>
-								</MenuItem>
-							))}
-						</Menu>
-					</Box>
+					{user ? (
+						<Box sx={{ flexGrow: 0 }}>
+							<Tooltip title="Open settings">
+								<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+									<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+								</IconButton>
+							</Tooltip>
+							<Menu
+								sx={{ mt: '45px' }}
+								id="menu-appbar"
+								anchorEl={anchorElUser}
+								anchorOrigin={{
+									vertical: 'top',
+									horizontal: 'right',
+								}}
+								keepMounted
+								transformOrigin={{
+									vertical: 'top',
+									horizontal: 'right',
+								}}
+								open={Boolean(anchorElUser)}
+								onClose={handleCloseUserMenu}>
+								{settings.map((setting) => (
+									<MenuItem key={setting} onClick={handleCloseUserMenu}>
+										<Typography onClick={signout} textAlign="center">
+											{setting}
+										</Typography>
+									</MenuItem>
+								))}
+							</Menu>
+						</Box>
+					) : (
+						<Button onClick={login} variant="contained" color="secondary">
+							Login
+						</Button>
+					)}
 				</Toolbar>
 			</Container>
 		</AppBar>

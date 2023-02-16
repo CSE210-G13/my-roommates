@@ -74,6 +74,7 @@ export default function ResponsiveAppBar() {
 		signOut(auth)
 			.then(() => {
 				// Sign-out successful.
+				router.push('/');
 			})
 			.catch((error) => {
 				console.log(error);

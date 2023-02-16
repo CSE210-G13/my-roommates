@@ -15,6 +15,7 @@ import PersonalInfoForm from './PersonalInfoForm';
 import RoommatePrefForm from './RoommatePrefForm';
 import PropertyPrefForm from './PropertyPrefForm';
 
+
 const steps = ['Personal Information', 'Roommate Preference', 'Property Preference'];
 
 function getStepContent(step) {

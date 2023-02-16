@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { FormControlLabel, FormControl, FormLabel, RadioGroup, Radio, Select, MenuItem, Box, Chip } from '@mui/material/';
-import Checkbox from '@mui/material/Checkbox';
+
 
 import { getAuthUser } from '@/firebase/userDb';
 
@@ -27,7 +27,6 @@ export default function PersonalInfoForm() {
 
 	useEffect(() => {
 		if (name) {
-			console.log('ee', name);
 			let nameSplit = name.split(' ');
 			if (nameSplit.length > 1) {
 				setFirstName(nameSplit[0]);
@@ -75,8 +74,6 @@ export default function PersonalInfoForm() {
 						<FormLabel>Gender</FormLabel>
 						<RadioGroup
 							row
-							aria-labelledby="demo-radio-buttons-group-label"
-							name="radio-buttons-group"
 							onChange={(e) => setGender(e.target.value)}>
 							<FormControlLabel value="male" control={<Radio />} label="Male" />
 							<FormControlLabel value="female" control={<Radio />} label="Female" />

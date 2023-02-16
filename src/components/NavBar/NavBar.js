@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+// import { AppBar, Box, Toolbar, IconButton, Typography, Menu, MenuIcon, MenuItem, Container, Avatar, Button, Tooltip } from '@mui/material/';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -29,18 +31,18 @@ export default function ResponsiveAppBar() {
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
 	};
-	const handleOpenUserMenu = (event) => {
-		setAnchorElUser(event.currentTarget);
-	};
-
 	const handleCloseNavMenu = () => {
 		setAnchorElNav(null);
 	};
 
+	const handleOpenUserMenu = (event) => {
+		setAnchorElUser(event.currentTarget);
+	};
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
 	};
 
+	const router = useRouter();
 	const auth = getAuth();
 	const login = () => {
 		signInWithPopup(auth, new GoogleAuthProvider())
@@ -55,6 +57,9 @@ export default function ResponsiveAppBar() {
 				const details = getAdditionalUserInfo(result);
 				console.log(user);
 				console.log('is new:', details.isNewUser);
+				if (details.isNewUser) {
+					router.push('/firstTimeUser');
+				}
 			})
 			.catch((error) => {
 				// Handle Errors here.
@@ -159,11 +164,11 @@ export default function ResponsiveAppBar() {
 							</Button>
 						))}
 					</Box>
-					{user ? (
+					{user || loading ? (
 						<Box sx={{ flexGrow: 0 }}>
 							<Tooltip title="Open settings">
 								<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-									<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+									<Avatar alt="Remy Sharp" />
 								</IconButton>
 							</Tooltip>
 							<Menu
@@ -179,19 +184,53 @@ export default function ResponsiveAppBar() {
 									vertical: 'top',
 									horizontal: 'right',
 								}}
+								PaperProps={{
+									elevation: 0,
+									sx: {
+										overflow: 'visible',
+										filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+										mt: 1.5,
+										'& .MuiAvatar-root': {
+											width: 32,
+											height: 32,
+											ml: -0.5,
+											mr: 1,
+										},
+										'&:before': {
+											content: '""',
+											display: 'block',
+											position: 'absolute',
+											top: 0,
+											right: 14,
+											width: 10,
+											height: 10,
+											bgcolor: 'background.paper',
+											transform: 'translateY(-50%) rotate(45deg)',
+											zIndex: 0,
+										},
+									},
+								}}
 								open={Boolean(anchorElUser)}
 								onClose={handleCloseUserMenu}>
-								{settings.map((setting) => (
+								<MenuItem key="profile" onClick={handleCloseUserMenu}>
+									<Typography textAlign="center">Profile</Typography>
+								</MenuItem>
+								<MenuItem key="logout" onClick={handleCloseUserMenu}>
+									<Typography onClick={signout} textAlign="center">
+										Log out
+									</Typography>
+								</MenuItem>
+								{/* {settings.map((setting) => (
 									<MenuItem key={setting} onClick={handleCloseUserMenu}>
 										<Typography onClick={signout} textAlign="center">
 											{setting}
 										</Typography>
 									</MenuItem>
-								))}
+								))} */}
 							</Menu>
 						</Box>
 					) : (
-						<Button onClick={login} variant="contained" color="secondary">
+						<Button onClick={login} variant="contained" color="warning">
 							Login
 						</Button>
 					)}

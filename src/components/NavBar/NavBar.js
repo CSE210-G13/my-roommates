@@ -22,7 +22,6 @@ const pages = [
 	{ title: 'Landlords', link: '/' },
 	{ title: 'Roommates', link: '/roommates' },
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function ResponsiveAppBar() {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -85,6 +84,7 @@ export default function ResponsiveAppBar() {
 	return (
 		<AppBar position="static">
 			<Container maxWidth="xl">
+				
 				<Toolbar>
 					<Typography
 						variant="h6"
@@ -168,7 +168,7 @@ export default function ResponsiveAppBar() {
 						<Box sx={{ flexGrow: 0 }}>
 							<Tooltip title="Open settings">
 								<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-									<Avatar alt="Remy Sharp" />
+									<Avatar src={user?.photoURL} />
 								</IconButton>
 							</Tooltip>
 							<Menu
@@ -220,13 +220,6 @@ export default function ResponsiveAppBar() {
 										Log out
 									</Typography>
 								</MenuItem>
-								{/* {settings.map((setting) => (
-									<MenuItem key={setting} onClick={handleCloseUserMenu}>
-										<Typography onClick={signout} textAlign="center">
-											{setting}
-										</Typography>
-									</MenuItem>
-								))} */}
 							</Menu>
 						</Box>
 					) : (

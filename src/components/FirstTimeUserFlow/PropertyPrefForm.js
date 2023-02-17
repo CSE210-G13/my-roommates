@@ -66,14 +66,11 @@ export default function PropertyPrefForm() {
 			value: 35,
 			label: '35',
 		},
-        {
+		{
 			value: 45,
 			label: '45',
 		},
 	];
-	function valuetext(value) {
-		return `$${value}°C`;
-	}
 
 	const initAmenitiesObj = amenityOptions.reduce((acc, val) => {
 		acc[val] = false;
@@ -96,52 +93,36 @@ export default function PropertyPrefForm() {
 			<Grid container spacing={5}>
 				<Grid item xs={12} sm={6}>
 					<FormLabel>Price Range (Monthly/Person)</FormLabel>
-					<Slider
-						defaultValue={20}
-						// getAriaValueText={valuetext}
-						step={100}
-						valueLabelDisplay="auto"
-						min={100}
-						max={4000}
-						marks={priceMarks}
-					/>
+					<Slider defaultValue={20} min={100} max={4000} step={100} valueLabelDisplay="auto" marks={priceMarks} />
 				</Grid>
 
 				<Grid item xs={12} sm={6}>
 					<FormLabel>Distance to School (Mile)</FormLabel>
-					<Slider
-						defaultValue={0}
-						getAriaValueText={valuetext}
-						min={0}
-						max={50}
-						step={1}
-						valueLabelDisplay="auto"
-						marks={distanceMarks}
-					/>
+					<Slider defaultValue={0} min={0} max={50} step={1} valueLabelDisplay="auto" marks={distanceMarks} />
 				</Grid>
 
 				<Grid item xs={12}>
-                    <FormControl>
-					<FormLabel>Amenities</FormLabel>
-					<FormGroup>
-						<Grid container spacing={3} rowSpacing={0.1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-							{amenityOptions.map((amenityString) => (
-								<Grid item xs={12} md={6} key={amenityString}>
-									<FormControlLabel
-										control={
-											<Checkbox
-												name={amenityString}
-												checked={amenities[amenityString]}
-												onChange={handleAmenitiesChange}
-											/>
-										}
-										label={amenityString}
-									/>
-								</Grid>
-							))}
-						</Grid>
-					</FormGroup>
-                    </FormControl>
+					<FormControl>
+						<FormLabel>Amenities</FormLabel>
+						<FormGroup>
+							<Grid container spacing={3} rowSpacing={0.1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+								{amenityOptions.map((amenityString) => (
+									<Grid item xs={12} md={6} key={amenityString}>
+										<FormControlLabel
+											control={
+												<Checkbox
+													name={amenityString}
+													checked={amenities[amenityString]}
+													onChange={handleAmenitiesChange}
+												/>
+											}
+											label={amenityString}
+										/>
+									</Grid>
+								))}
+							</Grid>
+						</FormGroup>
+					</FormControl>
 				</Grid>
 			</Grid>
 		</React.Fragment>

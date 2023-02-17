@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect, createContext } from 'react';
 import { useRouter } from 'next/router';
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
@@ -51,10 +50,10 @@ export default function FirstTimeUserFlow() {
 			'first name': firstName,
 			'last name': lastName,
 		};
-		postUser('user');
+		// postUser('user');
 		console.log('person', person);
 		alert('post on firebase');
-		// router.push('/');
+		router.push('/');
 	};
 
 	const ProfileContext = createContext(null);

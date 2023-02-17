@@ -17,7 +17,7 @@ import {
 	Checkbox,
 } from '@mui/material/';
 
-const dislikes = ['Smoking', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties'];
+const dislikeOptions = ['Smoking', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties'];
 const hobbies = [
 	'Reading',
 	'Watching TV',
@@ -29,21 +29,19 @@ const hobbies = [
 	'Renting Movies',
 ];
 export default function RoommatePrefForm() {
-	const initDislikeSelection = dislikes.reduce((acc, val) => {
+	const initDislikeSelection = dislikeOptions.reduce((acc, val) => {
 		acc[val] = false;
 		return acc;
 	}, {});
 	// console.log(dislikesObj);
 	const [bedtime, setBedtime] = useState('');
-	const [dislike, setDislike] = useState(initDislikeSelection);
+	const [dislikes, setDislike] = useState(initDislikeSelection);
 
-	const handleChange = (event) => {
-		console.log('name', event.target.name, 'checked', event.target.checked);
+	const handleDislikesChange = (event) => {
 		setDislike({
-			...dislike,
+			...dislikes,
 			[event.target.name]: event.target.checked,
 		});
-		console.log(dislike);
 	};
 
 	return (
@@ -72,14 +70,14 @@ export default function RoommatePrefForm() {
 						<FormLabel>Can't accept</FormLabel>
 						<FormGroup>
 							<Grid container spacing={3} rowSpacing={0.1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-								{dislikes.map((dislikeString) => (
+								{dislikeOptions.map((dislikeString) => (
 									<Grid item xs={6} md={3} key={dislikeString}>
 										<FormControlLabel
 											control={
 												<Checkbox
 													name={dislikeString}
-													checked={dislike[dislikeString]}
-													onChange={handleChange}
+													checked={dislikes[dislikeString]}
+													onChange={handleDislikesChange}
 												/>
 											}
 											label={dislikeString}

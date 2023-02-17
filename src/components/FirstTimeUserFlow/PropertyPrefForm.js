@@ -1,89 +1,149 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Typography from '@mui/material/Typography';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Grid from '@mui/material/Grid';
+import {
+	Grid,
+	FormControlLabel,
+	FormControl,
+	FormLabel,
+	RadioGroup,
+	Radio,
+	Select,
+	MenuItem,
+	Box,
+	Chip,
+	Slider,
+	FormGroup,
+	Checkbox,
+} from '@mui/material/';
 
-const products = [
-  {
-    name: 'Product 1',
-    desc: 'A nice thing',
-    price: '$9.99',
-  },
-  {
-    name: 'Product 2',
-    desc: 'Another thing',
-    price: '$3.45',
-  },
-  {
-    name: 'Product 3',
-    desc: 'Something else',
-    price: '$6.51',
-  },
-  {
-    name: 'Product 4',
-    desc: 'Best thing of all',
-    price: '$14.11',
-  },
-  { name: 'Shipping', desc: '', price: 'Free' },
-];
-
-const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
-const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
+const amenityOptions = [
+	'Air conditioner',
+	'Swimming pool',
+	'Fitness center',
+	'Indoor washer and dryer',
+	'Covered parking',
+	'Pets allowed',
+	'Dishwasher',
+	'Smoke-free',
+	'Access to public transportation',
+	'Balcony',
 ];
 
 export default function PropertyPrefForm() {
-  return (
-    <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Order summary
-      </Typography>
-      <List disablePadding>
-        {products.map((product) => (
-          <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
-          </ListItem>
-        ))}
+	const priceMarks = [
+		{
+			value: 500,
+			label: '$500',
+		},
+		{
+			value: 1500,
+			label: '$1500',
+		},
+		{
+			value: 2500,
+			label: '$2500',
+		},
+		{
+			value: 3500,
+			label: '$3500',
+		},
+	];
+	const distanceMarks = [
+		{
+			value: 5,
+			label: '5',
+		},
+		{
+			value: 15,
+			label: '15',
+		},
+		{
+			value: 25,
+			label: '25',
+		},
+		{
+			value: 35,
+			label: '35',
+		},
+        {
+			value: 45,
+			label: '45',
+		},
+	];
+	function valuetext(value) {
+		return `$${value}°C`;
+	}
 
-        <ListItem sx={{ py: 1, px: 0 }}>
-          <ListItemText primary="Total" />
-          <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $34.06
-          </Typography>
-        </ListItem>
-      </List>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-            Shipping
-          </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(', ')}</Typography>
-        </Grid>
-        <Grid item container direction="column" xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-            Payment details
-          </Typography>
-          <Grid container>
-            {payments.map((payment) => (
-              <React.Fragment key={payment.name}>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
-                </Grid>
-              </React.Fragment>
-            ))}
-          </Grid>
-        </Grid>
-      </Grid>
-    </React.Fragment>
-  );
+	const initAmenitiesObj = amenityOptions.reduce((acc, val) => {
+		acc[val] = false;
+		return acc;
+	}, {});
+	const [amenities, setAmenities] = useState(initAmenitiesObj);
+
+	const handleAmenitiesChange = (event) => {
+		setAmenities({
+			...amenities,
+			[event.target.name]: event.target.checked,
+		});
+	};
+
+	return (
+		<React.Fragment>
+			<Typography variant="h6" gutterBottom>
+				Property Preference
+			</Typography>
+			<Grid container spacing={5}>
+				<Grid item xs={12} sm={6}>
+					<FormLabel>Price Range (Monthly/Person)</FormLabel>
+					<Slider
+						defaultValue={20}
+						// getAriaValueText={valuetext}
+						step={100}
+						valueLabelDisplay="auto"
+						min={100}
+						max={4000}
+						marks={priceMarks}
+					/>
+				</Grid>
+
+				<Grid item xs={12} sm={6}>
+					<FormLabel>Distance to School (Mile)</FormLabel>
+					<Slider
+						defaultValue={0}
+						getAriaValueText={valuetext}
+						min={0}
+						max={50}
+						step={1}
+						valueLabelDisplay="auto"
+						marks={distanceMarks}
+					/>
+				</Grid>
+
+				<Grid item xs={12}>
+                    <FormControl>
+					<FormLabel>Amenities</FormLabel>
+					<FormGroup>
+						<Grid container spacing={3} rowSpacing={0.1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+							{amenityOptions.map((amenityString) => (
+								<Grid item xs={12} md={6} key={amenityString}>
+									<FormControlLabel
+										control={
+											<Checkbox
+												name={amenityString}
+												checked={amenities[amenityString]}
+												onChange={handleAmenitiesChange}
+											/>
+										}
+										label={amenityString}
+									/>
+								</Grid>
+							))}
+						</Grid>
+					</FormGroup>
+                    </FormControl>
+				</Grid>
+			</Grid>
+		</React.Fragment>
+	);
 }

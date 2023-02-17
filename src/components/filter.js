@@ -14,8 +14,68 @@ import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
+import { useState } from "react";
 
 export default function SimpleAccordion() {
+  const [budgetMin, setBudgetMin] = useState("");
+  const [budgetMax, setBudgetMax] = useState("");
+  const [sizeMin, setSizeMin] = useState("");
+  const [sizeMax, setSizeMax] = useState("");
+  const [distance, setDistance] = useState("");
+  const [parkingChecked, setParkingChecked] = React.useState(false);
+  const [laundryChecked, setLaundryChecked] = React.useState(false);
+  const [poolChecked, setPoolChecked] = React.useState(false);
+  const [gymChecked, setGymChecked] = React.useState(false);
+  const [acChecked, setAcChecked] = React.useState(false);
+  const [petChecked, setPetChecked] = React.useState(false);
+  const [smokingChecked, setSmokingChecked] = React.useState(false);
+
+  const handlebudgetMinChange = (event) => {
+    setBudgetMin(event.target.value);
+  };
+  const handlebudgetMaxChange = (event) => {
+    setBudgetMax(event.target.value);
+  };
+  const handlesizeMinChange = (event) => {
+    setSizeMin(event.target.value);
+  };
+  const handlesizeMaxChange = (event) => {
+    setSizeMax(event.target.value);
+  };
+  const handleDistanceChange = (event) => {
+    setDistance(event.target.value);
+  };
+  const handleParkingChecked = (event) => {
+    setParkingChecked(event.target.checked);
+  };
+  const handleLaundryChecked = (event) => {
+    setLaundryChecked(event.target.checked);
+  };
+  const handlePoolChecked = (event) => {
+    setPoolChecked(event.target.checked);
+  };
+  const handleAcChecked = (event) => {
+    setAcChecked(event.target.checked);
+  };
+  const handleGymChecked = (event) => {
+    setGymChecked(event.target.checked);
+  };
+  const handlePetChecked = (event) => {
+    setPetChecked(event.target.checked);
+  };
+  const handleSmokingChecked = (event) => {
+    setSmokingChecked(event.target.checked);
+  };
+
+  const handleButtonClick = (event) => {
+    console.log(budgetMax);
+    console.log(budgetMin);
+    console.log(sizeMax);
+    console.log(sizeMin);
+    console.log(distance);
+    console.log(smokingChecked);
+    // call functions on the backend layer
+  };
   return (
     <div>
       <Accordion>
@@ -35,6 +95,8 @@ export default function SimpleAccordion() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Maximum"
+              onChange={handlebudgetMaxChange}
+              value={budgetMax}
             />
           </FormControl>
           <FormControl sx={{ m: 1 }}>
@@ -45,6 +107,8 @@ export default function SimpleAccordion() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Minimum"
+              onChange={handlebudgetMinChange}
+              value={budgetMin}
             />
           </FormControl>
         </AccordionDetails>
@@ -67,6 +131,8 @@ export default function SimpleAccordion() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Maximum"
+              onChange={handlesizeMaxChange}
+              value={sizeMax}
             />
           </FormControl>
           <FormControl sx={{ m: 1 }}>
@@ -77,6 +143,8 @@ export default function SimpleAccordion() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Minimum"
+              onChange={handlesizeMinChange}
+              value={sizeMin}
             />
           </FormControl>
         </AccordionDetails>
@@ -94,14 +162,6 @@ export default function SimpleAccordion() {
             <div
               style={{
                 display: "flex",
-                // margin: "1",
-                // padding: "5px",
-                // margin: "2px",
-                // "& > :not(style)": {
-                //   m: 1,
-                //   width: "15ch",
-                //   display: "inline-flex",
-                // },
               }}
             >
               <Typography
@@ -118,6 +178,8 @@ export default function SimpleAccordion() {
                 id="distance-maximum"
                 label="miles"
                 variant="outlined"
+                onChange={handleDistanceChange}
+                value={distance}
               />
               <Typography
                 style={{
@@ -140,11 +202,36 @@ export default function SimpleAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="On-site parking" />
-            <FormControlLabel control={<Checkbox />} label="In-door laundry" />
-            <FormControlLabel control={<Checkbox />} label="Have AC" />
-            <FormControlLabel control={<Checkbox />} label="Have Pool" />
-            <FormControlLabel control={<Checkbox />} label="Have Gym" />
+            <FormControlLabel
+              control={<Checkbox />}
+              checked={parkingChecked}
+              onChange={handleParkingChecked}
+              label="On-site parking"
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              checked={laundryChecked}
+              onChange={handleLaundryChecked}
+              label="In-door laundry"
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              checked={acChecked}
+              onChange={handleAcChecked}
+              label="Have AC"
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              checked={poolChecked}
+              onChange={handlePoolChecked}
+              label="Have Pool"
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              checked={gymChecked}
+              onChange={handleGymChecked}
+              label="Have Gym"
+            />
           </FormGroup>
         </AccordionDetails>
       </Accordion>
@@ -158,7 +245,12 @@ export default function SimpleAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="Pets-friendly" />
+            <FormControlLabel
+              control={<Checkbox />}
+              checked={petChecked}
+              onChange={handlePetChecked}
+              label="Pets-friendly"
+            />
           </FormGroup>
         </AccordionDetails>
       </Accordion>
@@ -172,13 +264,20 @@ export default function SimpleAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="Non-smoking" />
+            <FormControlLabel
+              control={<Checkbox />}
+              checked={smokingChecked}
+              onChange={handleSmokingChecked}
+              label="Non-smoking"
+            />
           </FormGroup>
         </AccordionDetails>
       </Accordion>
       <br />
       <div style={{ float: "right", margin: "-5px 10px 0px 0px" }}>
-        <Button variant="outlined">Save</Button>
+        <Button variant="outlined" onClick={handleButtonClick}>
+          Save
+        </Button>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import NavBar from '@/components/NavBar';
 import { initFirebase } from '../firebase/firebaseConfig';
 
 export default function App({ Component, pageProps }) {
-	const app = initFirebase();
+	initFirebase();
 	return (
 		<>
 			<NavBar />

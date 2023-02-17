@@ -54,8 +54,8 @@ export default function ResponsiveAppBar() {
 				// IdP data available using getAdditionalUserInfo(result)
 				// ...
 				const details = getAdditionalUserInfo(result);
-				console.log(user);
-				console.log('is new:', details.isNewUser);
+				console.log("in NavBar.js user",user);
+				console.log('in NavBar.js is new:', details.isNewUser);
 				if (details.isNewUser) {
 					router.push('/firstTimeUser');
 				}

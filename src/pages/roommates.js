@@ -1,8 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function roommates() {
-  return (
-    <div>Roommates</div>
-    
-  )
+	return <div>Roommates</div>;
 }

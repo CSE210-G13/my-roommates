@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import { useRouter } from 'next/router';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -10,11 +10,10 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import PersonalInfoForm from './PersonalInfoForm';
 import RoommatePrefForm from './RoommatePrefForm';
 import PropertyPrefForm from './PropertyPrefForm';
-
+import { postUser } from '@/firebase/userDb';
 
 const steps = ['Personal Information', 'Roommate Preference', 'Property Preference'];
 
@@ -30,8 +29,6 @@ function getStepContent(step) {
 			throw new Error('Unknown step');
 	}
 }
-
-const theme = createTheme();
 
 export default function FirstTimeUserFlow() {
 	const router = useRouter();
@@ -54,15 +51,24 @@ export default function FirstTimeUserFlow() {
 			'first name': firstName,
 			'last name': lastName,
 		};
+		postUser('user');
 		console.log('person', person);
+		alert('post on firebase');
 		// router.push('/');
 	};
 
+	const ProfileContext = createContext(null);
+
 	return (
-		<ThemeProvider theme={theme}>
-			<CssBaseline />
+		<ProfileContext.Provider value={firstName}>
 			<Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-				<Paper variant="outlined" sx={{ mt: { xs: 3, md: 6 }, mb: { xs: 6, md: 12 }, p: { xs: 2, md: 3 } }}>
+				<Paper
+					variant="outlined"
+					sx={{
+						mt: { xs: 3, md: 6 },
+						mb: { xs: 6, md: 12 },
+						p: { xs: 2, md: 3 },
+					}}>
 					<Typography component="h1" variant="h4" align="center">
 						Set up your account
 					</Typography>
@@ -79,8 +85,8 @@ export default function FirstTimeUserFlow() {
 								Thank you for your order.
 							</Typography>
 							<Typography variant="subtitle1">
-								Your order number is #2001539. We have emailed your order confirmation, and will send you an update when
-								your order has shipped.
+								Your order number is #2001539. We have emailed your order confirmation, and will send
+								you an update when your order has shipped.
 							</Typography>
 						</React.Fragment>
 					) : (
@@ -107,6 +113,6 @@ export default function FirstTimeUserFlow() {
 					)}
 				</Paper>
 			</Container>
-		</ThemeProvider>
+		</ProfileContext.Provider>
 	);
 }

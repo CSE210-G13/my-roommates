@@ -15,7 +15,7 @@ export async function getUser(userId) {
 	querySnapshot.forEach((doc) => {
 		console.log(`${doc.id} => ${doc.data()}`);
 	});
-    return 0
+	return 0;
 }
 
 // Todo

@@ -3,8 +3,17 @@ import { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { FormControlLabel, FormControl, FormLabel, RadioGroup, Radio, Select, MenuItem, Box, Chip } from '@mui/material/';
-
+import {
+	FormControlLabel,
+	FormControl,
+	FormLabel,
+	RadioGroup,
+	Radio,
+	Select,
+	MenuItem,
+	Box,
+	Chip,
+} from '@mui/material/';
 
 import { getAuthUser } from '@/firebase/userDb';
 
@@ -72,9 +81,7 @@ export default function PersonalInfoForm() {
 				<Grid item xs={12}>
 					<FormControl fullWidth>
 						<FormLabel>Gender</FormLabel>
-						<RadioGroup
-							row
-							onChange={(e) => setGender(e.target.value)}>
+						<RadioGroup row onChange={(e) => setGender(e.target.value)}>
 							<FormControlLabel value="male" control={<Radio />} label="Male" />
 							<FormControlLabel value="female" control={<Radio />} label="Female" />
 							<FormControlLabel value="other" control={<Radio />} label="Other" />
@@ -95,7 +102,7 @@ export default function PersonalInfoForm() {
 				</Grid>
 				<Grid item xs={12} sm={6}>
 					<FormControl fullWidth>
-						<FormLabel>Year</FormLabel>
+						<FormLabel>School Year</FormLabel>
 						<Select value={year} onChange={(e) => setYear(e.target.value)}>
 							{allYears.map((year) => (
 								<MenuItem key={year} value={year}>

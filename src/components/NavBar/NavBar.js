@@ -85,7 +85,6 @@ export default function ResponsiveAppBar() {
 	return (
 		<AppBar position="static">
 			<Container maxWidth="xl">
-				
 				<Toolbar>
 					<Typography
 						variant="h6"
@@ -160,7 +159,10 @@ export default function ResponsiveAppBar() {
 					{/* For large screen */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
-							<Button key={page.title} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
+							<Button
+								key={page.title}
+								onClick={handleCloseNavMenu}
+								sx={{ my: 2, color: 'white', display: 'block' }}>
 								<Link href={page.link}>{page.title}</Link>
 							</Button>
 						))}

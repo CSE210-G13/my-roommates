@@ -18,7 +18,7 @@ import {
 import { getAuthUser } from '@/firebase/userDb';
 
 const allColleges = ['Revelle', 'Muir', 'Marshall', 'Warren', 'Roosevelt', 'Sixth', 'Seventh', 'Eight'];
-const allYears = ['Freshmen', 'Sphomore', 'Junior', 'Senior', 'Master', 'PHD'];
+const allYears = ['Freshmen', 'Sophomore', 'Junior', 'Senior', 'Masters', 'PHD'];
 const allMajors = ['Math', 'Computer Science', 'Biology'];
 const allLanguages = ['English', 'Chinese', 'French', 'Japanese'];
 

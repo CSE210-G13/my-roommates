@@ -68,29 +68,43 @@ function UserRoommatePref({ user }) {
       <Grid xs={2} md={3} display="flex" alignItems="center" justifyContent="center">
         <Typography variant="h4" align="center">{user.firstName}'s Roommate Interests:</Typography>
       </Grid>
-      <PrefIcon topic="children" arr={user.roommatePref.okayWith} goodIcon={<StrollerIcon />} badIcon={<NoStrollerIcon />} />
-      <PrefIcon topic="pets" arr={user.roommatePref.okayWith} goodIcon={<PetsIcon />} badIcon={<DoNotDisturbIcon />} />
-      <PrefIcon topic="smoking" arr={user.roommatePref.okayWith} goodIcon={<SmokingRoomsIcon />} badIcon={<SmokeFreeIcon />} />
-      <PrefIcon topic="parties" arr={user.roommatePref.okayWith} goodIcon={<EventAvailableIcon />} badIcon={<EventBusyIcon />} />
-      <PrefIcon topic="alcohol" arr={user.roommatePref.okayWith} goodIcon={<LocalBarIcon />} badIcon={<NoDrinksIcon />} />
-      <PrefIcon topic="couples" arr={user.roommatePref.okayWith} goodIcon={<GroupAddIcon />} badIcon={<GroupRemoveIcon />} />
+      <RoommatePrefIcon topic="children" user={user} goodIcon={<StrollerIcon />} badIcon={<NoStrollerIcon />} />
+      <RoommatePrefIcon topic="pets" user={user} goodIcon={<PetsIcon />} badIcon={<DoNotDisturbIcon />} />
+      <RoommatePrefIcon topic="smoking" user={user} goodIcon={<SmokingRoomsIcon />} badIcon={<SmokeFreeIcon />} />
+      <RoommatePrefIcon topic="parties" user={user} goodIcon={<EventAvailableIcon />} badIcon={<EventBusyIcon />} />
+      <RoommatePrefIcon topic="alcohol" user={user} goodIcon={<LocalBarIcon />} badIcon={<NoDrinksIcon />} />
+      <RoommatePrefIcon topic="couples" user={user} goodIcon={<GroupAddIcon />} badIcon={<GroupRemoveIcon />} />
     </Grid>
   )
 }
 
-function UserRoommatePref({ user }) {
+function RoommatePrefIcon({ topic, user, goodIcon, badIcon }) {
+  let okayWith = user.roommatePref.okayWith[topic]
+  let string = `${okayWith ? "Okay " : "Not okay "} with ${topic}`
   return (
-    <p>property interests (TODO)</p>
+    <PrefIcon okayWith={okayWith}
+      string={string}
+      icon={okayWith ? goodIcon : badIcon}
+    />
   )
 }
 
-function PrefIcon({ topic, arr, goodIcon, badIcon }) {
-  let okayWith = arr[topic]
+function PropPrefIcon({ topic, okayWith, goodIcon, badIcon }) {
+  let string = `${okayWith ? "Wants " : "Does not want "} a ${topic} property`
+  return (
+    <PrefIcon okayWith={okayWith}
+      string={string}
+      icon={okayWith ? goodIcon : badIcon}
+    />
+  )
+}
+
+function PrefIcon({ icon, string }) {
   return (
     <Grid xs={1} display="flex" alignItems="center" justifyContent="center">
       <Stack spacing={1} alignItems="center">
-        {okayWith ? goodIcon : badIcon}
-        <p align="center">{okayWith ? "Okay " : "Not okay "} with {topic}</p>
+        {icon}
+        <Typography align="center">{string}</Typography>
       </Stack>
     </Grid>
   )

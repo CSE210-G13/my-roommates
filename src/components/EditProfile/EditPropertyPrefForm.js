@@ -15,6 +15,7 @@ import {
 	Slider,
 	FormGroup,
 	Checkbox,
+    Button
 } from '@mui/material/';
 
 const amenityOptions = [
@@ -86,10 +87,17 @@ export default function PropertyPrefForm() {
 	};
     return (
         <React.Fragment>
-            <Typography variant="h6" gutterBottom>
-				Property Preference
-			</Typography>
             <Grid container spacing={5}>
+                <Grid item xs={6}>
+                    <Typography variant="h6">
+                        Property Preference
+                    </Typography>
+                </Grid>
+                <Grid item xs={6}>
+                    <Button variant="outlined">
+                        Edit
+                    </Button>
+                </Grid>
                 <Grid item xs={12} sm={6}>
 					<FormLabel>Price Range (Monthly/Person)</FormLabel>
 					<Slider defaultValue={20} min={100} max={4000} step={100} valueLabelDisplay="auto" marks={priceMarks} />

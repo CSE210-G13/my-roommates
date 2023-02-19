@@ -15,6 +15,7 @@ import {
 	Box,
 	Chip,
 	Checkbox,
+    Button,
 } from '@mui/material/';
 
 const dislikeOptions = ['Smoking', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties'];
@@ -45,10 +46,17 @@ export default function EditRoommatePrefForm() {
 
     return (
         <React.Fragment>
-            <Typography variant="h6" gutterBottom>
-				Roommate Preference
-			</Typography>
             <Grid container spacing={3}>
+                <Grid item xs={6}>
+                    <Typography variant="h6">
+                        Roommate Preference
+                    </Typography>
+                </Grid>
+                <Grid item xs={6}>
+                    <Button variant="outlined">
+                        Edit
+                    </Button>
+                </Grid>
                 <Grid item xs={12} md={6}>
                     <FormLabel>Desired bedtime</FormLabel>
                     <TextField

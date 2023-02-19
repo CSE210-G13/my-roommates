@@ -52,7 +52,6 @@ export default function FirstTimeUserFlow() {
 		};
 		// Todo: complete this function in userDb.js
 		// postUser('user');
-		console.log('person', person);
 		alert('post on firebase');
 		router.push('/');
 	};
@@ -79,38 +78,26 @@ export default function FirstTimeUserFlow() {
 							</Step>
 						))}
 					</Stepper>
-					{activeStep === steps.length ? (
-						<React.Fragment>
-							<Typography variant="h5" gutterBottom>
-								Thank you for your order.
-							</Typography>
-							<Typography variant="subtitle1">
-								Your order number is #2001539. We have emailed your order confirmation, and will send
-								you an update when your order has shipped.
-							</Typography>
-						</React.Fragment>
-					) : (
-						<React.Fragment>
-							{getStepContent(activeStep)}
-							<Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-								{activeStep !== 0 && (
-									<Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-										Back
-									</Button>
-								)}
+					<React.Fragment>
+						{getStepContent(activeStep)}
+						<Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+							{activeStep !== 0 && (
+								<Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+									Back
+								</Button>
+							)}
 
-								{activeStep === steps.length - 1 ? (
-									<Button variant="contained" onClick={handleSubmit} sx={{ mt: 3, ml: 1 }}>
-										Submit
-									</Button>
-								) : (
-									<Button variant="contained" onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
-										Next
-									</Button>
-								)}
-							</Box>
-						</React.Fragment>
-					)}
+							{activeStep === steps.length - 1 ? (
+								<Button variant="contained" onClick={handleSubmit} sx={{ mt: 3, ml: 1 }}>
+									Submit
+								</Button>
+							) : (
+								<Button variant="contained" onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
+									Next
+								</Button>
+							)}
+						</Box>
+					</React.Fragment>
 				</Paper>
 			</Container>
 		</ProfileContext.Provider>

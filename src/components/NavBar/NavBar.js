@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = [
-	{ title: 'Landlords', link: '/' },
+	{ title: 'Property', link: '/property' },
 	{ title: 'Roommates', link: '/roommates' },
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];

@@ -6,8 +6,6 @@ import { getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function Home() {
-	// const app = initFirebase();
-	// console.log(app);
 	const auth = getAuth();
 	const [user, loading] = useAuthState(auth);
 	if (loading) {

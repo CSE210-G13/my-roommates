@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import {
 	AppBar,
 	Box,
@@ -16,7 +16,8 @@ import {
 } from '@mui/material/';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { getAuthUser, login, signout } from '@/firebase/auth';
+import { getAuth, signOut, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const pages = [
 	{ title: 'Landlords', link: '/' },
@@ -24,8 +25,8 @@ const pages = [
 ];
 
 export default function ResponsiveAppBar() {
-	const [anchorElNav, setAnchorElNav] = useState(null);
-	const [anchorElUser, setAnchorElUser] = useState(null);
+	const [anchorElNav, setAnchorElNav] = React.useState(null);
+	const [anchorElUser, setAnchorElUser] = React.useState(null);
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -41,7 +42,37 @@ export default function ResponsiveAppBar() {
 		setAnchorElUser(null);
 	};
 
-	const [user, loading] = getAuthUser();
+	const router = useRouter();
+	const auth = getAuth();
+	// Todo: Rearrange these auth functions in firebase/auth.js
+	const login = () => {
+		signInWithPopup(auth, new GoogleAuthProvider())
+			.then((result) => {
+				const details = getAdditionalUserInfo(result);
+				if (details.isNewUser) {
+					router.push('/firstTimeUser');
+				}
+			})
+			.catch((error) => {
+				// Handle Errors here.
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				router.push('/');
+				alert("Login unsuccessful", errorCode, errorMessage);
+			});
+	};
+	const signout = () => {
+		signOut(auth)
+			.then(() => {
+				// Sign-out successful.
+				router.push('/');
+			})
+			.catch((error) => {
+				router.push('/');
+				alert("Signout unsuccessful", error);
+			});
+	};
+	const [user, loading] = useAuthState(auth);
 
 	return (
 		<AppBar position="static">

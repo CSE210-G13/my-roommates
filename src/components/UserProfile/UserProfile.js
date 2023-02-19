@@ -89,7 +89,7 @@ function ContactInfo({ user }) {
         justifyContent="space-evenly"
       >
         {publicContactInfo.map(([key, value]) =>
-          <Stack alignItems="center" spacing={1}>
+          <Stack alignItems="center" spacing={1} key={key}>
             {React.createElement(iconMap[key], {fontSize: "large"})}
             <Typography>{value.data}</Typography>
           </Stack>
@@ -243,8 +243,8 @@ function PropertyCarousel({ properties, title }) {
       <Carousel navButtonsAlwaysVisible={true} autoPlay={false} animation="slide">
         {
           groupsOf3
-            .map((items) => <Stack key={items[0] + title} direction="row" alignItems="center" justifyContent="space-evenly">
-              {items.map((x) => <Typography>{x}</Typography>)}
+            .map((items) => <Stack key={"group " + items[0] + title} direction="row" alignItems="center" justifyContent="space-evenly">
+              {items.map((x) => <Typography key={"prop " + x + title}>{x}</Typography>)}
             </Stack>)
         }
       </Carousel>

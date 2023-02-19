@@ -190,7 +190,7 @@ function PropertyCarousel({ properties, title }) {
       <Carousel navButtonsAlwaysVisible={true} autoPlay={false} animation="slide">
         {
           groupsOf3
-            .map((items) => <Stack key={items[0]} direction="row" alignItems="center" justifyContent="space-evenly">
+            .map((items) => <Stack key={items[0] + title} direction="row" alignItems="center" justifyContent="space-evenly">
               {items.map((x) => <Typography>{x}</Typography>)}
             </Stack>)
         }

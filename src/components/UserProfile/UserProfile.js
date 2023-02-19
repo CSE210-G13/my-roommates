@@ -29,12 +29,12 @@ function UserHeader({ user }) {
       bgcolor='lightgray'
       borderRadius={4}>
       <Grid sm={1} display="flex" alignItems="center" justifyContent="center">
-        <Avatar sx={{minHeight: "15vh", minWidth: "15vh"}}>{user.name[0]}</Avatar>
+        <Avatar sx={{ fontSize: "8vh", minHeight: "15vh", minWidth: "15vh" }}>{user.firstName[0]}</Avatar>
       </Grid>
       <Grid sm={2} display="flex" alignItems="center" justifyContent="center">
         <Stack spacing={1}>
-          <h1>{user.name}</h1>
-          <p>{user.summary}</p>
+          <h1>{`${user.firstName} ${user.lastName}`}</h1>
+          <p>{[user.gender, user.college, user.schoolYear, `Major: ${user.major}`, `Languages: ${user.languages.join(", ")}`].join(" - ")}</p>
           <p>{user.bio}</p>
         </Stack>
       </Grid>

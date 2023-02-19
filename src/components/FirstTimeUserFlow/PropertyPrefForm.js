@@ -97,7 +97,7 @@ export default function PropertyPrefForm() {
 				</Grid>
 
 				<Grid item xs={12} sm={6}>
-					<FormLabel>Distance to School (Mile)</FormLabel>
+					<FormLabel>Distance to School (Miles)</FormLabel>
 					<Slider defaultValue={0} min={0} max={50} step={1} valueLabelDisplay="auto" marks={distanceMarks} />
 				</Grid>
 

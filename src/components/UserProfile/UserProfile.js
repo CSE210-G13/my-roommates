@@ -3,26 +3,26 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Unstable_Grid2";
 
-export default function UserProfile({user}) {
+export default function UserProfile({ user }) {
   return (
-    <Grid container direction={{xs: "column", sm: "row"}} columns={2} spacing={10} margin={2}>
+    <Grid container direction={{ xs: "column", sm: "row" }} columns={2} spacing={10} margin={2}>
       <Grid sm={2}>
-        <UserHeader user={user}/>
+        <UserHeader user={user} />
       </Grid>
       <Grid sm={1}>
-        <UserProperty user={user}/>
+        <UserProperty user={user} />
       </Grid>
       <Grid sm={1}>
-        <UserRoommatePref user={user}/>
+        <UserRoommatePref user={user} />
       </Grid>
     </Grid>
   )
 }
 
-function UserHeader({user}) {
+function UserHeader({ user }) {
   return (
     <Grid container
-      direction={{xs: 'column', sm: 'row'}}
+      direction={{ xs: 'column', sm: 'row' }}
       columns={4}
       spacing={4}
       padding={4}

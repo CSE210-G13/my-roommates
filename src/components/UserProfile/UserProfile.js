@@ -29,6 +29,7 @@ import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import React from 'react';
 
 export default function UserProfile({ user }) {
   return (
@@ -68,12 +69,12 @@ function ContactInfo({ user }) {
   // let publicContactInfo = Object.entries(user.contactInfo).filter(([_, val]) => val.data !== "");
 
   let iconMap = {
-    email: <EmailIcon />,
-    phone: <SmartphoneIcon />,
-    discord: <HeadsetMicIcon />,
-    instagram: <InstagramIcon />,
-    linkedin: <LinkedInIcon />,
-    facebook: <FacebookIcon />
+    email: EmailIcon,
+    phone: SmartphoneIcon,
+    discord: HeadsetMicIcon,
+    instagram: InstagramIcon,
+    linkedin: LinkedInIcon,
+    facebook: FacebookIcon
   };
 
   return (
@@ -89,7 +90,7 @@ function ContactInfo({ user }) {
       >
         {publicContactInfo.map(([key, value]) =>
           <Stack alignItems="center" spacing={1}>
-            {iconMap[key]}
+            {React.createElement(iconMap[key], {fontSize: "large"})}
             <Typography>{value.data}</Typography>
           </Stack>
         )}
@@ -131,12 +132,12 @@ function UserRoommatePref({ user }) {
       <Grid xs={2} md={3} display="flex" alignItems="center" justifyContent="center">
         <Typography variant="h4" align="center">{user.firstName}'s Roommate Interests:</Typography>
       </Grid>
-      <RoommatePrefIcon topic="children" user={user} goodIcon={<StrollerIcon />} badIcon={<NoStrollerIcon />} />
-      <RoommatePrefIcon topic="pets" user={user} goodIcon={<PetsIcon />} badIcon={<DoNotDisturbIcon />} />
-      <RoommatePrefIcon topic="smoking" user={user} goodIcon={<SmokingRoomsIcon />} badIcon={<SmokeFreeIcon />} />
-      <RoommatePrefIcon topic="parties" user={user} goodIcon={<EventAvailableIcon />} badIcon={<EventBusyIcon />} />
-      <RoommatePrefIcon topic="alcohol" user={user} goodIcon={<LocalBarIcon />} badIcon={<NoDrinksIcon />} />
-      <RoommatePrefIcon topic="couples" user={user} goodIcon={<GroupAddIcon />} badIcon={<GroupRemoveIcon />} />
+      <RoommatePrefIcon topic="children" user={user} goodIcon={StrollerIcon} badIcon={NoStrollerIcon} />
+      <RoommatePrefIcon topic="pets" user={user} goodIcon={PetsIcon} badIcon={DoNotDisturbIcon} />
+      <RoommatePrefIcon topic="smoking" user={user} goodIcon={SmokingRoomsIcon} badIcon={SmokeFreeIcon} />
+      <RoommatePrefIcon topic="parties" user={user} goodIcon={EventAvailableIcon} badIcon={EventBusyIcon} />
+      <RoommatePrefIcon topic="alcohol" user={user} goodIcon={LocalBarIcon} badIcon={NoDrinksIcon} />
+      <RoommatePrefIcon topic="couples" user={user} goodIcon={GroupAddIcon} badIcon={GroupRemoveIcon} />
       <Grid xs={2} sm={3} display="flex" justifyContent="center">
         <List>
           <TextListItem text={`Prefers ${user.roommatePref.gender.toLowerCase()} roommates`} />
@@ -175,12 +176,12 @@ function UserProperty({ user }) {
       <Grid xs={2} display="flex" alignItems="center" justifyContent="center">
         <Typography variant="h4" align="center">{user.firstName}'s Property Interests:</Typography>
       </Grid>
-      <PrefIcon icon=<MapIcon /> string={`Wants to be ${user.propPref.distance[0]} to ${user.propPref.distance[1]} miles away from ${user.college}`} />
-      <PrefIcon icon=<AttachMoneyIcon /> string={`Has a budget of $${user.propPref.budget[0]} to $${user.propPref.budget[1]} per month`} />
-      <PrefIcon icon=<SingleBedIcon /> string={`Wants a ${user.propPref.numBedrooms} bedroom property`} />
-      <PrefIcon icon=<ShowerIcon /> string={`Wants a ${user.propPref.numBathrooms} bathroom property`} />
-      <PropPrefIcon topic="pet friendly" okayWith={user.propPref.petFriendly} goodIcon={<PetsIcon />} badIcon={<DoNotDisturbIcon />} />
-      <PropPrefIcon topic="smoke free" okayWith={user.propPref.smokingBanned} goodIcon={<SmokeFreeIcon />} badIcon={<SmokingRoomsIcon />} />
+      <PrefIcon icon={MapIcon} string={`Wants to be ${user.propPref.distance[0]} to ${user.propPref.distance[1]} miles away from ${user.college}`} />
+      <PrefIcon icon={AttachMoneyIcon} string={`Has a budget of $${user.propPref.budget[0]} to $${user.propPref.budget[1]} per month`} />
+      <PrefIcon icon={SingleBedIcon} string={`Wants a ${user.propPref.numBedrooms} bedroom property`} />
+      <PrefIcon icon={ShowerIcon} string={`Wants a ${user.propPref.numBathrooms} bathroom property`} />
+      <PropPrefIcon topic="pet friendly" okayWith={user.propPref.petFriendly} goodIcon={PetsIcon} badIcon={DoNotDisturbIcon} />
+      <PropPrefIcon topic="smoke free" okayWith={user.propPref.smokingBanned} goodIcon={SmokeFreeIcon} badIcon={SmokingRoomsIcon} />
       <Grid xs={2} display="flex" justifyContent="center">
         <List>
           <TextListItem text={`Wants ${Object.entries(user.propPref.amenities)
@@ -207,7 +208,7 @@ function PrefIcon({ icon, string }) {
   return (
     <Grid xs={1} display="flex" alignItems="center" justifyContent="center">
       <Stack spacing={1} alignItems="center">
-        {icon}
+        {React.createElement(icon, {fontSize: "large"})}
         <Typography align="center">{string}</Typography>
       </Stack>
     </Grid>

@@ -15,16 +15,17 @@ import {
 	Chip,
 } from '@mui/material/';
 
-import { getAuthUser } from '@/firebase/userDb';
+import { collegesConst, schoolYearsConst, languagesConst, majorsConst } from '@/constants/constants';
+import { getAuthUser } from '@/firebase/auth';
 
-const allColleges = ['Revelle', 'Muir', 'Marshall', 'Warren', 'Roosevelt', 'Sixth', 'Seventh', 'Eight'];
-const allYears = ['Freshmen', 'Sphomore', 'Junior', 'Senior', 'Master', 'PHD'];
-const allMajors = ['Math', 'Computer Science', 'Biology'];
-const allLanguages = ['English', 'Chinese', 'French', 'Japanese'];
+const allColleges = collegesConst;
+const allYears = schoolYearsConst;
+const allMajors = majorsConst;
+const allLanguages = languagesConst;
 
 export default function PersonalInfoForm() {
 	const [user, loading] = getAuthUser();
-	// console.log(user);
+
 	let name = user?.displayName;
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');

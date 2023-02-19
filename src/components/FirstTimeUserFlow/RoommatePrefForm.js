@@ -8,32 +8,20 @@ import {
 	FormControl,
 	FormLabel,
 	FormGroup,
-	RadioGroup,
-	Radio,
-	Select,
-	MenuItem,
-	Box,
-	Chip,
 	Checkbox,
 } from '@mui/material/';
 
-const dislikeOptions = ['Smoking', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties'];
-const hobbies = [
-	'Reading',
-	'Watching TV',
-	'Family Time',
-	'Movies',
-	'Fishing',
-	'Computer',
-	'Gardening',
-	'Renting Movies',
-];
+import { dislikesConst, hobbiesConst } from '@/constants/constants';
+
+const dislikeOptions = dislikesConst;
+const hobbiesOptions = hobbiesConst;
+
 export default function RoommatePrefForm() {
 	const initDislikeSelection = dislikeOptions.reduce((acc, val) => {
 		acc[val] = false;
 		return acc;
 	}, {});
-	// console.log(dislikesObj);
+
 	const [bedtime, setBedtime] = useState('');
 	const [dislikes, setDislike] = useState(initDislikeSelection);
 
@@ -56,7 +44,6 @@ export default function RoommatePrefForm() {
 						id="time"
 						type="time"
 						defaultValue="22:00"
-						// className={classes.textField}
 						inputProps={{
 							step: 1800,
 						}}
@@ -93,7 +80,7 @@ export default function RoommatePrefForm() {
 					<FormControl fullWidth>
 						<FormLabel>Hobbies</FormLabel>
 						<Grid container spacing={3} rowSpacing={0.1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-							{hobbies.map((hobby) => (
+							{hobbiesOptions.map((hobby) => (
 								<Grid item xs={6} md={3} key={hobby}>
 									<FormControlLabel control={<Checkbox />} label={hobby} />
 								</Grid>

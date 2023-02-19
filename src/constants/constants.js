@@ -1,4 +1,24 @@
-const majors = [
+export const collegesConst = ['Revelle', 'Muir', 'Marshall', 'Warren', 'Roosevelt', 'Sixth', 'Seventh', 'Eight'];
+export const schoolYearsConst = ['Freshmen', 'Sphomore', 'Junior', 'Senior', 'Master', 'PHD'];
+export const languagesConst = [
+	'English',
+	'Spanish',
+	'Chinese',
+	'Hindi',
+	'Arabic',
+	'Bengali',
+	'Russian',
+	'Portuguese',
+	'Japanese',
+	'German',
+	'French',
+	'Turkish',
+	'Korean',
+	'Italian',
+	'Urdu',
+	'Indonesian',
+];
+export const majorsConst = [
 	'Anthropology',
 	'Bioengineering',
 	'Bioengineering ',
@@ -36,7 +56,7 @@ const majors = [
 	'Mechanical and Aerospace Engineering',
 	'Mechanical and Aerospace Engineering ',
 	'Music',
-	'Nano Engineering',
+	'NanoEngineering',
 	'Philosophy',
 	'Physics',
 	'Political Science',
@@ -49,4 +69,28 @@ const majors = [
 	'Urban Studies and Planning',
 	'Visual Arts',
 ];
-export default majors;
+
+export const dislikesConst = ['Smoking', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties'];
+export const hobbiesConst = [
+	'Reading',
+	'Watching TV',
+	'Family Time',
+	'Movies',
+	'Fishing',
+	'Computer',
+	'Gardening',
+	'Exercise',
+];
+
+export const amenitiesConst = [
+	'Air conditioner',
+	'Swimming pool',
+	'Fitness center',
+	'Indoor washer and dryer',
+	'Covered parking',
+	'Pets allowed',
+	'Dishwasher',
+	'Smoke-free',
+	'Access to public transportation',
+	'Balcony',
+];

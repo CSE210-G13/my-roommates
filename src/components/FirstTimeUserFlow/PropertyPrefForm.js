@@ -6,29 +6,14 @@ import {
 	FormControlLabel,
 	FormControl,
 	FormLabel,
-	RadioGroup,
-	Radio,
-	Select,
-	MenuItem,
-	Box,
-	Chip,
 	Slider,
 	FormGroup,
 	Checkbox,
 } from '@mui/material/';
 
-const amenityOptions = [
-	'Air conditioner',
-	'Swimming pool',
-	'Fitness center',
-	'Indoor washer and dryer',
-	'Covered parking',
-	'Pets allowed',
-	'Dishwasher',
-	'Smoke-free',
-	'Access to public transportation',
-	'Balcony',
-];
+import { amenitiesConst } from '@/constants/constants';
+
+const amenityOptions = amenitiesConst;
 
 export default function PropertyPrefForm() {
 	const priceMarks = [

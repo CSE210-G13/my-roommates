@@ -2,6 +2,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Unstable_Grid2";
+import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import StrollerIcon from '@mui/icons-material/Stroller';
 import NoStrollerIcon from '@mui/icons-material/NoStroller';
 import PetsIcon from '@mui/icons-material/Pets';
@@ -17,15 +21,15 @@ import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
 
 export default function UserProfile({ user }) {
   return (
-    <Grid container direction={{ xs: "column", sm: "row" }} columns={2} spacing={10} margin={2}>
+    <Grid container direction={{ xs: "column", sm: "row" }} columns={2} spacing={10} margin={{ xs: 1, sm: 2 }}>
       <Grid sm={2}>
         <UserHeader user={user} />
       </Grid>
       <Grid sm={1}>
-        <UserProperty user={user} />
+        <UserRoommatePref user={user} />
       </Grid>
       <Grid sm={1}>
-        <UserRoommatePref user={user} />
+        <UserProperty user={user} />
       </Grid>
     </Grid>
   )
@@ -34,35 +38,35 @@ export default function UserProfile({ user }) {
 function UserHeader({ user }) {
   return (
     <Grid container
-      direction={{ xs: 'column', sm: 'row' }}
+      direction={{ xs: 'column', md: 'row' }}
       columns={4}
       spacing={4}
       padding={4}
       bgcolor='lightgray'
       borderRadius={4}>
-      <Grid sm={1} display="flex" alignItems="center" justifyContent="center">
+      <Grid md={1} display="flex" alignItems="center" justifyContent="center">
         <Avatar sx={{ fontSize: "8vh", minHeight: "15vh", minWidth: "15vh" }}>{user.firstName[0]}</Avatar>
       </Grid>
-      <Grid sm={2} display="flex" alignItems="center" justifyContent="center">
+      <Grid md={2} display="flex" alignItems="center" justifyContent="center">
         <Stack spacing={1}>
-          <h1>{`${user.firstName} ${user.lastName}`}</h1>
-          <p>{[user.gender, user.college, user.schoolYear, `Major: ${user.major}`, `Languages: ${user.languages.join(", ")}`].join(" - ")}</p>
-          <p>{user.bio}</p>
+          <Typography variant="h3" align="center">{`${user.firstName} ${user.lastName}`}</Typography>
+          <Typography align="center">{[user.gender, user.college, user.schoolYear, `Major: ${user.major}`, `Languages: ${user.languages.join(", ")}`].join(" - ")}</Typography>
+          <Typography align="center">{user.bio}</Typography>
         </Stack>
       </Grid>
-      <Grid sm={1} display="flex" alignItems="center" justifyContent="center">
+      <Grid md={1} display="flex" alignItems="center" justifyContent="center">
         <Button variant="contained">Request roommate?</Button>
       </Grid>
     </Grid>
   )
 }
 
-function UserProperty({ user }) {
+function UserRoommatePref({ user }) {
   // TODO FIND NO PETS ICON
   return (
-    <Grid container columns={{ xs: 2, sm: 3 }} bgcolor='lightgray' borderRadius={4} padding={4}>
-      <Grid xs={2} sm={3} display="flex" alignItems="center" justifyContent="center">
-        <h2>{user.firstName}'s Roommate Interests:</h2>
+    <Grid container columns={{ xs: 2, md: 3 }} bgcolor='lightgray' borderRadius={4} spacing={5}>
+      <Grid xs={2} md={3} display="flex" alignItems="center" justifyContent="center">
+        <Typography variant="h4" align="center">{user.firstName}'s Roommate Interests:</Typography>
       </Grid>
       <PrefIcon topic="children" arr={user.roommatePref.okayWith} goodIcon={<StrollerIcon />} badIcon={<NoStrollerIcon />} />
       <PrefIcon topic="pets" arr={user.roommatePref.okayWith} goodIcon={<PetsIcon />} badIcon={<DoNotDisturbIcon />} />

@@ -50,6 +50,7 @@ export default function FirstTimeUserFlow() {
 			'first name': firstName,
 			'last name': lastName,
 		};
+		// Todo: complete this function in userDb.js
 		// postUser('user');
 		console.log('person', person);
 		alert('post on firebase');

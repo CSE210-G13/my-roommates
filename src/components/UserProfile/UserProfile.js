@@ -2,6 +2,18 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Unstable_Grid2";
+import StrollerIcon from '@mui/icons-material/Stroller';
+import NoStrollerIcon from '@mui/icons-material/NoStroller';
+import PetsIcon from '@mui/icons-material/Pets';
+import SmokingRoomsIcon from '@mui/icons-material/SmokingRooms';
+import SmokeFreeIcon from '@mui/icons-material/SmokeFree';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import EventBusyIcon from '@mui/icons-material/EventBusy';
+import LocalBarIcon from '@mui/icons-material/LocalBar';
+import NoDrinksIcon from '@mui/icons-material/NoDrinks';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import GroupRemoveIcon from '@mui/icons-material/GroupRemove';
+import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
 
 export default function UserProfile({ user }) {
   return (
@@ -45,14 +57,38 @@ function UserHeader({ user }) {
   )
 }
 
-function UserProperty({user}) {
+function UserProperty({ user }) {
+  // TODO FIND NO PETS ICON
   return (
-    <p>apartment interests (TODO)</p>
+    <Grid container columns={{ xs: 2, sm: 3 }} bgcolor='lightgray' borderRadius={4} padding={4}>
+      <Grid xs={2} sm={3} display="flex" alignItems="center" justifyContent="center">
+        <h2>{user.firstName}'s Roommate Interests:</h2>
+      </Grid>
+      <PrefIcon topic="children" arr={user.roommatePref.okayWith} goodIcon={<StrollerIcon />} badIcon={<NoStrollerIcon />} />
+      <PrefIcon topic="pets" arr={user.roommatePref.okayWith} goodIcon={<PetsIcon />} badIcon={<DoNotDisturbIcon />} />
+      <PrefIcon topic="smoking" arr={user.roommatePref.okayWith} goodIcon={<SmokingRoomsIcon />} badIcon={<SmokeFreeIcon />} />
+      <PrefIcon topic="parties" arr={user.roommatePref.okayWith} goodIcon={<EventAvailableIcon />} badIcon={<EventBusyIcon />} />
+      <PrefIcon topic="alcohol" arr={user.roommatePref.okayWith} goodIcon={<LocalBarIcon />} badIcon={<NoDrinksIcon />} />
+      <PrefIcon topic="couples" arr={user.roommatePref.okayWith} goodIcon={<GroupAddIcon />} badIcon={<GroupRemoveIcon />} />
+    </Grid>
   )
 }
 
-function UserRoommatePref({user}) {
+function UserRoommatePref({ user }) {
   return (
     <p>property interests (TODO)</p>
   )
 }
+
+function PrefIcon({ topic, arr, goodIcon, badIcon }) {
+  let okayWith = arr[topic]
+  return (
+    <Grid xs={1} display="flex" alignItems="center" justifyContent="center">
+      <Stack spacing={1} alignItems="center">
+        {okayWith ? goodIcon : badIcon}
+        <p align="center">{okayWith ? "Okay " : "Not okay "} with {topic}</p>
+      </Stack>
+    </Grid>
+  )
+}
+

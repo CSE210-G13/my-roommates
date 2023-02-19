@@ -90,7 +90,7 @@ function ContactInfo({ user }) {
       >
         {publicContactInfo.map(([key, value]) =>
           <Stack alignItems="center" spacing={1} key={key}>
-            {React.createElement(iconMap[key], {fontSize: "large"})}
+            {React.createElement(iconMap[key], { fontSize: "large" })}
             <Typography>{value.data}</Typography>
           </Stack>
         )}
@@ -208,7 +208,7 @@ function PrefIcon({ icon, string }) {
   return (
     <Grid xs={1} display="flex" alignItems="center" justifyContent="center">
       <Stack spacing={1} alignItems="center">
-        {React.createElement(icon, {fontSize: "large"})}
+        {React.createElement(icon, { fontSize: "large" })}
         <Typography align="center">{string}</Typography>
       </Stack>
     </Grid>

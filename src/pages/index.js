@@ -1,15 +1,9 @@
 import Head from 'next/head';
-
-import { Inter } from '@next/font/google';
-import styles from '@/styles/Home.module.css';
-import { getAuth } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { getAuthUser } from '@/firebase/auth';
 
 export default function Home() {
-	// const app = initFirebase();
-	// console.log(app);
-	const auth = getAuth();
-	const [user, loading] = useAuthState(auth);
+	const [user, loading] = getAuthUser();
+
 	if (loading) {
 		return <h1>Loading...</h1>;
 	}

@@ -37,7 +37,10 @@ export default function UserProfile({ user }) {
         <UserProperty user={user} />
       </Grid>
       <Grid sm={2}>
-        <PropertyCarousel user={user}/>
+        <PropertyCarousel properties={user.interestedProp} title={`Properties ${user.firstName} is interested in...`} />
+      </Grid>
+      <Grid sm={2}>
+        <PropertyCarousel properties={user.interestedProp} title={`Properties you and ${user.firstName} are interested in...`} />
       </Grid>
     </Grid>
   )
@@ -159,32 +162,40 @@ function PrefIcon({ icon, string }) {
   )
 }
 
-function PropertyCarousel({ user }) {
-  let interestedProp = user.interestedProp;
+function PropertyCarousel({ properties, title }) {
+  let interestedProp = properties;
 
   // from https://stackoverflow.com/a/44069560
   function groupArr(data, n) {
     let group = [];
     for (let i = 0, j = 0; i < data.length; i++) {
-        if (i >= n && i % n === 0)
-            j++;
-        group[j] = group[j] || [];
-        group[j].push(data[i])
+      if (i >= n && i % n === 0)
+        j++;
+      group[j] = group[j] || [];
+      group[j].push(data[i])
     }
     return group;
   }
 
+  // TODO: make reactive by changing groupNumber based on screen size
   let groupsOf3 = groupArr(interestedProp, 3);
 
   return (
-    <Carousel navButtonsAlwaysVisible={true} autoPlay={false}>
-    {
-      groupsOf3
-        .map((items) => <Stack key={items[0]} direction="row" alignItems="center" justifyContent="space-evenly">
-          {items.map((x) => <Typography>{x}</Typography>)}
-        </Stack>)
-    }
-    </Carousel>
+    <Stack
+      bgcolor="lightgray"
+      borderRadius={4}
+      padding={5}
+      spacing={7}>
+      <Typography variant="h5">{title}</Typography>
+      <Carousel navButtonsAlwaysVisible={true} autoPlay={false} animation="slide">
+        {
+          groupsOf3
+            .map((items) => <Stack key={items[0]} direction="row" alignItems="center" justifyContent="space-evenly">
+              {items.map((x) => <Typography>{x}</Typography>)}
+            </Stack>)
+        }
+      </Carousel>
+    </Stack>
   )
 }
 

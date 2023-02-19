@@ -78,8 +78,25 @@ function UserRoommatePref({ user }) {
       <RoommatePrefIcon topic="parties" user={user} goodIcon={<EventAvailableIcon />} badIcon={<EventBusyIcon />} />
       <RoommatePrefIcon topic="alcohol" user={user} goodIcon={<LocalBarIcon />} badIcon={<NoDrinksIcon />} />
       <RoommatePrefIcon topic="couples" user={user} goodIcon={<GroupAddIcon />} badIcon={<GroupRemoveIcon />} />
+      <Grid xs={2} sm={3} display="flex" justifyContent="center">
+        <List>
+          <TextListItem text={`Prefers ${user.roommatePref.gender.toLowerCase()} roommates`} />
+          <TextListItem text={`Prefers roommates who are also interested in ${user.roommatePref.hobbies.map((x) => x.toLowerCase()).join(", ")}`} />
+          <TextListItem text={`Prefers ${user.roommatePref.college} roommates`} />
+          <TextListItem text={`Prefers roommates majoring in ${user.roommatePref.major}`} />
+          <TextListItem text={`Prefers ${user.roommatePref.schoolYear.toLowerCase()} students`} />
+          <TextListItem text={`Prefers roommates who speak ${user.roommatePref.languages.join(", ")}`} />
+          <TextListItem text={`Prefers roommates who are ${user.roommatePref.cleanliness}/5 on cleanliness`} />
+          <TextListItem text={`Prefers roommates who are moving in around ${user.roommatePref.moveInDate}`} />
+          <TextListItem text={`Prefers roommates who sleep around ${user.roommatePref.bedtime}`} />
+        </List>
+      </Grid>
     </Grid>
   )
+}
+
+function TextListItem({ text }) {
+  return <ListItem><ListItemText align="center" primary={text} /></ListItem>
 }
 
 function RoommatePrefIcon({ topic, user, goodIcon, badIcon }) {

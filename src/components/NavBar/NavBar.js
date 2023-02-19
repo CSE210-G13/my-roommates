@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import {
 	AppBar,
 	Box,
@@ -16,8 +16,7 @@ import {
 } from '@mui/material/';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { getAuth, signOut, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { getAuthUser, login, signout } from '@/firebase/auth';
 
 const pages = [
 	{ title: 'Landlords', link: '/' },
@@ -25,8 +24,8 @@ const pages = [
 ];
 
 export default function ResponsiveAppBar() {
-	const [anchorElNav, setAnchorElNav] = React.useState(null);
-	const [anchorElUser, setAnchorElUser] = React.useState(null);
+	const [anchorElNav, setAnchorElNav] = useState(null);
+	const [anchorElUser, setAnchorElUser] = useState(null);
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -42,46 +41,7 @@ export default function ResponsiveAppBar() {
 		setAnchorElUser(null);
 	};
 
-	const router = useRouter();
-	const auth = getAuth();
-	const login = () => {
-		signInWithPopup(auth, new GoogleAuthProvider())
-			.then((result) => {
-				// This gives you a Google Access Token. You can use it to access the Google API.
-				const credential = GoogleAuthProvider.credentialFromResult(result);
-				const token = credential.accessToken;
-				// The signed-in user info.
-				const user = result.user;
-				// IdP data available using getAdditionalUserInfo(result)
-				// ...
-				const details = getAdditionalUserInfo(result);
-				console.log('in NavBar.js user', user);
-				console.log('in NavBar.js is new:', details.isNewUser);
-				if (details.isNewUser) {
-					router.push('/firstTimeUser');
-				}
-			})
-			.catch((error) => {
-				// Handle Errors here.
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				// The AuthCredential type that was used.
-				const credential = GoogleAuthProvider.credentialFromError(error);
-				// ...
-				console.log(errorCode, errorMessage);
-			});
-	};
-	const signout = () => {
-		signOut(auth)
-			.then(() => {
-				// Sign-out successful.
-				router.push('/');
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	};
-	const [user, loading] = useAuthState(auth);
+	const [user, loading] = getAuthUser();
 
 	return (
 		<AppBar position="static">

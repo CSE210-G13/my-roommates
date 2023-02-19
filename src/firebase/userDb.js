@@ -1,13 +1,5 @@
-import { getAuth, signOut, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { db } from './firebaseConfig';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
-
-export function getAuthUser() {
-	const auth = getAuth();
-	const [user, loading] = useAuthState(auth);
-	return [user, loading];
-}
 
 // Todo
 export async function getUser(userId) {

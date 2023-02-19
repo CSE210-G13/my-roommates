@@ -23,12 +23,21 @@ import MapIcon from '@mui/icons-material/Map';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import ShowerIcon from '@mui/icons-material/Shower';
+import EmailIcon from '@mui/icons-material/Email';
+import SmartphoneIcon from '@mui/icons-material/Smartphone';
+import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 export default function UserProfile({ user }) {
   return (
     <Grid container direction={{ xs: "column", sm: "row" }} columns={2} spacing={10} margin={{ xs: 1, sm: 2 }}>
       <Grid sm={2}>
         <UserHeader user={user} />
+      </Grid>
+      <Grid sm={2}>
+        <ContactInfo user={user} />
       </Grid>
       <Grid sm={1}>
         <UserRoommatePref user={user} />
@@ -43,6 +52,49 @@ export default function UserProfile({ user }) {
         <PropertyCarousel properties={user.interestedProp} title={`Properties you and ${user.firstName} are interested in...`} />
       </Grid>
     </Grid>
+  )
+}
+
+function ContactInfo({ user }) {
+  // TODO: when firebase integrated, make sure if users are friends they get
+  // private contact info if they are not friends, only get public contact info
+  // IMPORTANT: that filtering CANNOT happen on the frontend! the *database*
+  // MUST respond only with public contact info if they aren't friends! If the
+  // frontend is the one responsible for filtering the private content, we're
+  // leaking private info!
+
+  // Switch these two lines to show public or all contact info
+  let publicContactInfo = Object.entries(user.contactInfo).filter(([_, val]) => val.pub && val.data !== "");
+  // let publicContactInfo = Object.entries(user.contactInfo).filter(([_, val]) => val.data !== "");
+
+  let iconMap = {
+    email: <EmailIcon />,
+    phone: <SmartphoneIcon />,
+    discord: <HeadsetMicIcon />,
+    instagram: <InstagramIcon />,
+    linkedin: <LinkedInIcon />,
+    facebook: <FacebookIcon />
+  };
+
+  return (
+    <Stack
+      bgcolor="lightgray"
+      borderRadius={4}
+      padding={4}
+      spacing={4}>
+      <Typography variant="h5">Contact Info</Typography>
+      <Stack
+        direction="row"
+        justifyContent="space-evenly"
+      >
+        {publicContactInfo.map(([key, value]) =>
+          <Stack alignItems="center" spacing={1}>
+            {iconMap[key]}
+            <Typography>{value.data}</Typography>
+          </Stack>
+        )}
+      </Stack>
+    </Stack>
   )
 }
 

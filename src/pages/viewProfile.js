@@ -27,11 +27,11 @@ let user = {
     },
     instagram: {
       data: "heresjohnny",
-      pub: false,
+      pub: true,
     },
     linkedin: {
-      data: "",
-      pub: false,
+      data: "johnnyprofessional",
+      pub: true,
     },
     facebook: {
       data: "",

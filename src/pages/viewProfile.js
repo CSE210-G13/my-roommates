@@ -61,7 +61,21 @@ let user = {
       "Birdwatching"
     ]
   },
-  propPref: {},
+  propPref: {
+    budget: [0, 1000],
+    distance: [0, 15],
+    petFriendly: false,
+    smokingBanned: true,
+    numBedrooms: 2,
+    numBathrooms: 1,
+    amenities: {
+      ac: true,
+      pool: false,
+      gym: true,
+      parking: false,
+      inUnitLaundry: true
+    }
+  },
   interestedProp: {},
   requests: {}
 }

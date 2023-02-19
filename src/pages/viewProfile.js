@@ -76,7 +76,7 @@ let user = {
       inUnitLaundry: true
     }
   },
-  interestedProp: {},
+  interestedProp: Array.from(Array(10), (_,i) => i).map((x) => `Property ${x}`),
   requests: {}
 }
 

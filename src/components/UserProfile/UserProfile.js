@@ -4,6 +4,7 @@ import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Unstable_Grid2";
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
+import Carousel from 'react-material-ui-carousel';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import StrollerIcon from '@mui/icons-material/Stroller';
@@ -34,6 +35,9 @@ export default function UserProfile({ user }) {
       </Grid>
       <Grid sm={1}>
         <UserProperty user={user} />
+      </Grid>
+      <Grid sm={2}>
+        <PropertyCarousel user={user}/>
       </Grid>
     </Grid>
   )
@@ -152,6 +156,35 @@ function PrefIcon({ icon, string }) {
         <Typography align="center">{string}</Typography>
       </Stack>
     </Grid>
+  )
+}
+
+function PropertyCarousel({ user }) {
+  let interestedProp = user.interestedProp;
+
+  // from https://stackoverflow.com/a/44069560
+  function groupArr(data, n) {
+    let group = [];
+    for (let i = 0, j = 0; i < data.length; i++) {
+        if (i >= n && i % n === 0)
+            j++;
+        group[j] = group[j] || [];
+        group[j].push(data[i])
+    }
+    return group;
+  }
+
+  let groupsOf3 = groupArr(interestedProp, 3);
+
+  return (
+    <Carousel navButtonsAlwaysVisible={true} autoPlay={false}>
+    {
+      groupsOf3
+        .map((items) => <Stack key={items[0]} direction="row" alignItems="center" justifyContent="space-evenly">
+          {items.map((x) => <Typography>{x}</Typography>)}
+        </Stack>)
+    }
+    </Carousel>
   )
 }
 

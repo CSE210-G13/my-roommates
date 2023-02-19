@@ -1,19 +1,20 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-// import { AppBar, Box, Toolbar, IconButton, Typography, Menu, MenuIcon, MenuItem, Container, Avatar, Button, Tooltip } from '@mui/material/';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import {
+	AppBar,
+	Box,
+	Toolbar,
+	IconButton,
+	Typography,
+	Menu,
+	MenuItem,
+	Container,
+	Avatar,
+	Button,
+	Tooltip,
+} from '@mui/material/';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
 
 import { getAuth, signOut, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -54,7 +55,7 @@ export default function ResponsiveAppBar() {
 				// IdP data available using getAdditionalUserInfo(result)
 				// ...
 				const details = getAdditionalUserInfo(result);
-				console.log("in NavBar.js user",user);
+				console.log('in NavBar.js user', user);
 				console.log('in NavBar.js is new:', details.isNewUser);
 				if (details.isNewUser) {
 					router.push('/firstTimeUser');

@@ -7,12 +7,17 @@ import {
 	FormControlLabel,
 	FormControl,
 	FormLabel,
+    FormGroup,
+    Switch,
 	RadioGroup,
 	Radio,
 	Select,
 	MenuItem,
 	Box,
 	Chip,
+    Button,
+    IconButton,
+    Avatar,
 } from '@mui/material/';
 
 // import { getAuthUser } from '@/firebase/userDb';
@@ -29,17 +34,39 @@ export default function EditPersonalInformationForm() {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [gender, setGender] = useState('');
+    const [email, setEmail] = useState('');
+    const [emailPublic, setEmailPublic] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [phoneNumberPublic, setPhoneNumberPublic] = useState(false);
 	const [college, setCollege] = useState('');
 	const [year, setYear] = useState('');
 	const [major, setMajor] = useState('');
 	const [languages, setLanguages] = useState([]);
+    const [bio, setBio] = useState('');
+
+    const handleChangeProfilePic = (event) => {
+		// setAnchorElUser(event.currentTarget);
+        console.log("upload an image");
+	};
 
     return (
             <React.Fragment>
-                <Typography variant="h6" gutterBottom>
-                    Personal Information
-                </Typography>
                 <Grid container spacing={3}>
+                    <Grid item xs={6}>
+                        <Typography variant="h6">
+                            Personal Information
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Button variant="outlined">
+                            Edit
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12} justifyContent="center">
+                        <IconButton onClick={handleChangeProfilePic} sx={{ p: 0 }}>
+								<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+						</IconButton>
+                    </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             required
@@ -76,6 +103,54 @@ export default function EditPersonalInformationForm() {
                             </RadioGroup>
                         </FormControl>
                     </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            required
+                            id="email"
+                            name="email"
+                            label="Email"
+                            fullWidth
+                            value={email}
+                            autoComplete="email"
+                            variant="standard"
+                            onChange={(e) => setEmail(e.target.value)}/>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <FormGroup>
+                            <FormControlLabel 
+                                control={<Switch />} 
+                                label="Make public"
+                                labelPlacement="start"
+                                checked={emailPublic}
+                                onChange={(e) => setEmailPublic(e.target.checked)}
+                            />
+                        </FormGroup>                        
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            required
+                            id="phoneNumber"
+                            name="phoneNumber"
+                            label="Phone Number"
+                            fullWidth
+                            value={phoneNumber}
+                            autoComplete="tel"
+                            variant="standard"
+                            inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                            onChange={(e) => setPhoneNumber(e.target.value)}/>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <FormGroup>
+                            <FormControlLabel 
+                                control={<Switch />} 
+                                label="Make public"
+                                labelPlacement="start"
+                                checked={phoneNumberPublic}
+                                onChange={(e) => setPhoneNumberPublic(e.target.checked)}
+                            />
+                        </FormGroup>                        
+                    </Grid>
+
                     <Grid item xs={12} sm={6}>
                         <FormControl fullWidth>
                             <FormLabel>College</FormLabel>
@@ -133,6 +208,18 @@ export default function EditPersonalInformationForm() {
                                 ))}
                             </Select>
                         </FormControl>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                            id="outlined-multiline-static"
+                            label="Bio"
+                            multiline
+                            fullWidth
+                            rows={4}
+                            value={bio}
+                            placeholder="Tell everyone a little about yourself"
+                            onChange={(e) => setBio(e.target.value)}
+                        />
                     </Grid>
                 </Grid>
             </React.Fragment>

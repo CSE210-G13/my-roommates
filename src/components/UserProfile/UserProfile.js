@@ -112,8 +112,8 @@ function RoommatePrefIcon({ topic, user, goodIcon, badIcon }) {
 
 function UserProperty({ user }) {
   return (
-    <Grid container columns={{ xs: 2, md: 3 }} bgcolor='lightgray' borderRadius={4} spacing={5}>
-      <Grid xs={2} md={3} display="flex" alignItems="center" justifyContent="center">
+    <Grid container columns={2} bgcolor='lightgray' borderRadius={4} spacing={5}>
+      <Grid xs={2} display="flex" alignItems="center" justifyContent="center">
         <Typography variant="h4" align="center">{user.firstName}'s Property Interests:</Typography>
       </Grid>
       <PrefIcon icon=<MapIcon /> string={`Wants to be ${user.propPref.distance[0]} to ${user.propPref.distance[1]} miles away from ${user.college}`} />
@@ -122,6 +122,14 @@ function UserProperty({ user }) {
       <PrefIcon icon=<ShowerIcon /> string={`Wants a ${user.propPref.numBathrooms} bathroom property`} />
       <PropPrefIcon topic="pet friendly" okayWith={user.propPref.petFriendly} goodIcon={<PetsIcon />} badIcon={<DoNotDisturbIcon />} />
       <PropPrefIcon topic="smoke free" okayWith={user.propPref.smokingBanned} goodIcon={<SmokeFreeIcon />} badIcon={<SmokingRoomsIcon />} />
+      <Grid xs={2} display="flex" justifyContent="center">
+        <List>
+          <TextListItem text={`Wants ${Object.entries(user.propPref.amenities)
+            .filter(([_, value]) => value)
+            .map(([key, _]) => { if (key === "inUnitLaundry") { return "in unit laundry" } else { return key } })
+            .join(", ")} amenities`} />
+        </List>
+      </Grid>
     </Grid>
   )
 }

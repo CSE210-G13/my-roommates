@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import { getAuthUser } from '@/firebase/auth';
+import { useAuthUser } from '@/firebase/auth';
 
 export default function Home() {
-	const [user, loading] = getAuthUser();
+	const [user, loading] = useAuthUser();
 
 	if (loading) {
 		return <h1>Loading...</h1>;

@@ -16,7 +16,7 @@ import {
 } from '@mui/material/';
 
 import { collegesConst, schoolYearsConst, languagesConst, majorsConst } from '@/constants/constants';
-import { getAuthUser } from '@/firebase/auth';
+import { useAuthUser } from '@/firebase/auth';
 
 const allColleges = collegesConst;
 const allYears = schoolYearsConst;
@@ -24,7 +24,7 @@ const allMajors = majorsConst;
 const allLanguages = languagesConst;
 
 export default function PersonalInfoForm() {
-	const [user, loading] = getAuthUser();
+	const [user, loading] = useAuthUser();
 
 	let name = user?.displayName;
 	const [firstName, setFirstName] = useState('');
@@ -45,7 +45,7 @@ export default function PersonalInfoForm() {
 				setFirstName(nameSplit[0]);
 			}
 		}
-	}, [user]);
+	}, [name, user]);
 
 	return (
 		<React.Fragment>

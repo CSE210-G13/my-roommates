@@ -54,7 +54,7 @@ export default function RoommatePrefForm() {
 
 				<Grid item xs={12}>
 					<FormControl fullWidth>
-						<FormLabel>Can't accept</FormLabel>
+						<FormLabel>Can&apos;t accept</FormLabel>
 						<FormGroup>
 							<Grid container spacing={3} rowSpacing={0.1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 								{dislikeOptions.map((dislikeString) => (

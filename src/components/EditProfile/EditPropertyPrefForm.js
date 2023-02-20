@@ -6,16 +6,11 @@ import {
 	FormControlLabel,
 	FormControl,
 	FormLabel,
-	RadioGroup,
-	Radio,
-	Select,
-	MenuItem,
-	Box,
-	Chip,
 	Slider,
 	FormGroup,
 	Checkbox,
-    Button
+    Button,
+	Box,
 } from '@mui/material/';
 
 const amenityOptions = [
@@ -93,11 +88,13 @@ export default function PropertyPrefForm() {
                         Property Preference
                     </Typography>
                 </Grid>
-                <Grid item xs={6}>
-                    <Button variant="outlined">
-                        Edit
-                    </Button>
-                </Grid>
+				<Grid item xs={6}>
+                        <Box display="flex" justifyContent="flex-end">
+                            <Button variant="outlined">
+                                Edit
+                            </Button>                            
+                        </Box>
+                    </Grid>
                 <Grid item xs={12} sm={6}>
 					<FormLabel>Price Range (Monthly/Person)</FormLabel>
 					<Slider defaultValue={20} min={100} max={4000} step={100} valueLabelDisplay="auto" marks={priceMarks} />

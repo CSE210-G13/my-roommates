@@ -8,14 +8,9 @@ import {
 	FormControl,
 	FormLabel,
 	FormGroup,
-	RadioGroup,
-	Radio,
-	Select,
-	MenuItem,
-	Box,
-	Chip,
 	Checkbox,
     Button,
+	Box,
 } from '@mui/material/';
 
 const dislikeOptions = ['Smoking', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties'];
@@ -52,11 +47,13 @@ export default function EditRoommatePrefForm() {
                         Roommate Preference
                     </Typography>
                 </Grid>
-                <Grid item xs={6}>
-                    <Button variant="outlined">
-                        Edit
-                    </Button>
-                </Grid>
+				<Grid item xs={6}>
+                        <Box display="flex" justifyContent="flex-end">
+                            <Button variant="outlined">
+                                Edit
+                            </Button>                            
+                        </Box>
+                    </Grid>
                 <Grid item xs={12} md={6}>
                     <FormLabel>Desired bedtime</FormLabel>
                     <TextField

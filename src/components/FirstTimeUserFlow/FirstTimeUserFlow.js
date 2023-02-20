@@ -46,10 +46,6 @@ export default function FirstTimeUserFlow() {
 	};
 
 	const handleSubmit = () => {
-		const person = {
-			'first name': firstName,
-			'last name': lastName,
-		};
 		// Todo: complete this function in userDb.js
 		// postUser('user');
 		alert('post on firebase');

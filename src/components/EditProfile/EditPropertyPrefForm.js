@@ -73,6 +73,7 @@ export default function PropertyPrefForm() {
 		return acc;
 	}, {});
 	const [amenities, setAmenities] = useState(initAmenitiesObj);
+    const [editingProperty, setEditingProperty] = useState(false);
 
 	const handleAmenitiesChange = (event) => {
 		setAmenities({
@@ -80,21 +81,28 @@ export default function PropertyPrefForm() {
 			[event.target.name]: event.target.checked,
 		});
 	};
+
+    const handleEditingProperty = () => {
+        setEditingProperty(!editingProperty);
+    }
+	
     return (
         <React.Fragment>
             <Grid container spacing={5}>
                 <Grid item xs={6}>
-                    <Typography variant="h6">
+                    <Typography variant="h5">
                         Property Preference
                     </Typography>
                 </Grid>
 				<Grid item xs={6}>
-                        <Box display="flex" justifyContent="flex-end">
-                            <Button variant="outlined">
-                                Edit
-                            </Button>                            
-                        </Box>
-                    </Grid>
+					<Box display="flex" justifyContent="flex-end">
+						<Button 
+							variant={editingProperty ? "contained" : "outlined"}
+							onClick={() => {handleEditingProperty()}}>
+							{editingProperty ? "Save" : "Edit"}
+						</Button>
+					</Box>
+				</Grid>
                 <Grid item xs={12} sm={6}>
 					<FormLabel>Price Range (Monthly/Person)</FormLabel>
 					<Slider defaultValue={20} min={100} max={4000} step={100} valueLabelDisplay="auto" marks={priceMarks} />

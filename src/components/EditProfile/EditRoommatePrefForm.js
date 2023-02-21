@@ -31,6 +31,7 @@ export default function EditRoommatePrefForm() {
 	}, {});
     const [bedtime, setBedtime] = useState('');
 	const [dislikes, setDislike] = useState(initDislikeSelection);
+    const [editingRoommate, setEditingRoommate] = useState(false);
 
 	const handleDislikesChange = (event) => {
 		setDislike({
@@ -39,20 +40,26 @@ export default function EditRoommatePrefForm() {
 		});
 	};
 
+    const handleEditingRoommate = () => {
+        setEditingRoommate(!editingRoommate);
+    }
+
     return (
         <React.Fragment>
             <Grid container spacing={3}>
                 <Grid item xs={6}>
-                    <Typography variant="h6">
+                    <Typography variant="h5">
                         Roommate Preference
                     </Typography>
                 </Grid>
 				<Grid item xs={6}>
-                        <Box display="flex" justifyContent="flex-end">
-                            <Button variant="outlined">
-                                Edit
-                            </Button>                            
-                        </Box>
+					<Box display="flex" justifyContent="flex-end">
+						<Button 
+							variant={editingRoommate ? "contained" : "outlined"}
+							onClick={() => {handleEditingRoommate()}}>
+							{editingRoommate ? "Save" : "Edit"}
+						</Button>
+					</Box>
                     </Grid>
                 <Grid item xs={12} md={6}>
                     <FormLabel>Desired bedtime</FormLabel>

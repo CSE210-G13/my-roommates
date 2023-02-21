@@ -52,32 +52,40 @@ export default function EditPersonalInformationForm() {
 	const [major, setMajor] = useState('');
 	const [languages, setLanguages] = useState([]);
     const [bio, setBio] = useState('');
+    const [profilePic, setProfilePic] = useState('');
+    const [editingPersonal, setEditingPersonal] = useState(false);
 
     const handleChangeProfilePic = (event) => {
 		// setAnchorElUser(event.currentTarget);
         console.log("upload an image");
 	};
 
+    const handleEditingPersonal = () => {
+        setEditingPersonal(!editingPersonal);
+    }
+
     return (
             <React.Fragment>
                 <Grid container>
                     <Grid item xs={6}>
-                        <Typography variant="h6">
+                        <Typography variant="h5">
                             Personal Information
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
                         <Box display="flex" justifyContent="flex-end">
-                            <Button variant="outlined">
-                                Edit
+                            <Button 
+                                variant={editingPersonal ? "contained" : "outlined"}
+                                onClick={() => {handleEditingPersonal()}}>
+                                {editingPersonal ? "Save" : "Edit"}
                             </Button>                            
                         </Box>
                     </Grid>
                     {/* <Grid container spacing={2} xs={12} sm={6} p={{ xs: 2, md: 3 }}> */}
                     <Grid container xs={12} sm={6} rowSpacing={2} p={2}>
-                        <Grid item xs={12} gutterBottom>
-                            <IconButton onClick={handleChangeProfilePic} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                        <Grid item xs={12}>
+                            <IconButton onClick={handleChangeProfilePic}>
+                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ width: "10rem", height: "10rem" }}/>
                             </IconButton>
                         </Grid>
                         <Grid item xs={12}>
@@ -102,137 +110,6 @@ export default function EditPersonalInformationForm() {
                                     <FormControlLabel value="other" control={<Radio />} label="Other" />
                                 </RadioGroup>
                             </FormControl>
-                        </Grid>
-                        <Grid item xs={12} md={8}>
-                            <TextField
-                                required
-                                id="email"
-                                name="email"
-                                label="Email"
-                                fullWidth
-                                value={email}
-                                autoComplete="email"
-                                variant="standard"
-                                onChange={(e) => setEmail(e.target.value)}/>
-                        </Grid>                    
-                        <Grid item xs={12} md={4}>
-                            <FormGroup>
-                                <FormControlLabel 
-                                    control={<Switch />} 
-                                    label="Public?"
-                                    labelPlacement="start"
-                                    checked={emailPublic}
-                                    onChange={(e) => setEmailPublic(e.target.checked)}
-                                />
-                            </FormGroup>                        
-                        </Grid>
-                        <Grid item xs={12} md={8}>
-                            <TextField
-                                required
-                                id="phoneNumber"
-                                name="phoneNumber"
-                                label="Phone Number"
-                                fullWidth
-                                value={phoneNumber}
-                                autoComplete="tel"
-                                variant="standard"
-                                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-                                onChange={(e) => setPhoneNumber(e.target.value)}/>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <FormGroup>
-                                <FormControlLabel 
-                                    control={<Switch />} 
-                                    label="Public?"
-                                    labelPlacement="start"
-                                    checked={phoneNumberPublic}
-                                    onChange={(e) => setPhoneNumberPublic(e.target.checked)}
-                                />
-                            </FormGroup>                        
-                        </Grid>
-                        <Grid item xs={12} md={8}>
-                            <TextField
-                                id="discord"
-                                name="discord"
-                                label="Discord"
-                                fullWidth
-                                value={discord}
-                                variant="standard"
-                                onChange={(e) => setDiscord(e.target.value)}/>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <FormGroup>
-                                <FormControlLabel 
-                                    control={<Switch />} 
-                                    label="Public?"
-                                    labelPlacement="start"
-                                    checked={discordPublic}
-                                    onChange={(e) => setDiscordPublic(e.target.checked)}
-                                />
-                            </FormGroup>                        
-                        </Grid>
-                        <Grid item xs={12} md={8}>
-                            <TextField
-                                id="instagram"
-                                name="instagram"
-                                label="Instagram"
-                                fullWidth
-                                value={discord}
-                                variant="standard"
-                                onChange={(e) => setInstagram(e.target.value)}/>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <FormGroup>
-                                <FormControlLabel 
-                                    control={<Switch />} 
-                                    label="Public?"
-                                    labelPlacement="start"
-                                    checked={instagramPublic}
-                                    onChange={(e) => setInstagramPublic(e.target.checked)}
-                                />
-                            </FormGroup>                        
-                        </Grid>
-                        <Grid item xs={12} md={8}>
-                            <TextField
-                                id="linkedin"
-                                name="linkedin"
-                                label="LinkedIn"
-                                fullWidth
-                                value={linkedin}
-                                variant="standard"
-                                onChange={(e) => setLinkedIn(e.target.value)}/>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <FormGroup>
-                                <FormControlLabel 
-                                    control={<Switch />} 
-                                    label="Public?"
-                                    labelPlacement="start"
-                                    checked={linkedinPublic}
-                                    onChange={(e) => setLinkedInPublic(e.target.checked)}
-                                />
-                            </FormGroup>                        
-                        </Grid>
-                        <Grid item xs={12} md={8}>
-                            <TextField
-                                id="facebook"
-                                name="facebook"
-                                label="Facebook"
-                                fullWidth
-                                value={facebook}
-                                variant="standard"
-                                onChange={(e) => setFacebook(e.target.value)}/>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <FormGroup>
-                                <FormControlLabel 
-                                    control={<Switch />} 
-                                    label="Public?"
-                                    labelPlacement="start"
-                                    checked={facebookPublic}
-                                    onChange={(e) => setFacebookPublic(e.target.checked)}
-                                />
-                            </FormGroup>                        
                         </Grid>
                     </Grid>
                     <Grid container xs={12} sm={6} rowSpacing={2} columnSpacing={2} p={2}>
@@ -309,7 +186,147 @@ export default function EditPersonalInformationForm() {
                             />
                         </Grid>
                     </Grid>
-                    
+                    <Grid container xs={12} sm={6} rowSpacing={2} sx={{ px: 2, pb: 2, display: "flex", alignContent: "flex-start"}}>
+                        <Grid item xs={12} md={8.7}>
+                            <TextField
+                                required
+                                id="email"
+                                name="email"
+                                label="Email"
+                                fullWidth
+                                value={email}
+                                autoComplete="email"
+                                variant="standard"
+                                onChange={(e) => setEmail(e.target.value)}/>
+                        </Grid>                    
+                        <Grid item xs={12} md={3.3} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
+                            <FormGroup>
+                                <FormControlLabel 
+                                    control={<Switch />} 
+                                    label="Public"
+                                    labelPlacement="start"
+                                    checked={emailPublic}
+                                    onChange={(e) => setEmailPublic(e.target.checked)}
+                                />
+                            </FormGroup>                        
+                        </Grid>
+                        <Grid item xs={12} md={8}>
+                            <TextField
+                                required
+                                id="phoneNumber"
+                                name="phoneNumber"
+                                label="Phone Number"
+                                fullWidth
+                                value={phoneNumber}
+                                autoComplete="tel"
+                                variant="standard"
+                                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                                onChange={(e) => setPhoneNumber(e.target.value)}/>
+                        </Grid>
+                        <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
+                            <FormGroup>
+                                <FormControlLabel 
+                                    control={<Switch />} 
+                                    label="Public"
+                                    labelPlacement="start"
+                                    checked={phoneNumberPublic}
+                                    onChange={(e) => setPhoneNumberPublic(e.target.checked)}
+                                />
+                            </FormGroup>                        
+                        </Grid>
+                    </Grid>
+                    <Grid container xs={12} sm={6} rowSpacing={2} columnSpacing={2} sx={{ px: 2, pb: 2}}>
+                        {/* <Grid item xs={12}>
+                            <Typography variant="h6">
+                                Social Media
+                            </Typography>                            
+                        </Grid> */}
+                        <Grid item xs={12} md={8}>
+                            <TextField
+                                id="discord"
+                                name="discord"
+                                label="Discord"
+                                fullWidth
+                                value={discord}
+                                variant="standard"
+                                onChange={(e) => setDiscord(e.target.value)}/>
+                        </Grid>
+                        <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
+                            <FormGroup>
+                                <FormControlLabel 
+                                    control={<Switch />} 
+                                    label="Public"
+                                    labelPlacement="start"
+                                    checked={discordPublic}
+                                    onChange={(e) => setDiscordPublic(e.target.checked)}
+                                />
+                            </FormGroup>                        
+                        </Grid>
+                        <Grid item xs={12} md={8}>
+                            <TextField
+                                id="instagram"
+                                name="instagram"
+                                label="Instagram"
+                                fullWidth
+                                value={discord}
+                                variant="standard"
+                                onChange={(e) => setInstagram(e.target.value)}/>
+                        </Grid>
+                        <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
+                            <FormGroup>
+                                <FormControlLabel 
+                                    control={<Switch />} 
+                                    label="Public"
+                                    labelPlacement="start"
+                                    checked={instagramPublic}
+                                    onChange={(e) => setInstagramPublic(e.target.checked)}
+                                />
+                            </FormGroup>                        
+                        </Grid>
+                        <Grid item xs={12} md={8}>
+                            <TextField
+                                id="linkedin"
+                                name="linkedin"
+                                label="LinkedIn"
+                                fullWidth
+                                value={linkedin}
+                                variant="standard"
+                                onChange={(e) => setLinkedIn(e.target.value)}/>
+                        </Grid>
+                        <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
+                            <FormGroup>
+                                <FormControlLabel 
+                                    control={<Switch />} 
+                                    label="Public"
+                                    labelPlacement="start"
+                                    checked={linkedinPublic}
+                                    onChange={(e) => setLinkedInPublic(e.target.checked)}
+                                />
+                            </FormGroup>
+                        </Grid>
+                        <Grid item xs={12} md={8}>
+                            <TextField
+                                id="facebook"
+                                name="facebook"
+                                label="Facebook"
+                                fullWidth
+                                value={facebook}
+                                variant="standard"
+                                onChange={(e) => setFacebook(e.target.value)}/>
+                        </Grid>
+                        <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
+                            <FormGroup>
+                                <FormControlLabel 
+                                    control={<Switch />} 
+                                    label="Public"
+                                    labelPlacement="start"
+                                    checked={facebookPublic}
+                                    onChange={(e) => setFacebookPublic(e.target.checked)}
+                                />
+                            </FormGroup>                        
+                        </Grid>
+                    </Grid>
+                        
                 </Grid>
             </React.Fragment>
         );

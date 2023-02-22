@@ -128,7 +128,7 @@ function UserRoommatePref({ user }) {
 
         <Grid xs={2} md={3} display="flex" alignItems="center" justifyContent="center">
           <Typography variant="h4" align="center">
-            {user.firstName}'s Roommate Interests:
+            {user.firstName}&apos;s Roommate Interests:
           </Typography>
         </Grid>
 
@@ -174,7 +174,7 @@ function UserPropertyPref({ user }) {
 
         <Grid xs={2} display="flex" alignItems="center" justifyContent="center">
           <Typography variant="h4" align="center">
-            {user.firstName}'s Property Interests:
+            {user.firstName}&apos;s Property Interests:
           </Typography>
         </Grid>
 

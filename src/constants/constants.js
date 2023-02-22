@@ -1,5 +1,5 @@
-export const collegesConst = ['Revelle', 'Muir', 'Marshall', 'Warren', 'Roosevelt', 'Sixth', 'Seventh', 'Eight'];
-export const schoolYearsConst = ['Freshmen', 'Sphomore', 'Junior', 'Senior', 'Master', 'PHD'];
+export const collegesConst = ['Revelle', 'Muir', 'Marshall', 'Warren', 'Roosevelt', 'Sixth', 'Seventh', 'Eighth'];
+export const schoolYearsConst = ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Master', 'PHD'];
 export const languagesConst = [
 	'English',
 	'Spanish',
@@ -79,7 +79,7 @@ export const hobbiesConst = [
 	'Fishing',
 	'Computer',
 	'Gardening',
-	'Exercise',
+	'Exercising',
 ];
 
 export const amenitiesConst = [

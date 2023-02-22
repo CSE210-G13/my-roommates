@@ -1,24 +1,28 @@
 import * as React from 'react';
-import Link from 'next/Link';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import {
+	AppBar,
+	Box,
+	Toolbar,
+	IconButton,
+	Typography,
+	Menu,
+	MenuItem,
+	Container,
+	Avatar,
+	Button,
+	Tooltip,
+} from '@mui/material/';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+
+import { getAuth, signOut, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const pages = [
 	{ title: 'Landlords', link: '/' },
 	{ title: 'Roommates', link: '/roommates' },
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function ResponsiveAppBar() {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -27,23 +31,53 @@ export default function ResponsiveAppBar() {
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
 	};
-	const handleOpenUserMenu = (event) => {
-		setAnchorElUser(event.currentTarget);
-	};
-
 	const handleCloseNavMenu = () => {
 		setAnchorElNav(null);
 	};
 
+	const handleOpenUserMenu = (event) => {
+		setAnchorElUser(event.currentTarget);
+	};
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
 	};
 
+	const router = useRouter();
+	const auth = getAuth();
+	// Todo: Rearrange these auth functions in firebase/auth.js
+	const login = () => {
+		signInWithPopup(auth, new GoogleAuthProvider())
+			.then((result) => {
+				const details = getAdditionalUserInfo(result);
+				if (details.isNewUser) {
+					router.push('/firstTimeUser');
+				}
+			})
+			.catch((error) => {
+				// Handle Errors here.
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				router.push('/');
+				alert("Login unsuccessful", errorCode, errorMessage);
+			});
+	};
+	const signout = () => {
+		signOut(auth)
+			.then(() => {
+				// Sign-out successful.
+				router.push('/');
+			})
+			.catch((error) => {
+				router.push('/');
+				alert("Signout unsuccessful", error);
+			});
+	};
+	const [user, loading] = useAuthState(auth);
+
 	return (
 		<AppBar position="static">
 			<Container maxWidth="xl">
-				<Toolbar disableGutters>
-					<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+				<Toolbar>
 					<Typography
 						variant="h6"
 						noWrap
@@ -58,9 +92,9 @@ export default function ResponsiveAppBar() {
 							color: 'inherit',
 							textDecoration: 'none',
 						}}>
-						LOGO
+						Roomie
 					</Typography>
-
+					{/* For small screen */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
 							size="large"
@@ -97,7 +131,6 @@ export default function ResponsiveAppBar() {
 							))}
 						</Menu>
 					</Box>
-					<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
 					<Typography
 						variant="h5"
 						noWrap
@@ -113,44 +146,82 @@ export default function ResponsiveAppBar() {
 							color: 'inherit',
 							textDecoration: 'none',
 						}}>
-						LOGO
+						Roomie
 					</Typography>
+					{/* For large screen */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
-							<Button key={page.title} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
+							<Button
+								key={page.title}
+								onClick={handleCloseNavMenu}
+								sx={{ my: 2, color: 'white', display: 'block' }}>
 								<Link href={page.link}>{page.title}</Link>
 							</Button>
 						))}
 					</Box>
-
-					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Open settings">
-							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-							</IconButton>
-						</Tooltip>
-						<Menu
-							sx={{ mt: '45px' }}
-							id="menu-appbar"
-							anchorEl={anchorElUser}
-							anchorOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							open={Boolean(anchorElUser)}
-							onClose={handleCloseUserMenu}>
-							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseUserMenu}>
-									<Typography textAlign="center">{setting}</Typography>
+					{user || loading ? (
+						<Box sx={{ flexGrow: 0 }}>
+							<Tooltip title="Open settings">
+								<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+									<Avatar src={user?.photoURL} />
+								</IconButton>
+							</Tooltip>
+							<Menu
+								sx={{ mt: '45px' }}
+								id="menu-appbar"
+								anchorEl={anchorElUser}
+								anchorOrigin={{
+									vertical: 'top',
+									horizontal: 'right',
+								}}
+								keepMounted
+								transformOrigin={{
+									vertical: 'top',
+									horizontal: 'right',
+								}}
+								PaperProps={{
+									elevation: 0,
+									sx: {
+										overflow: 'visible',
+										filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+										mt: 1.5,
+										'& .MuiAvatar-root': {
+											width: 32,
+											height: 32,
+											ml: -0.5,
+											mr: 1,
+										},
+										'&:before': {
+											content: '""',
+											display: 'block',
+											position: 'absolute',
+											top: 0,
+											right: 14,
+											width: 10,
+											height: 10,
+											bgcolor: 'background.paper',
+											transform: 'translateY(-50%) rotate(45deg)',
+											zIndex: 0,
+										},
+									},
+								}}
+								open={Boolean(anchorElUser)}
+								onClose={handleCloseUserMenu}>
+								<MenuItem key="profile" onClick={handleCloseUserMenu}>
+									<Typography textAlign="center">Profile</Typography>
 								</MenuItem>
-							))}
-						</Menu>
-					</Box>
+								<MenuItem key="logout" onClick={handleCloseUserMenu}>
+									<Typography onClick={signout} textAlign="center">
+										Log out
+									</Typography>
+								</MenuItem>
+							</Menu>
+						</Box>
+					) : (
+						<Button onClick={login} variant="contained" color="warning">
+							Login
+						</Button>
+					)}
 				</Toolbar>
 			</Container>
 		</AppBar>

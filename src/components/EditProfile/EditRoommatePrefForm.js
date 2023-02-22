@@ -9,21 +9,13 @@ import {
 	FormLabel,
 	FormGroup,
 	Checkbox,
-    Button,
-	Box,
 } from '@mui/material/';
 
-const dislikeOptions = ['Smoking', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties'];
-const hobbies = [
-	'Reading',
-	'Watching TV',
-	'Family Time',
-	'Movies',
-	'Fishing',
-	'Computer',
-	'Gardening',
-    'Exercise',
-];
+import { dislikesConst, hobbiesConst } from '@/constants/constants';
+
+const dislikeOptions = dislikesConst;
+const hobbiesOptions = hobbiesConst;
+
 export default function EditRoommatePrefForm(props) {
     const initDislikeSelection = dislikeOptions.reduce((acc, val) => {
 		acc[val] = false;
@@ -84,12 +76,11 @@ export default function EditRoommatePrefForm(props) {
 						</FormGroup>
 					</FormControl>
 				</Grid>
-
 				<Grid item xs={12}>
 					<FormControl fullWidth disabled={!props.editing}>
 						<FormLabel>Hobbies</FormLabel>
 						<Grid container spacing={3} rowSpacing={0.1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-							{hobbies.map((hobby) => (
+							{hobbiesOptions.map((hobby) => (
 								<Grid item xs={6} md={3} key={hobby}>
 									<FormControlLabel control={<Checkbox />} label={hobby} />
 								</Grid>

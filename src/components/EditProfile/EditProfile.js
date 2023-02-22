@@ -19,7 +19,7 @@ export default function EditProfile() {
         setEditingProfile(!editingProfile);
     }
     return (
-        <Container component="main" maxWidth="xl" sx={{ mb: 4 }}>
+        <Container component="main" maxWidth="xl" sx={{ pt: "4vh" ,mb: 4 }}>
             <Box>
                 <Typography component="h1" variant="h4" align="center">
                     Profile Settings
@@ -32,13 +32,12 @@ export default function EditProfile() {
                     </Button>                            
                 </Box>     
             </Box>
-
             <Paper
                 variant="outlined"
                 sx={{
-                    mt: { xs: 3, md: 6 }, // margintop
-                    mb: { xs: 3 }, // marginbottom
-                    p: { xs: 2, md: 3 }, // padding
+                    mt: { xs: 3, md: 6 },
+                    mb: { xs: 3 },
+                    p: { xs: 2, md: 3 },
                 }}>
                 <React.Fragment>
                     <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -79,6 +78,5 @@ export default function EditProfile() {
                 </Grid>
             </Grid>
         </Container>
-		// </ProfileContext.Provider>
         );
     }

@@ -15,22 +15,18 @@ import {
 	MenuItem,
 	Box,
 	Chip,
-    Button,
     IconButton,
     Avatar,
 } from '@mui/material/';
 
-// import { getAuthUser } from '@/firebase/userDb';
+import { collegesConst, schoolYearsConst, languagesConst, majorsConst } from '@/constants/constants';
 
-const allColleges = ['Revelle', 'Muir', 'Marshall', 'Warren', 'Roosevelt', 'Sixth', 'Seventh', 'Eight'];
-const allYears = ['Freshmen', 'Sophomore', 'Junior', 'Senior', 'Masters', 'PHD'];
-const allMajors = ['Math', 'Computer Science', 'Biology'];
-// TODO: add more langs and majors
-const allLanguages = ['English', 'Chinese', 'French', 'Japanese'];
+const allColleges = collegesConst;
+const allYears = schoolYearsConst;
+const allMajors = majorsConst;
+const allLanguages = languagesConst;
 
 export default function EditPersonalInformationForm(props) {
-    // const [user, loading] = getAuthUser();
-    // let name = user?.displayName;
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
     const [name, setName] = useState('');
@@ -55,7 +51,6 @@ export default function EditPersonalInformationForm(props) {
     const [profilePic, setProfilePic] = useState('');
 
     const handleChangeProfilePic = (event) => {
-		// setAnchorElUser(event.currentTarget);
         console.log("upload an image");
 	};
 
@@ -67,8 +62,7 @@ export default function EditPersonalInformationForm(props) {
                             Personal Information
                         </Typography>
                     </Grid>
-                    {/* <Grid container spacing={2} xs={12} sm={6} p={{ xs: 2, md: 3 }}> */}
-                    <Grid container xs={12} sm={6} rowSpacing={2} p={2}>
+                    <Grid container item xs={12} sm={6} rowSpacing={2} p={2}>
                         <Grid item xs={12}>
                             <IconButton onClick={handleChangeProfilePic}>
                                     <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ width: "10rem", height: "10rem" }}/>
@@ -99,8 +93,7 @@ export default function EditPersonalInformationForm(props) {
                             </FormControl>
                         </Grid>
                     </Grid>
-                    <Grid container xs={12} sm={6} rowSpacing={2} columnSpacing={2} p={2}>
-                    {/* <Grid container xs={12} sm={6} spacing={2} p={{ xs: 2, md: 3 }}> */}
+                    <Grid container item xs={12} sm={6} rowSpacing={2} columnSpacing={2} p={2}>
                         <Grid item xs={12} md={4}>
                             <FormControl fullWidth disabled={!props.editing}>
                                 <FormLabel>College</FormLabel>
@@ -174,7 +167,7 @@ export default function EditPersonalInformationForm(props) {
                             />
                         </Grid>
                     </Grid>
-                    <Grid container xs={12} sm={6} rowSpacing={2} sx={{ px: 2, pb: 2, display: "flex", alignContent: "flex-start"}}>
+                    <Grid container item xs={12} sm={6} rowSpacing={2} sx={{ px: 2, pb: 2, display: "flex", alignContent: "flex-start"}}>
                         <Grid item xs={12} md={8.7}>
                             <TextField
                                 required
@@ -227,7 +220,7 @@ export default function EditPersonalInformationForm(props) {
                             </FormGroup>                        
                         </Grid>
                     </Grid>
-                    <Grid container xs={12} sm={6} rowSpacing={2} columnSpacing={2} sx={{ px: 2, pb: 2}}>
+                    <Grid container item xs={12} sm={6} rowSpacing={2} columnSpacing={2} sx={{ px: 2, pb: 2}}>
                         <Grid item xs={12} md={8}>
                             <TextField
                                 id="discord"
@@ -321,8 +314,8 @@ export default function EditPersonalInformationForm(props) {
                             </FormGroup>                        
                         </Grid>
                     </Grid>
-                        
                 </Grid>
+
             </React.Fragment>
         );
     }

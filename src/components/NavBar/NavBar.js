@@ -20,7 +20,7 @@ import { getAuth, signOut, signInWithPopup, GoogleAuthProvider, getAdditionalUse
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const pages = [
-	{ title: 'Landlords', link: '/' },
+	{ title: 'Property', link: '/property' },
 	{ title: 'Roommates', link: '/roommates' },
 ];
 

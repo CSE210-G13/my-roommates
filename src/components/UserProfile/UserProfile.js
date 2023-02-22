@@ -37,9 +37,6 @@ export default function UserProfile({ user }) {
       <Grid sm={2}>
         <UserHeader user={user} />
       </Grid>
-      <Grid sm={2}>
-        <ContactInfo user={user} />
-      </Grid>
       <Grid sm={1}>
         <UserRoommatePref user={user} />
       </Grid>
@@ -78,12 +75,6 @@ function ContactInfo({ user }) {
   };
 
   return (
-    <Stack
-      bgcolor="lightgray"
-      borderRadius={4}
-      padding={4}
-      spacing={4}>
-      <Typography variant="h5">Contact Info</Typography>
       <Stack
         direction="row"
         justifyContent="space-evenly"
@@ -95,8 +86,7 @@ function ContactInfo({ user }) {
           </Stack>
         )}
       </Stack>
-    </Stack>
-  )
+   )
 }
 
 function UserHeader({ user }) {
@@ -120,6 +110,9 @@ function UserHeader({ user }) {
       </Grid>
       <Grid md={1} display="flex" alignItems="center" justifyContent="center">
         <Button variant="contained">Request roommate?</Button>
+      </Grid>
+      <Grid xs={4}>
+        <ContactInfo user={user} />
       </Grid>
     </Grid>
   )

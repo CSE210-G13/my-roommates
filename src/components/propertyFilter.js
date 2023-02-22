@@ -22,13 +22,13 @@ export default function SimpleAccordion() {
   const [sizeMin, setSizeMin] = useState("");
   const [sizeMax, setSizeMax] = useState("");
   const [distance, setDistance] = useState("");
-  const [parkingChecked, setParkingChecked] = React.useState(false);
-  const [laundryChecked, setLaundryChecked] = React.useState(false);
-  const [poolChecked, setPoolChecked] = React.useState(false);
-  const [gymChecked, setGymChecked] = React.useState(false);
-  const [acChecked, setAcChecked] = React.useState(false);
-  const [petChecked, setPetChecked] = React.useState(false);
-  const [smokingChecked, setSmokingChecked] = React.useState(false);
+  const [parkingChecked, setParkingChecked] = useState(false);
+  const [laundryChecked, setLaundryChecked] = useState(false);
+  const [poolChecked, setPoolChecked] = useState(false);
+  const [gymChecked, setGymChecked] = useState(false);
+  const [acChecked, setAcChecked] = useState(false);
+  const [petChecked, setPetChecked] = useState(false);
+  const [smokingChecked, setSmokingChecked] = useState(false);
 
   const handleButtonClick = (event) => {
     console.log(budgetMax);

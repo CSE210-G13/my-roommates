@@ -1,5 +1,5 @@
-export const collegesConst = ['Revelle', 'Muir', 'Marshall', 'Warren', 'Roosevelt', 'Sixth', 'Seventh', 'Eight'];
-export const schoolYearsConst = ['Freshmen', 'Sphomore', 'Junior', 'Senior', 'Master', 'PHD'];
+export const collegesConst = ['Revelle', 'Muir', 'Marshall', 'Warren', 'Roosevelt', 'Sixth', 'Seventh', 'Eighth'];
+export const schoolYearsConst = ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Master', 'PHD'];
 export const languagesConst = [
 	'English',
 	'Spanish',
@@ -21,23 +21,20 @@ export const languagesConst = [
 export const majorsConst = [
 	'Anthropology',
 	'Bioengineering',
-	'Bioengineering ',
 	'Biological Sciences',
 	'Black Diaspora and African American Studies',
 	'Chemistry and Biochemistry',
 	'Chinese Studies',
 	'Classical Studies',
-	'Cognitive Science ',
+	'Cognitive Science',
 	'Communication',
 	'Computer Science and Engineering',
-	'Computer Science and Engineering ',
 	'Critical Gender Studies',
-	'Dance ',
+	'Dance',
 	'Data Science',
 	'Economics',
 	'Education Studies',
 	'Electrical and Computer Engineering',
-	'Electrical and Computer Engineering ',
 	'Engineering',
 	'Environmental Systems Program',
 	'Ethnic Studies',
@@ -54,7 +51,6 @@ export const majorsConst = [
 	'Literature',
 	'Mathematics',
 	'Mechanical and Aerospace Engineering',
-	'Mechanical and Aerospace Engineering ',
 	'Music',
 	'NanoEngineering',
 	'Philosophy',
@@ -64,7 +60,6 @@ export const majorsConst = [
 	'Scripps Institution of Oceanography',
 	'Sociology ',
 	'Structural Engineering',
-	'Structural Engineering ',
 	'Theatre and Dance ',
 	'Urban Studies and Planning',
 	'Visual Arts',
@@ -79,7 +74,7 @@ export const hobbiesConst = [
 	'Fishing',
 	'Computer',
 	'Gardening',
-	'Exercise',
+	'Exercising',
 ];
 
 export const amenitiesConst = [

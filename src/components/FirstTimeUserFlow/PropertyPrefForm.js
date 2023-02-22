@@ -35,12 +35,12 @@ export default function PropertyPrefForm() {
 			</Typography>
 			<Grid container spacing={5}>
 				<Grid item xs={12} sm={6}>
-					<FormLabel>Price Range (Monthly/Person)</FormLabel>
+					<FormLabel>Max Price (Monthly/Person)</FormLabel>
 					<Slider defaultValue={20} min={100} max={4000} step={100} valueLabelDisplay="auto" marks={priceMarks} />
 				</Grid>
 
 				<Grid item xs={12} sm={6}>
-					<FormLabel>Distance to School (Mile)</FormLabel>
+					<FormLabel>Max Distance to School (Mile)</FormLabel>
 					<Slider defaultValue={0} min={0} max={50} step={1} valueLabelDisplay="auto" marks={distanceMarks} />
 				</Grid>
 

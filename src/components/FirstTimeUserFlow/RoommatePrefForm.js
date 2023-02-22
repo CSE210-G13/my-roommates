@@ -3,13 +3,7 @@ import { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import {
-	FormControlLabel,
-	FormControl,
-	FormLabel,
-	FormGroup,
-	Checkbox,
-} from '@mui/material/';
+import { FormControlLabel, FormControl, FormLabel, FormGroup, Checkbox } from '@mui/material/';
 
 import { dislikesConst, hobbiesConst } from '@/constants/constants';
 
@@ -35,11 +29,11 @@ export default function RoommatePrefForm() {
 	return (
 		<React.Fragment>
 			<Typography variant="h6" gutterBottom>
-				Roommate Preference
+				Lifestyles and Habits
 			</Typography>
 			<Grid container spacing={3}>
 				<Grid item xs={12} md={6}>
-					<FormLabel>Desired bedtime</FormLabel>
+					<FormLabel>Usual bedtime</FormLabel>
 					<TextField
 						id="time"
 						type="time"
@@ -54,7 +48,7 @@ export default function RoommatePrefForm() {
 
 				<Grid item xs={12}>
 					<FormControl fullWidth>
-						<FormLabel>Can&apos;t accept</FormLabel>
+						<FormLabel>Lifestyles and Habits</FormLabel>
 						<FormGroup>
 							<Grid container spacing={3} rowSpacing={0.1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 								{dislikeOptions.map((dislikeString) => (
@@ -76,7 +70,7 @@ export default function RoommatePrefForm() {
 					</FormControl>
 				</Grid>
 
-				<Grid item xs={12}>
+				{/* <Grid item xs={12}>
 					<FormControl fullWidth>
 						<FormLabel>Hobbies</FormLabel>
 						<Grid container spacing={3} rowSpacing={0.1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -87,7 +81,7 @@ export default function RoommatePrefForm() {
 							))}
 						</Grid>
 					</FormControl>
-				</Grid>
+				</Grid> */}
 			</Grid>
 		</React.Fragment>
 	);

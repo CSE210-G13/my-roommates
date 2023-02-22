@@ -28,7 +28,7 @@ const allMajors = ['Math', 'Computer Science', 'Biology'];
 // TODO: add more langs and majors
 const allLanguages = ['English', 'Chinese', 'French', 'Japanese'];
 
-export default function EditPersonalInformationForm() {
+export default function EditPersonalInformationForm(props) {
     // const [user, loading] = getAuthUser();
     // let name = user?.displayName;
 	const [firstName, setFirstName] = useState('');
@@ -53,33 +53,19 @@ export default function EditPersonalInformationForm() {
 	const [languages, setLanguages] = useState([]);
     const [bio, setBio] = useState('');
     const [profilePic, setProfilePic] = useState('');
-    const [editingPersonal, setEditingPersonal] = useState(false);
 
     const handleChangeProfilePic = (event) => {
 		// setAnchorElUser(event.currentTarget);
         console.log("upload an image");
 	};
 
-    const handleEditingPersonal = () => {
-        setEditingPersonal(!editingPersonal);
-    }
-
     return (
             <React.Fragment>
                 <Grid container>
-                    <Grid item xs={6}>
+                    <Grid item xs={12}>
                         <Typography variant="h5">
                             Personal Information
                         </Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Box display="flex" justifyContent="flex-end">
-                            <Button 
-                                variant={editingPersonal ? "contained" : "outlined"}
-                                onClick={() => {handleEditingPersonal()}}>
-                                {editingPersonal ? "Save" : "Edit"}
-                            </Button>                            
-                        </Box>
                     </Grid>
                     {/* <Grid container spacing={2} xs={12} sm={6} p={{ xs: 2, md: 3 }}> */}
                     <Grid container xs={12} sm={6} rowSpacing={2} p={2}>
@@ -98,11 +84,12 @@ export default function EditPersonalInformationForm() {
                                 fullWidth
                                 variant="standard"
                                 value={name}
+                                disabled={!props.editing}
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </Grid>                    
                         <Grid item xs={12}>
-                            <FormControl fullWidth>
+                            <FormControl fullWidth disabled={!props.editing}>
                                 <FormLabel>Gender</FormLabel>
                                 <RadioGroup row onChange={(e) => setGender(e.target.value)}>
                                     <FormControlLabel value="male" control={<Radio />} label="Male" />
@@ -115,7 +102,7 @@ export default function EditPersonalInformationForm() {
                     <Grid container xs={12} sm={6} rowSpacing={2} columnSpacing={2} p={2}>
                     {/* <Grid container xs={12} sm={6} spacing={2} p={{ xs: 2, md: 3 }}> */}
                         <Grid item xs={12} md={4}>
-                            <FormControl fullWidth>
+                            <FormControl fullWidth disabled={!props.editing}>
                                 <FormLabel>College</FormLabel>
                                 <Select value={college} onChange={(e) => setCollege(e.target.value)}>
                                     {allColleges.map((college) => (
@@ -127,7 +114,7 @@ export default function EditPersonalInformationForm() {
                             </FormControl>
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <FormControl fullWidth>
+                            <FormControl fullWidth disabled={!props.editing}>
                                 <FormLabel>School Year</FormLabel>
                                 <Select value={year} onChange={(e) => setYear(e.target.value)}>
                                     {allYears.map((year) => (
@@ -139,7 +126,7 @@ export default function EditPersonalInformationForm() {
                             </FormControl>
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <FormControl fullWidth>
+                            <FormControl fullWidth disabled={!props.editing}>
                                 <FormLabel>Major</FormLabel>
                                 <Select value={major} onChange={(e) => setMajor(e.target.value)}>
                                     {allMajors.map((major) => (
@@ -151,7 +138,7 @@ export default function EditPersonalInformationForm() {
                             </FormControl>
                         </Grid>
                         <Grid item xs={12}>
-                            <FormControl fullWidth>
+                            <FormControl fullWidth disabled={!props.editing}>
                                 <FormLabel>Languages</FormLabel>
                                 <Select
                                     value={languages}
@@ -182,6 +169,7 @@ export default function EditPersonalInformationForm() {
                                 value={bio}
                                 placeholder="Tell everyone a little about yourself"
                                 inputProps={{ maxLength: 150 }}
+                                disabled={!props.editing}
                                 onChange={(e) => setBio(e.target.value)}
                             />
                         </Grid>
@@ -197,6 +185,7 @@ export default function EditPersonalInformationForm() {
                                 value={email}
                                 autoComplete="email"
                                 variant="standard"
+                                disabled={!props.editing}
                                 onChange={(e) => setEmail(e.target.value)}/>
                         </Grid>                    
                         <Grid item xs={12} md={3.3} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
@@ -206,6 +195,7 @@ export default function EditPersonalInformationForm() {
                                     label="Public"
                                     labelPlacement="start"
                                     checked={emailPublic}
+                                    disabled={!props.editing}
                                     onChange={(e) => setEmailPublic(e.target.checked)}
                                 />
                             </FormGroup>                        
@@ -221,6 +211,7 @@ export default function EditPersonalInformationForm() {
                                 autoComplete="tel"
                                 variant="standard"
                                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                                disabled={!props.editing}
                                 onChange={(e) => setPhoneNumber(e.target.value)}/>
                         </Grid>
                         <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
@@ -230,17 +221,13 @@ export default function EditPersonalInformationForm() {
                                     label="Public"
                                     labelPlacement="start"
                                     checked={phoneNumberPublic}
+                                    disabled={!props.editing}
                                     onChange={(e) => setPhoneNumberPublic(e.target.checked)}
                                 />
                             </FormGroup>                        
                         </Grid>
                     </Grid>
                     <Grid container xs={12} sm={6} rowSpacing={2} columnSpacing={2} sx={{ px: 2, pb: 2}}>
-                        {/* <Grid item xs={12}>
-                            <Typography variant="h6">
-                                Social Media
-                            </Typography>                            
-                        </Grid> */}
                         <Grid item xs={12} md={8}>
                             <TextField
                                 id="discord"
@@ -249,6 +236,7 @@ export default function EditPersonalInformationForm() {
                                 fullWidth
                                 value={discord}
                                 variant="standard"
+                                disabled={!props.editing}
                                 onChange={(e) => setDiscord(e.target.value)}/>
                         </Grid>
                         <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
@@ -258,6 +246,7 @@ export default function EditPersonalInformationForm() {
                                     label="Public"
                                     labelPlacement="start"
                                     checked={discordPublic}
+                                    disabled={!props.editing}
                                     onChange={(e) => setDiscordPublic(e.target.checked)}
                                 />
                             </FormGroup>                        
@@ -270,6 +259,7 @@ export default function EditPersonalInformationForm() {
                                 fullWidth
                                 value={discord}
                                 variant="standard"
+                                disabled={!props.editing}
                                 onChange={(e) => setInstagram(e.target.value)}/>
                         </Grid>
                         <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
@@ -279,6 +269,7 @@ export default function EditPersonalInformationForm() {
                                     label="Public"
                                     labelPlacement="start"
                                     checked={instagramPublic}
+                                    disabled={!props.editing}
                                     onChange={(e) => setInstagramPublic(e.target.checked)}
                                 />
                             </FormGroup>                        
@@ -291,6 +282,7 @@ export default function EditPersonalInformationForm() {
                                 fullWidth
                                 value={linkedin}
                                 variant="standard"
+                                disabled={!props.editing}
                                 onChange={(e) => setLinkedIn(e.target.value)}/>
                         </Grid>
                         <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
@@ -300,6 +292,7 @@ export default function EditPersonalInformationForm() {
                                     label="Public"
                                     labelPlacement="start"
                                     checked={linkedinPublic}
+                                    disabled={!props.editing}
                                     onChange={(e) => setLinkedInPublic(e.target.checked)}
                                 />
                             </FormGroup>
@@ -312,6 +305,7 @@ export default function EditPersonalInformationForm() {
                                 fullWidth
                                 value={facebook}
                                 variant="standard"
+                                disabled={!props.editing}
                                 onChange={(e) => setFacebook(e.target.value)}/>
                         </Grid>
                         <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
@@ -321,6 +315,7 @@ export default function EditPersonalInformationForm() {
                                     label="Public"
                                     labelPlacement="start"
                                     checked={facebookPublic}
+                                    disabled={!props.editing}
                                     onChange={(e) => setFacebookPublic(e.target.checked)}
                                 />
                             </FormGroup>                        

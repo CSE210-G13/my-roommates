@@ -24,14 +24,13 @@ const hobbies = [
 	'Gardening',
     'Exercise',
 ];
-export default function EditRoommatePrefForm() {
+export default function EditRoommatePrefForm(props) {
     const initDislikeSelection = dislikeOptions.reduce((acc, val) => {
 		acc[val] = false;
 		return acc;
 	}, {});
     const [bedtime, setBedtime] = useState('');
 	const [dislikes, setDislike] = useState(initDislikeSelection);
-    const [editingRoommate, setEditingRoommate] = useState(false);
 
 	const handleDislikesChange = (event) => {
 		setDislike({
@@ -40,41 +39,30 @@ export default function EditRoommatePrefForm() {
 		});
 	};
 
-    const handleEditingRoommate = () => {
-        setEditingRoommate(!editingRoommate);
-    }
-
     return (
         <React.Fragment>
             <Grid container spacing={3}>
-                <Grid item xs={6}>
+                <Grid item xs={12}>
                     <Typography variant="h5">
                         Roommate Preference
                     </Typography>
                 </Grid>
-				<Grid item xs={6}>
-					<Box display="flex" justifyContent="flex-end">
-						<Button 
-							variant={editingRoommate ? "contained" : "outlined"}
-							onClick={() => {handleEditingRoommate()}}>
-							{editingRoommate ? "Save" : "Edit"}
-						</Button>
-					</Box>
-                    </Grid>
                 <Grid item xs={12} md={6}>
                     <FormLabel>Desired bedtime</FormLabel>
                     <TextField
 						id="time"
 						type="time"
-						defaultValue="22:00"inputProps={{
+						defaultValue="22:00"
+						inputProps={{
 							step: 1800,
 						}}
+						disabled={!props.editing}
 						onChange={(e) => setBedtime(e.target.value)}
 						fullWidth
 					/>
                 </Grid>
                 <Grid item xs={12}>
-					<FormControl fullWidth>
+					<FormControl fullWidth disabled={!props.editing}>
 						<FormLabel>Can&apos;t accept</FormLabel>
 						<FormGroup>
 							<Grid container spacing={3} rowSpacing={0.1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -98,7 +86,7 @@ export default function EditRoommatePrefForm() {
 				</Grid>
 
 				<Grid item xs={12}>
-					<FormControl fullWidth>
+					<FormControl fullWidth disabled={!props.editing}>
 						<FormLabel>Hobbies</FormLabel>
 						<Grid container spacing={3} rowSpacing={0.1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 							{hobbies.map((hobby) => (

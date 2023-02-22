@@ -9,8 +9,6 @@ import {
 	Slider,
 	FormGroup,
 	Checkbox,
-    Button,
-	Box,
 } from '@mui/material/';
 
 const amenityOptions = [
@@ -26,7 +24,7 @@ const amenityOptions = [
 	'Balcony',
 ];
 
-export default function PropertyPrefForm() {
+export default function PropertyPrefForm(props) {
     const priceMarks = [
 		{
 			value: 500,
@@ -73,7 +71,6 @@ export default function PropertyPrefForm() {
 		return acc;
 	}, {});
 	const [amenities, setAmenities] = useState(initAmenitiesObj);
-    const [editingProperty, setEditingProperty] = useState(false);
 
 	const handleAmenitiesChange = (event) => {
 		setAmenities({
@@ -81,35 +78,38 @@ export default function PropertyPrefForm() {
 			[event.target.name]: event.target.checked,
 		});
 	};
-
-    const handleEditingProperty = () => {
-        setEditingProperty(!editingProperty);
-    }
 	
     return (
         <React.Fragment>
             <Grid container spacing={5}>
-                <Grid item xs={6}>
+                <Grid item xs={12}>
                     <Typography variant="h5">
                         Property Preference
                     </Typography>
                 </Grid>
-				<Grid item xs={6}>
-					<Box display="flex" justifyContent="flex-end">
-						<Button 
-							variant={editingProperty ? "contained" : "outlined"}
-							onClick={() => {handleEditingProperty()}}>
-							{editingProperty ? "Save" : "Edit"}
-						</Button>
-					</Box>
-				</Grid>
                 <Grid item xs={12} sm={6}>
 					<FormLabel>Price Range (Monthly/Person)</FormLabel>
-					<Slider defaultValue={20} min={100} max={4000} step={100} valueLabelDisplay="auto" marks={priceMarks} />
+					<Slider 
+						defaultValue={20} 
+						min={100} 
+						max={4000} 
+						step={100} 
+						valueLabelDisplay="auto" 
+						marks={priceMarks} 
+						disabled={!props.editing}
+					/>
 				</Grid>
                 <Grid item xs={12} sm={6}>
                     <FormLabel>Distance to School (Miles)</FormLabel>
-                    <Slider defaultValue={0} min={0} max={50} step={1} valueLabelDisplay="auto" marks={distanceMarks} />
+                    <Slider 
+						defaultValue={0} 
+						min={0} 
+						max={50} 
+						step={1} 
+						valueLabelDisplay="auto" 
+						marks={distanceMarks} 
+						disabled={!props.editing}
+					/>
                 </Grid>
                 <Grid item xs={12}>
 					<FormControl>
@@ -124,6 +124,7 @@ export default function PropertyPrefForm() {
 													name={amenityString}
 													checked={amenities[amenityString]}
 													onChange={handleAmenitiesChange}
+													disabled={!props.editing}
 												/>
 											}
 											label={amenityString}

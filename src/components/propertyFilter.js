@@ -30,43 +30,6 @@ export default function SimpleAccordion() {
   const [petChecked, setPetChecked] = React.useState(false);
   const [smokingChecked, setSmokingChecked] = React.useState(false);
 
-  const handlebudgetMinChange = (event) => {
-    setBudgetMin(event.target.value);
-  };
-  const handlebudgetMaxChange = (event) => {
-    setBudgetMax(event.target.value);
-  };
-  const handlesizeMinChange = (event) => {
-    setSizeMin(event.target.value);
-  };
-  const handlesizeMaxChange = (event) => {
-    setSizeMax(event.target.value);
-  };
-  const handleDistanceChange = (event) => {
-    setDistance(event.target.value);
-  };
-  const handleParkingChecked = (event) => {
-    setParkingChecked(event.target.checked);
-  };
-  const handleLaundryChecked = (event) => {
-    setLaundryChecked(event.target.checked);
-  };
-  const handlePoolChecked = (event) => {
-    setPoolChecked(event.target.checked);
-  };
-  const handleAcChecked = (event) => {
-    setAcChecked(event.target.checked);
-  };
-  const handleGymChecked = (event) => {
-    setGymChecked(event.target.checked);
-  };
-  const handlePetChecked = (event) => {
-    setPetChecked(event.target.checked);
-  };
-  const handleSmokingChecked = (event) => {
-    setSmokingChecked(event.target.checked);
-  };
-
   const handleButtonClick = (event) => {
     console.log(budgetMax);
     console.log(budgetMin);
@@ -95,7 +58,9 @@ export default function SimpleAccordion() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Maximum"
-              onChange={handlebudgetMaxChange}
+              onChange={(event) => {
+                setBudgetMax(event.target.value);
+              }}
               value={budgetMax}
             />
           </FormControl>
@@ -107,7 +72,9 @@ export default function SimpleAccordion() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Minimum"
-              onChange={handlebudgetMinChange}
+              onChange={(event) => {
+                setBudgetMin(event.target.value);
+              }}
               value={budgetMin}
             />
           </FormControl>
@@ -131,7 +98,9 @@ export default function SimpleAccordion() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Maximum"
-              onChange={handlesizeMaxChange}
+              onChange={(event) => {
+                setSizeMax(event.target.value);
+              }}
               value={sizeMax}
             />
           </FormControl>
@@ -143,7 +112,9 @@ export default function SimpleAccordion() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Minimum"
-              onChange={handlesizeMinChange}
+              onChange={(event) => {
+                setSizeMin(event.target.value);
+              }}
               value={sizeMin}
             />
           </FormControl>
@@ -178,7 +149,9 @@ export default function SimpleAccordion() {
                 id="distance-maximum"
                 label="miles"
                 variant="outlined"
-                onChange={handleDistanceChange}
+                onChange={(event) => {
+                  setDistance(event.target.value);
+                }}
                 value={distance}
               />
               <Typography
@@ -205,31 +178,41 @@ export default function SimpleAccordion() {
             <FormControlLabel
               control={<Checkbox />}
               checked={parkingChecked}
-              onChange={handleParkingChecked}
+              onChange={(event) => {
+                setParkingChecked(event.target.value);
+              }}
               label="On-site parking"
             />
             <FormControlLabel
               control={<Checkbox />}
               checked={laundryChecked}
-              onChange={handleLaundryChecked}
+              onChange={(event) => {
+                setLaundryChecked(event.target.value);
+              }}
               label="In-door laundry"
             />
             <FormControlLabel
               control={<Checkbox />}
               checked={acChecked}
-              onChange={handleAcChecked}
+              onChange={(event) => {
+                setAcChecked(event.target.value);
+              }}
               label="Have AC"
             />
             <FormControlLabel
               control={<Checkbox />}
               checked={poolChecked}
-              onChange={handlePoolChecked}
+              onChange={(event) => {
+                setPoolChecked(event.target.value);
+              }}
               label="Have Pool"
             />
             <FormControlLabel
               control={<Checkbox />}
               checked={gymChecked}
-              onChange={handleGymChecked}
+              onChange={(event) => {
+                setGymChecked(event.target.value);
+              }}
               label="Have Gym"
             />
           </FormGroup>
@@ -248,7 +231,9 @@ export default function SimpleAccordion() {
             <FormControlLabel
               control={<Checkbox />}
               checked={petChecked}
-              onChange={handlePetChecked}
+              onChange={(event) => {
+                setPetChecked(event.target.value);
+              }}
               label="Pets-friendly"
             />
           </FormGroup>
@@ -267,7 +252,9 @@ export default function SimpleAccordion() {
             <FormControlLabel
               control={<Checkbox />}
               checked={smokingChecked}
-              onChange={handleSmokingChecked}
+              onChange={(event) => {
+                setSmokingChecked(event.target.value);
+              }}
               label="Non-smoking"
             />
           </FormGroup>

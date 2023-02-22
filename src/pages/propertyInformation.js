@@ -76,6 +76,7 @@ export default function ComplexGrid() {
       sx={{ m: "80px", width: "auto", backgroundColor: "#F8F8F2" }}
       onClick={() => callme()}
     >
+       
       <Grid
         container
         direction="row"
@@ -84,10 +85,9 @@ export default function ComplexGrid() {
         spacing={4}
         sx={{ paddingTop: "40px" }}
       >
-        <Grid item xs={3}></Grid>
-        <Grid item xs={3}></Grid>
-        <Grid item xs={3}>
-          <Typography align="center" variant="h4" component="div">
+        
+        <Grid item xs={9}>
+          <Typography align="right" variant="h4" component="div">
             Coste Verde
           </Typography>
         </Grid>
@@ -101,11 +101,12 @@ export default function ComplexGrid() {
       <Grid
         container
         direction="row"
-        justifyContent="flex-start"
+        justifyContent="space-around"
         alignItems="center"
         spacing={4}
+        
       >
-        <Grid item xs={3}>
+        <Grid  >
           <Carousel
             navButtonsAlwaysVisible
             sx={{ width: "400px", margin: "50px" }}
@@ -114,7 +115,7 @@ export default function ComplexGrid() {
               x.map((obj, i) => {
                 return (
                   <CardMedia
-                    sx={{ height: "400px", width: "400px" }}
+                    sx={{ height: "100%", width: "100%" }}
                     component="img"
                     image="https://www.w3schools.com/tags/img_girl.jpg"
                     alt="property1.jpg"
@@ -124,7 +125,7 @@ export default function ComplexGrid() {
               })}
           </Carousel>
         </Grid>
-        <Grid item xs={3}>
+        <Grid >
           <CardContent>
               <PrefIcon
                 icon={MapIcon}
@@ -136,7 +137,7 @@ export default function ComplexGrid() {
               <PrefIcon icon={PetsIcon} string={`Pet Friendly`}/>
           </CardContent>
         </Grid>
-        <Grid item xs={3}>
+        <Grid >
           <CardContent>
               <PrefIcon icon={FitnessCenterIcon} string={` Gym/Fitness Center`} />
               <PrefIcon icon={PoolIcon} string={`Swimming Pool`} />
@@ -146,7 +147,7 @@ export default function ComplexGrid() {
               
           </CardContent>
         </Grid>
-        <Grid item xs={3}>
+        <Grid >
           <CardContent>
               <PrefIcon icon={SmokeFreeIcon} string={`Smoke free property`}/>
               <PrefIcon icon={BadgeIcon} string={`Harry Styles`} />

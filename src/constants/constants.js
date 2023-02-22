@@ -84,8 +84,6 @@ export const amenitiesConst = [
 	'Indoor washer and dryer',
 	'Covered parking',
 	'Pets allowed',
-	'Dishwasher',
 	'Smoke-free',
 	'Access to public transportation',
-	'Balcony',
 ];

@@ -65,27 +65,29 @@ export const majorsConst = [
 	'Visual Arts',
 ];
 
-export const dislikesConst = ['Smoking', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties'];
-export const hobbiesConst = [
-	'Reading',
-	'Watching TV',
-	'Family Time',
-	'Movies',
-	'Fishing',
-	'Computer',
-	'Gardening',
-	'Exercising',
-];
+export const lifestyleConst = ['Smoke', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties']; // this has to match the lifestyle attribute in the User Classs. Not case sensitive
+export const lifestyleMap = {
+	Smoke: 'smoke',
+	Alcohol: 'alcohol',
+	Pets: 'pets',
+	Couples: 'couples',
+	Children: 'children',
+	Parties: 'parties',
+}; // map the display string to the attributes in User Class
 
 export const amenitiesConst = [
 	'Air conditioner',
 	'Swimming pool',
 	'Fitness center',
-	'Indoor washer and dryer',
-	'Covered parking',
-	'Pets allowed',
-	'Dishwasher',
-	'Smoke-free',
-	'Access to public transportation',
-	'Balcony',
+	'Indoor laundry',
+	'Parking',
+	'Public transportation',
 ];
+export const amenitiesMap = {
+	'Air conditioner': 'airConditioner',
+	'Swimming pool': 'pool',
+	'Fitness center': 'gym',
+	'Indoor laundry': 'laundry',
+	Parking: 'parking',
+	'Public transportation': 'transportation',
+}; // map the display string to the attributes in User Class

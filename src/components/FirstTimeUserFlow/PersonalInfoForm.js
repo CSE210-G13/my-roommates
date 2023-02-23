@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -16,7 +16,7 @@ import {
 } from '@mui/material/';
 
 import { collegesConst, schoolYearsConst, languagesConst, majorsConst } from '@/constants/constants';
-import { useAuthUser } from '@/firebase/auth';
+import { UserInfoContext } from './FirstTimeUserFlow';
 
 const allColleges = collegesConst;
 const allYears = schoolYearsConst;
@@ -24,28 +24,7 @@ const allMajors = majorsConst;
 const allLanguages = languagesConst;
 
 export default function PersonalInfoForm() {
-	const [user, loading] = useAuthUser();
-
-	let name = user?.displayName;
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
-	const [gender, setGender] = useState('');
-	const [college, setCollege] = useState('');
-	const [year, setYear] = useState('');
-	const [major, setMajor] = useState('');
-	const [languages, setLanguages] = useState([]);
-
-	useEffect(() => {
-		if (name) {
-			let nameSplit = name.split(' ');
-			if (nameSplit.length > 1) {
-				setFirstName(nameSplit[0]);
-				setLastName(nameSplit[1]);
-			} else {
-				setFirstName(nameSplit[0]);
-			}
-		}
-	}, [name, user]);
+	const { userInfo, setUserInfo } = useContext(UserInfoContext);
 
 	return (
 		<React.Fragment>
@@ -62,8 +41,10 @@ export default function PersonalInfoForm() {
 						autoComplete="given-name"
 						fullWidth
 						variant="standard"
-						value={firstName}
-						onChange={(e) => setFirstName(e.target.value)}
+						value={userInfo.firstName}
+						onChange={(e) => {
+							setUserInfo({ ...userInfo, firstName: e.target.value });
+						}}
 					/>
 				</Grid>
 				<Grid item xs={12} sm={6}>
@@ -73,16 +54,16 @@ export default function PersonalInfoForm() {
 						name="lastName"
 						label="Last name"
 						fullWidth
-						value={lastName}
+						value={userInfo.lastName}
 						autoComplete="family-name"
 						variant="standard"
-						onChange={(e) => setLastName(e.target.value)}
+						onChange={(e) => setUserInfo({ ...userInfo, lastName: e.target.value })}
 					/>
 				</Grid>
 				<Grid item xs={12}>
 					<FormControl fullWidth>
 						<FormLabel>Gender</FormLabel>
-						<RadioGroup row onChange={(e) => setGender(e.target.value)}>
+						<RadioGroup row onChange={(e) => setUserInfo({ ...userInfo, gender: e.target.value })}>
 							<FormControlLabel value="male" control={<Radio />} label="Male" />
 							<FormControlLabel value="female" control={<Radio />} label="Female" />
 							<FormControlLabel value="other" control={<Radio />} label="Other" />
@@ -92,7 +73,9 @@ export default function PersonalInfoForm() {
 				<Grid item xs={12} sm={6}>
 					<FormControl fullWidth>
 						<FormLabel>College</FormLabel>
-						<Select value={college} onChange={(e) => setCollege(e.target.value)}>
+						<Select
+							value={userInfo.college}
+							onChange={(e) => setUserInfo({ ...userInfo, college: e.target.value })}>
 							{allColleges.map((college) => (
 								<MenuItem key={college} value={college}>
 									{college}
@@ -104,7 +87,9 @@ export default function PersonalInfoForm() {
 				<Grid item xs={12} sm={6}>
 					<FormControl fullWidth>
 						<FormLabel>School Year</FormLabel>
-						<Select value={year} onChange={(e) => setYear(e.target.value)}>
+						<Select
+							value={userInfo.schoolYear}
+							onChange={(e) => setUserInfo({ ...userInfo, schoolYear: e.target.value })}>
 							{allYears.map((year) => (
 								<MenuItem key={year} value={year}>
 									{year}
@@ -116,7 +101,7 @@ export default function PersonalInfoForm() {
 				<Grid item xs={12} sm={6}>
 					<FormControl fullWidth>
 						<FormLabel>Major</FormLabel>
-						<Select value={major} onChange={(e) => setMajor(e.target.value)}>
+						<Select value={userInfo.major} onChange={(e) => setUserInfo({ ...userInfo, major: e.target.value })}>
 							{allMajors.map((major) => (
 								<MenuItem key={major} value={major}>
 									{major}
@@ -129,8 +114,8 @@ export default function PersonalInfoForm() {
 					<FormControl fullWidth>
 						<FormLabel>Languages</FormLabel>
 						<Select
-							value={languages}
-							onChange={(e) => setLanguages(e.target.value)}
+							value={userInfo.languages}
+							onChange={(e) => setUserInfo({ ...userInfo, languages: e.target.value })}
 							multiple
 							renderValue={(selected) => (
 								<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>

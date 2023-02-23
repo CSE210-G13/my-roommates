@@ -42,7 +42,7 @@ export default function FirstTimeUserFlow() {
 
 	const router = useRouter();
 	const [activeStep, setActiveStep] = React.useState(0);
-	console.log(userInfo);
+
 	useEffect(() => {
 		if (user) {
 			let nameSplit = user.displayName.split(' ');
@@ -70,7 +70,7 @@ export default function FirstTimeUserFlow() {
 				});
 			}
 		}
-	}, [user, userInfo]);
+	}, [user]);
 
 	const handleNext = () => {
 		setActiveStep(activeStep + 1);

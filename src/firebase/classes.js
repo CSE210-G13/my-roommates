@@ -1,5 +1,6 @@
 export class User {
 	constructor(
+		imageUrl = '',
 		firstName = '',
 		lastName = '',
 		gender = '',
@@ -7,11 +8,18 @@ export class User {
 		major = '',
 		schoolYear = '',
 		languages = [],
-		bedtime = '',
-		habits = [],
+		bedtime = '22:00',
+		lifestyle = { smoke: false, children: false, pets: false, parties: false, alcohol: false, couples: false },
 		maxPropertyPrice = 0,
 		maxDistanceToSchool = 0,
-		amenities = [],
+		amenities = {
+			airConditioner: false,
+			pool: false,
+			gym: false,
+			parking: false,
+			laundry: false,
+			transportation: false,
+		},
 		bio = '',
 		email = ['', false],
 		phoneNumber = ['', false],
@@ -20,6 +28,7 @@ export class User {
 		linkedin = ['', false],
 		facebook = ['', false]
 	) {
+		this.imageUrl = imageUrl;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
@@ -28,7 +37,7 @@ export class User {
 		this.schoolYear = schoolYear;
 		this.languages = languages;
 		this.bedtime = bedtime;
-		this.habits = habits;
+		this.lifestyle = lifestyle;
 		this.maxPropertyPrice = maxPropertyPrice;
 		this.maxDistanceToSchool = maxDistanceToSchool;
 		this.amenities = amenities;
@@ -41,4 +50,3 @@ export class User {
 		this.facebook = facebook;
 	}
 }
-

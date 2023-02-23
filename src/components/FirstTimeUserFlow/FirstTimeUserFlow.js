@@ -12,14 +12,17 @@ import Typography from '@mui/material/Typography';
 import PersonalInfoForm from './PersonalInfoForm';
 import RoommatePrefForm from './RoommatePrefForm';
 import PropertyPrefForm from './PropertyPrefForm';
+
+import { useAuthUser } from '@/firebase/auth';
+import { User } from '@/firebase/classes';
 import { postUser } from '@/firebase/userDb';
 
-const steps = ['Personal Information', 'Roommate Preference', 'Property Preference'];
+const steps = ['Personal Information', 'Lifestyle and Habits', 'Property Preference'];
 
 function getStepContent(step) {
 	switch (step) {
 		case 0:
-			return <PersonalInfoForm onFirstNameChange />;
+			return <PersonalInfoForm />;
 		case 1:
 			return <RoommatePrefForm />;
 		case 2:
@@ -29,13 +32,45 @@ function getStepContent(step) {
 	}
 }
 
+export const UserInfoContext = createContext(new User());
+
 export default function FirstTimeUserFlow() {
+	const [user, loading] = useAuthUser();
+
+	let initPerson = new User();
+	const [userInfo, setUserInfo] = useState(initPerson);
+
 	const router = useRouter();
 	const [activeStep, setActiveStep] = React.useState(0);
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
-	const [gender, setGender] = useState('');
-	const [personInfo, setPersonInfo] = useState({});
+
+	useEffect(() => {
+		if (user) {
+			let nameSplit = user.displayName.split(' ');
+			let domain = user.email.split('@')[1];
+			let isUCSD = false;
+			if (domain.includes('ucsd')) {
+				isUCSD = true;
+			}
+			if (nameSplit.length > 1) {
+				setUserInfo({
+					...userInfo,
+					uid: user.uid,
+					isUCSD: isUCSD,
+					imageUrl: user.photoURL,
+					firstName: nameSplit[0],
+					lastName: nameSplit[1],
+				});
+			} else {
+				setUserInfo({
+					...userInfo,
+					uid: user.uid,
+					isUCSD: isUCSD,
+					imageUrl: user.photoURL,
+					firstName: nameSplit[0],
+				});
+			}
+		}
+	}, [user]);
 
 	const handleNext = () => {
 		setActiveStep(activeStep + 1);
@@ -46,35 +81,31 @@ export default function FirstTimeUserFlow() {
 	};
 
 	const handleSubmit = () => {
-		// Todo: complete this function in userDb.js
-		// postUser('user');
-		alert('post on firebase');
+		postUser(userInfo);
 		router.push('/');
 	};
 
-	const ProfileContext = createContext(null);
-
 	return (
-		<ProfileContext.Provider value={firstName}>
-			<Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-				<Paper
-					variant="outlined"
-					sx={{
-						mt: { xs: 3, md: 6 },
-						mb: { xs: 6, md: 12 },
-						p: { xs: 2, md: 3 },
-					}}>
-					<Typography component="h1" variant="h4" align="center">
-						Set up your account
-					</Typography>
-					<Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-						{steps.map((label) => (
-							<Step key={label}>
-								<StepLabel>{label}</StepLabel>
-							</Step>
-						))}
-					</Stepper>
-					<React.Fragment>
+		<Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+			<Paper
+				variant="outlined"
+				sx={{
+					mt: { xs: 3, md: 6 },
+					mb: { xs: 6, md: 12 },
+					p: { xs: 2, md: 3 },
+				}}>
+				<Typography component="h1" variant="h4" align="center">
+					Set up your account
+				</Typography>
+				<Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+					{steps.map((label) => (
+						<Step key={label}>
+							<StepLabel>{label}</StepLabel>
+						</Step>
+					))}
+				</Stepper>
+				<React.Fragment>
+					<UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
 						{getStepContent(activeStep)}
 						<Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
 							{activeStep !== 0 && (
@@ -93,9 +124,9 @@ export default function FirstTimeUserFlow() {
 								</Button>
 							)}
 						</Box>
-					</React.Fragment>
-				</Paper>
-			</Container>
-		</ProfileContext.Provider>
+					</UserInfoContext.Provider>
+				</React.Fragment>
+			</Paper>
+		</Container>
 	);
 }

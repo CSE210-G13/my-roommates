@@ -14,9 +14,7 @@ export async function getUser(userId) {
 export async function postUser(user) {
 	try {
 		const docRef = await addDoc(collection(db, 'users'), {
-			first: 'Ada',
-			last: 'Lovelace',
-			born: 1815,
+			user,
 		});
 		console.log('Document written with ID: ', docRef);
 	} catch (e) {

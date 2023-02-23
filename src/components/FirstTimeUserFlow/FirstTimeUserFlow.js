@@ -47,7 +47,6 @@ export default function FirstTimeUserFlow() {
 		if (user) {
 			let nameSplit = user.displayName.split(' ');
 			if (nameSplit.length > 1) {
-				console.log('..');
 				setUserInfo({ ...userInfo, imageUrl: user.photoURL, firstName: nameSplit[0], lastName: nameSplit[1] });
 			} else {
 				setUserInfo({ ...userInfo, imageUrl: user.photoURL, firstName: nameSplit[0] });
@@ -64,10 +63,7 @@ export default function FirstTimeUserFlow() {
 	};
 
 	const handleSubmit = () => {
-		// Todo: complete this function in userDb.js
-		// postUser('user');
-		console.log('userInfo', userInfo);
-		alert('post on firebase');
+		postUser(userInfo);
 		router.push('/');
 	};
 

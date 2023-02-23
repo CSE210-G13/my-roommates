@@ -16,7 +16,6 @@ import {
 } from '@mui/material/';
 
 import { collegesConst, schoolYearsConst, languagesConst, majorsConst } from '@/constants/constants';
-import { useAuthUser } from '@/firebase/auth';
 import { UserInfoContext } from './FirstTimeUserFlow';
 
 const allColleges = collegesConst;
@@ -26,29 +25,6 @@ const allLanguages = languagesConst;
 
 export default function PersonalInfoForm() {
 	const { userInfo, setUserInfo } = useContext(UserInfoContext);
-	const [user, loading] = useAuthUser();
-	console.log(userInfo)
-
-	let name = user?.displayName;
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
-	const [gender, setGender] = useState('');
-	const [college, setCollege] = useState('');
-	const [year, setYear] = useState('');
-	const [major, setMajor] = useState('');
-	const [languages, setLanguages] = useState([]);
-
-	useEffect(() => {
-		if (name) {
-			let nameSplit = name.split(' ');
-			if (nameSplit.length > 1) {
-				setFirstName(nameSplit[0]);
-				setLastName(nameSplit[1]);
-			} else {
-				setFirstName(nameSplit[0]);
-			}
-		}
-	}, [name, user]);
 
 	return (
 		<React.Fragment>
@@ -97,7 +73,9 @@ export default function PersonalInfoForm() {
 				<Grid item xs={12} sm={6}>
 					<FormControl fullWidth>
 						<FormLabel>College</FormLabel>
-						<Select value={userInfo.college} onChange={(e) => setUserInfo({ ...userInfo, college: e.target.value })}>
+						<Select
+							value={userInfo.college}
+							onChange={(e) => setUserInfo({ ...userInfo, college: e.target.value })}>
 							{allColleges.map((college) => (
 								<MenuItem key={college} value={college}>
 									{college}
@@ -109,7 +87,9 @@ export default function PersonalInfoForm() {
 				<Grid item xs={12} sm={6}>
 					<FormControl fullWidth>
 						<FormLabel>School Year</FormLabel>
-						<Select value={year} onChange={(e) => setUserInfo({ ...userInfo, schoolYear: e.target.value })}>
+						<Select
+							value={userInfo.schoolYear}
+							onChange={(e) => setUserInfo({ ...userInfo, schoolYear: e.target.value })}>
 							{allYears.map((year) => (
 								<MenuItem key={year} value={year}>
 									{year}

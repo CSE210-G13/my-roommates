@@ -1,30 +1,29 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import { Grid, FormControlLabel, FormControl, FormLabel, Slider, FormGroup, Checkbox } from '@mui/material/';
 
-import { amenitiesConst } from '@/constants/constants';
+import { amenitiesConst, amenitiesMap } from '@/constants/constants';
+import { UserInfoContext } from './FirstTimeUserFlow';
 
 const amenityOptions = amenitiesConst;
 
 export default function PropertyPrefForm() {
+	const { userInfo, setUserInfo } = useContext(UserInfoContext);
+
 	const priceMarks = [500, 1500, 2500, 3500].map((x) => {
 		return { value: x, label: '$' + x.toString() };
 	});
-	const distanceMarks = [5,15,25,35,45].map((x) => {
+	const distanceMarks = [5, 15, 25, 35, 45].map((x) => {
 		return { value: x, label: x.toString() };
 	});
 
-	const initAmenitiesObj = amenityOptions.reduce((acc, val) => {
-		acc[val] = false;
-		return acc;
-	}, {});
-	const [amenities, setAmenities] = useState(initAmenitiesObj);
-
+	let amenities = userInfo.amenities;
 	const handleAmenitiesChange = (event) => {
-		setAmenities({
-			...amenities,
-			[event.target.name]: event.target.checked,
+		amenities[amenitiesMap[event.target.name]] = event.target.checked;
+		setUserInfo({
+			...userInfo,
+			amenities: amenities,
 		});
 	};
 
@@ -36,12 +35,38 @@ export default function PropertyPrefForm() {
 			<Grid container spacing={5}>
 				<Grid item xs={12} sm={6}>
 					<FormLabel>Max Price (Monthly/Person)</FormLabel>
-					<Slider defaultValue={20} min={100} max={4000} step={100} valueLabelDisplay="auto" marks={priceMarks} />
+					<Slider
+						value={userInfo.maxPropertyPrice}
+						min={100}
+						max={4000}
+						step={100}
+						valueLabelDisplay="auto"
+						marks={priceMarks}
+						onChange={(e) =>
+							setUserInfo({
+								...userInfo,
+								maxPropertyPrice: e.target.value,
+							})
+						}
+					/>
 				</Grid>
 
 				<Grid item xs={12} sm={6}>
 					<FormLabel>Max Distance to School (Mile)</FormLabel>
-					<Slider defaultValue={0} min={0} max={50} step={1} valueLabelDisplay="auto" marks={distanceMarks} />
+					<Slider
+						value={userInfo.maxDistanceToSchool}
+						min={0}
+						max={50}
+						step={1}
+						valueLabelDisplay="auto"
+						marks={distanceMarks}
+						onChange={(e) =>
+							setUserInfo({
+								...userInfo,
+								maxDistanceToSchool: e.target.value,
+							})
+						}
+					/>
 				</Grid>
 
 				<Grid item xs={12}>
@@ -55,7 +80,7 @@ export default function PropertyPrefForm() {
 											control={
 												<Checkbox
 													name={amenityString}
-													checked={amenities[amenityString]}
+													checked={userInfo.amenities[amenitiesMap[amenityString]]}
 													onChange={handleAmenitiesChange}
 												/>
 											}

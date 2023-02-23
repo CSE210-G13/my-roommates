@@ -17,7 +17,7 @@ import { useAuthUser } from '@/firebase/auth';
 import { User } from '@/firebase/classes';
 import { postUser } from '@/firebase/userDb';
 
-const steps = ['Personal Information', 'Lifestyles and Habits', 'Property Preference'];
+const steps = ['Personal Information', 'Lifestyle and Habits', 'Property Preference'];
 
 function getStepContent(step) {
 	switch (step) {
@@ -26,7 +26,7 @@ function getStepContent(step) {
 		case 1:
 			return <RoommatePrefForm />;
 		case 2:
-			return <PropertyPrefForm  />;
+			return <PropertyPrefForm />;
 		default:
 			throw new Error('Unknown step');
 	}
@@ -36,7 +36,6 @@ export const UserInfoContext = createContext(new User());
 
 export default function FirstTimeUserFlow() {
 	const [user, loading] = useAuthUser();
-	let name = user?.displayName;
 
 	let initPerson = new User();
 	const [userInfo, setUserInfo] = useState(initPerson);
@@ -44,18 +43,17 @@ export default function FirstTimeUserFlow() {
 	const router = useRouter();
 	const [activeStep, setActiveStep] = React.useState(0);
 
-	// useEffect(() => {
-	// 	if (name) {
-	// 		let nameSplit = name.split(' ');
-	// 		console.log("hh",nameSplit[0],nameSplit[1])
-	// 		if (nameSplit.length > 1) {
-	// 			setUserInfo({ ...userInfo, firstName: nameSplit[0] });
-	// 			setUserInfo({ ...userInfo, lastName: nameSplit[1] });
-	// 		} else {
-	// 			setUserInfo({ ...userInfo, firstName: nameSplit[0] });
-	// 		}
-	// 	}
-	// }, [name, user]);
+	useEffect(() => {
+		if (user) {
+			let nameSplit = user.displayName.split(' ');
+			if (nameSplit.length > 1) {
+				console.log('..');
+				setUserInfo({ ...userInfo, imageUrl: user.photoURL, firstName: nameSplit[0], lastName: nameSplit[1] });
+			} else {
+				setUserInfo({ ...userInfo, imageUrl: user.photoURL, firstName: nameSplit[0] });
+			}
+		}
+	}, [user]);
 
 	const handleNext = () => {
 		setActiveStep(activeStep + 1);
@@ -70,7 +68,7 @@ export default function FirstTimeUserFlow() {
 		// postUser('user');
 		console.log('userInfo', userInfo);
 		alert('post on firebase');
-		// router.push('/');
+		router.push('/');
 	};
 
 	return (

@@ -19,8 +19,8 @@ import { useState } from "react";
 export default function SimpleAccordion() {
   const [budgetMin, setBudgetMin] = useState("");
   const [budgetMax, setBudgetMax] = useState("");
-  const [sizeMin, setSizeMin] = useState("");
-  const [sizeMax, setSizeMax] = useState("");
+  const [numBedrooms, setNumBedrooms] = useState("");
+  const [numBathrooms, setNumBathrooms] = useState("");
   const [distance, setDistance] = useState("");
   const [parkingChecked, setParkingChecked] = useState(false);
   const [laundryChecked, setLaundryChecked] = useState(false);
@@ -33,14 +33,12 @@ export default function SimpleAccordion() {
   const handleButtonClick = (event) => {
     console.log(budgetMax);
     console.log(budgetMin);
-    console.log(sizeMax);
-    console.log(sizeMin);
     console.log(distance);
     console.log(smokingChecked);
     // call functions on the backend layer
   };
   return (
-    <div>
+    <div style={{ margin: "20px 0px 0px 0px" }}>
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -86,36 +84,30 @@ export default function SimpleAccordion() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Square Feet</Typography>
+          <Typography>Beds & Baths</Typography>
         </AccordionSummary>
         <AccordionDetails>
           {" "}
           <FormControl sx={{ m: 1 }}>
-            <InputLabel htmlFor="size_maximum">Maximum</InputLabel>
+            <InputLabel htmlFor="num_bedrooms">Number of Bedrooms</InputLabel>
             <OutlinedInput
-              id="size_maximum"
-              startAdornment={
-                <InputAdornment position="start">$</InputAdornment>
-              }
-              label="Maximum"
+              id="num_bedrooms"
+              label="Number of Bedrooms"
               onChange={(event) => {
-                setSizeMax(event.target.value);
+                setNumBedrooms(event.target.value);
               }}
-              value={sizeMax}
+              value={numBedrooms}
             />
           </FormControl>
           <FormControl sx={{ m: 1 }}>
-            <InputLabel htmlFor="size_minimum">Minimum</InputLabel>
+            <InputLabel htmlFor="num_bathrooms">Number of Bathrooms</InputLabel>
             <OutlinedInput
-              id="size_minimum"
-              startAdornment={
-                <InputAdornment position="start">$</InputAdornment>
-              }
-              label="Minimum"
+              id="num_bathrooms"
+              label="Number of Bathrooms"
               onChange={(event) => {
-                setSizeMin(event.target.value);
+                setNumBathrooms(event.target.value);
               }}
-              value={sizeMin}
+              value={numBathrooms}
             />
           </FormControl>
         </AccordionDetails>

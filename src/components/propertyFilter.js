@@ -38,7 +38,7 @@ export default function SimpleAccordion() {
     // call functions on the backend layer
   };
   return (
-    <div>
+    <div style={{ margin: "20px 0px 0px 0px" }}>
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

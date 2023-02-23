@@ -70,7 +70,7 @@ export default function FirstTimeUserFlow() {
 				});
 			}
 		}
-	}, [user]);
+	}, [user, userInfo]);
 
 	const handleNext = () => {
 		setActiveStep(activeStep + 1);

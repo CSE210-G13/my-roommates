@@ -1,5 +1,7 @@
 export class User {
 	constructor(
+		uid = '',
+		isUCSD = false,
 		imageUrl = '',
 		firstName = '',
 		lastName = '',
@@ -28,6 +30,8 @@ export class User {
 		linkedin = ['', false],
 		facebook = ['', false]
 	) {
+		this.uid = uid;
+		this.isUCSD = isUCSD;
 		this.imageUrl = imageUrl;
 		this.firstName = firstName;
 		this.lastName = lastName;

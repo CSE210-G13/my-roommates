@@ -42,14 +42,32 @@ export default function FirstTimeUserFlow() {
 
 	const router = useRouter();
 	const [activeStep, setActiveStep] = React.useState(0);
-
+	console.log(userInfo);
 	useEffect(() => {
 		if (user) {
 			let nameSplit = user.displayName.split(' ');
+			let domain = user.email.split('@')[1];
+			let isUCSD = false;
+			if (domain.includes('ucsd')) {
+				isUCSD = true;
+			}
 			if (nameSplit.length > 1) {
-				setUserInfo({ ...userInfo, imageUrl: user.photoURL, firstName: nameSplit[0], lastName: nameSplit[1] });
+				setUserInfo({
+					...userInfo,
+					uid: user.uid,
+					isUCSD: isUCSD,
+					imageUrl: user.photoURL,
+					firstName: nameSplit[0],
+					lastName: nameSplit[1],
+				});
 			} else {
-				setUserInfo({ ...userInfo, imageUrl: user.photoURL, firstName: nameSplit[0] });
+				setUserInfo({
+					...userInfo,
+					uid: user.uid,
+					isUCSD: isUCSD,
+					imageUrl: user.photoURL,
+					firstName: nameSplit[0],
+				});
 			}
 		}
 	}, [user]);

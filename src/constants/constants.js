@@ -65,17 +65,7 @@ export const majorsConst = [
 	'Visual Arts',
 ];
 
-export const dislikesConst = ['Smoking', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties'];
-export const hobbiesConst = [
-	'Reading',
-	'Watching TV',
-	'Family Time',
-	'Movies',
-	'Fishing',
-	'Computer',
-	'Gardening',
-	'Exercising',
-];
+export const lifestyleConst = ['Smoke', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties']; // this has to match the lifestyle attribute in the User Classs. Not case sensitive
 
 export const amenitiesConst = [
 	'Air conditioner',

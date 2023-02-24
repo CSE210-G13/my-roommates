@@ -56,11 +56,7 @@ export default function EditPersonalInformationForm(props) {
         // TODO: integrate with firebase
         console.log("upload an image");
 	};
-
-    const test = (e) => {
-        console.log(e);
-    }
-
+    
     return (
             <React.Fragment>
                 <Grid container>

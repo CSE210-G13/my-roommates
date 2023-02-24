@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import Carousel from 'react-material-ui-carousel';
 import Stack from "@mui/material/Stack";
 
-import {paperProps} from './UserHeader.js';
+import { paperProps } from './UserProfile.js';
 
 /**
  * Creates a carousel for the given properties.

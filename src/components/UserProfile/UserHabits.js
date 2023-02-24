@@ -18,7 +18,7 @@ import SmokeFreeIcon from '@mui/icons-material/SmokeFree';
 
 import PrefIcon from './PrefIcon.js';
 import TextListItem from './TextListItem.js';
-import {paperProps} from './UserHeader.js';
+import { paperProps } from './UserProfile.js';
 
 /**
  * Displays the user's preferred traits for a roommate, along with icons for

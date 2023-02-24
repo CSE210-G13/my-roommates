@@ -21,7 +21,7 @@ import LocalParkingIcon from '@mui/icons-material/LocalParking';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 
 import PrefIcon from './PrefIcon.js';
-import { paperProps } from './UserHeader.js';
+import { paperProps } from './UserProfile.js';
 
 
 /**

@@ -7,13 +7,10 @@ import PropertyCarousel from './PropertyCarousel.js';
 
 /**
  * The properties for Paper components.
- * TODO: make a constant to use project wide
+ * This is intentionally empty - I'm using default style, but this gives
+ * us an easy location to update them if needed.
  */
-export let paperProps = {
-  mt: { xs: 3, md: 6 }, // margin top
-  mb: { xs: 3 },        // margin bottom
-  p: { xs: 2, md: 3 }   // padding
-}
+export let paperProps = {}
 
 /**
  * A component that displays general user information, their preferences in

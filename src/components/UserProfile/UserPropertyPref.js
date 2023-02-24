@@ -2,7 +2,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
-import TextListItem from './TextListItem.js';
+import Divider from '@mui/material/Divider';
 
 import PetsIcon from '@mui/icons-material/Pets';
 import SmokingRoomsIcon from '@mui/icons-material/SmokingRooms';
@@ -13,14 +13,30 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import ShowerIcon from '@mui/icons-material/Shower';
 
+import DirectionsTransitIcon from '@mui/icons-material/DirectionsTransit';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import PoolIcon from '@mui/icons-material/Pool';
+import LocalLaundryServiceIcon from '@mui/icons-material/LocalLaundryService';
+import LocalParkingIcon from '@mui/icons-material/LocalParking';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
+
 import PrefIcon from './PrefIcon.js';
-import {paperProps} from './UserHeader.js';
+import { paperProps } from './UserHeader.js';
 
 
 /**
  * Displays the user's preferred traits for a property.
  */
 export default function UserPropertyPref({ user }) {
+	let amenityIconMap = {
+		ac: ["AC", AcUnitIcon],
+		pool: ["a pool", PoolIcon],
+		gym: ["a gym", FitnessCenterIcon],
+		parking: ["parking", LocalParkingIcon],
+		inUnitLaundry: ["in unit laundry", LocalLaundryServiceIcon],
+		transportation: ["to be close to transit", DirectionsTransitIcon]
+	}
+
 	return (
 		<Paper variant="outlined" sx={paperProps}>
 			<Grid container columns={2} spacing={5}>
@@ -38,14 +54,13 @@ export default function UserPropertyPref({ user }) {
 				<PropPrefIcon topic="pet friendly" okayWith={user.propPref.petFriendly} goodIcon={PetsIcon} badIcon={DoNotDisturbIcon} />
 				<PropPrefIcon topic="smoke free" okayWith={user.propPref.smokingBanned} goodIcon={SmokeFreeIcon} badIcon={SmokingRoomsIcon} />
 
-				<Grid xs={2} display="flex" justifyContent="center">
-					<List>
-						<TextListItem text={`Wants ${Object.entries(user.propPref.amenities)
-							.filter(([_, value]) => value)
-							.map(([key, _]) => { if (key === "inUnitLaundry") { return "in unit laundry" } else { return key } })
-							.join(", ")} amenities`} />
-					</List>
-				</Grid>
+				<Grid xs={2}><Divider /></Grid>
+
+				{Object.entries(user.propPref.amenities)
+					.filter(([_, wants]) => wants)
+					.map(([name, _]) => amenityIconMap[name])
+					.map(([name, icon]) =>
+						<PrefIcon icon={icon} string={`Wants ${name}`} />)}
 
 			</Grid>
 		</Paper>

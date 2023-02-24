@@ -66,7 +66,8 @@ let user = {
       pool: false,
       gym: true,
       parking: false,
-      inUnitLaundry: true
+      inUnitLaundry: true,
+      transportation: true,
     }
   },
   interestedProp: Array.from(Array(10), (_,i) => i).map((x) => `Property ${x}`),

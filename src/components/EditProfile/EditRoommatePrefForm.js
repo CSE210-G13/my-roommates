@@ -17,6 +17,7 @@ const dislikeOptions = dislikesConst;
 const hobbiesOptions = hobbiesConst;
 
 export default function EditRoommatePrefForm(props) {
+	// TODO: get initial state from firebase
     const initDislikeSelection = dislikeOptions.reduce((acc, val) => {
 		acc[val] = false;
 		return acc;
@@ -36,7 +37,7 @@ export default function EditRoommatePrefForm(props) {
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <Typography variant="h5">
-                        Roommate Preference
+                        Lifestyle and Habits
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={6}>

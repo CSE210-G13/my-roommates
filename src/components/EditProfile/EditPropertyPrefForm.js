@@ -11,52 +11,13 @@ import {
 	Checkbox,
 } from '@mui/material/';
 
-import { amenitiesConst } from '@/constants/constants';
+import { amenitiesConst, priceMarksConst, distanceMarksConst } from '@/constants/constants';
 
 const amenityOptions = amenitiesConst;
 
 export default function PropertyPrefForm(props) {
-    const priceMarks = [
-		{
-			value: 500,
-			label: '$500',
-		},
-		{
-			value: 1500,
-			label: '$1500',
-		},
-		{
-			value: 2500,
-			label: '$2500',
-		},
-		{
-			value: 3500,
-			label: '$3500',
-		},
-	];
-	const distanceMarks = [
-		{
-			value: 5,
-			label: '5',
-		},
-		{
-			value: 15,
-			label: '15',
-		},
-		{
-			value: 25,
-			label: '25',
-		},
-		{
-			value: 35,
-			label: '35',
-		},
-		{
-			value: 45,
-			label: '45',
-		},
-	];
 
+	// TODO: get initial state from firebase
 	const initAmenitiesObj = amenityOptions.reduce((acc, val) => {
 		acc[val] = false;
 		return acc;
@@ -86,7 +47,7 @@ export default function PropertyPrefForm(props) {
 						max={4000} 
 						step={100} 
 						valueLabelDisplay="auto" 
-						marks={priceMarks} 
+						marks={priceMarksConst} 
 						disabled={!props.editing}
 					/>
 				</Grid>
@@ -98,7 +59,7 @@ export default function PropertyPrefForm(props) {
 						max={50} 
 						step={1} 
 						valueLabelDisplay="auto" 
-						marks={distanceMarks} 
+						marks={distanceMarksConst} 
 						disabled={!props.editing}
 					/>
                 </Grid>

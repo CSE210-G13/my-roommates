@@ -15,6 +15,7 @@ import EditPropertyPrefForm from './EditPropertyPrefForm';
 export default function EditProfile() {
     const [editingProfile, setEditingProfile] = useState(false);
 
+    // TODO: submit profile changes to firebase
     const handleEditingProfile = () => {
         setEditingProfile(!editingProfile);
     }

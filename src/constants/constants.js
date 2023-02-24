@@ -89,3 +89,11 @@ export const amenitiesConst = [
 	'Access to public transportation',
 	'Balcony',
 ];
+
+export const priceMarksConst = [500, 1500, 2500, 3500].map((x) => {
+	return { value: x, label: '$' + x.toString() };
+});
+
+export const distanceMarksConst = [5, 15, 25, 35, 45].map((x) => {
+	return { value: x, label: x.toString() };
+});

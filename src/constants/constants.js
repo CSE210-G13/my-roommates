@@ -91,3 +91,11 @@ export const amenitiesMap = {
 	Parking: 'parking',
 	'Public transportation': 'transportation',
 }; // map the display string to the attributes in User Class
+
+export const priceMarksConst = [500, 1500, 2500, 3500].map((x) => {
+	return { value: x, label: '$' + x.toString() };
+});
+
+export const distanceMarksConst = [5, 15, 25, 35, 45].map((x) => {
+	return { value: x, label: x.toString() };
+});

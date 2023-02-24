@@ -18,6 +18,7 @@ import {
     IconButton,
     Avatar,
 } from '@mui/material/';
+import {ContactInfoInput, ContactInfoSwitch} from './ContactInfo';
 
 import { collegesConst, schoolYearsConst, languagesConst, majorsConst } from '@/constants/constants';
 
@@ -27,6 +28,7 @@ const allMajors = majorsConst;
 const allLanguages = languagesConst;
 
 export default function EditPersonalInformationForm(props) {
+    // TODO: get initial state for these values from firebase
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
     const [name, setName] = useState('');
@@ -51,8 +53,13 @@ export default function EditPersonalInformationForm(props) {
     const [profilePic, setProfilePic] = useState('');
 
     const handleChangeProfilePic = (event) => {
+        // TODO: integrate with firebase
         console.log("upload an image");
 	};
+
+    const test = (e) => {
+        console.log(e);
+    }
 
     return (
             <React.Fragment>
@@ -168,151 +175,88 @@ export default function EditPersonalInformationForm(props) {
                         </Grid>
                     </Grid>
                     <Grid container item xs={12} sm={6} rowSpacing={2} sx={{ px: 2, pb: 2, display: "flex", alignContent: "flex-start"}}>
-                        <Grid item xs={12} md={8.7}>
-                            <TextField
-                                required
-                                id="email"
-                                name="email"
-                                label="Email"
-                                fullWidth
-                                value={email}
-                                autoComplete="email"
-                                variant="standard"
-                                disabled={!props.editing}
-                                onChange={(e) => setEmail(e.target.value)}/>
-                        </Grid>                    
-                        <Grid item xs={12} md={3.3} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
-                            <FormGroup>
-                                <FormControlLabel 
-                                    control={<Switch />} 
-                                    label="Public"
-                                    labelPlacement="start"
-                                    checked={emailPublic}
-                                    disabled={!props.editing}
-                                    onChange={(e) => setEmailPublic(e.target.checked)}
-                                />
-                            </FormGroup>                        
-                        </Grid>
-                        <Grid item xs={12} md={8}>
-                            <TextField
-                                required
-                                id="phoneNumber"
-                                name="phoneNumber"
-                                label="Phone Number"
-                                fullWidth
-                                value={phoneNumber}
-                                autoComplete="tel"
-                                variant="standard"
-                                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-                                disabled={!props.editing}
-                                onChange={(e) => setPhoneNumber(e.target.value)}/>
-                        </Grid>
-                        <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
-                            <FormGroup>
-                                <FormControlLabel 
-                                    control={<Switch />} 
-                                    label="Public"
-                                    labelPlacement="start"
-                                    checked={phoneNumberPublic}
-                                    disabled={!props.editing}
-                                    onChange={(e) => setPhoneNumberPublic(e.target.checked)}
-                                />
-                            </FormGroup>                        
-                        </Grid>
+                        < ContactInfoInput 
+                            id="email"
+                            label="Email"
+                            value={email}
+                            autoComplete="email"
+                            disabled={!props.editing}
+                            handleUserInput={setEmail}
+                        />
+                        <ContactInfoSwitch
+                            id={"emailPublic"}
+                            checked={emailPublic}
+                            disabled={!props.editing}
+                            handleUserInput={setEmailPublic}
+                        />
+                        <ContactInfoInput 
+                            id="phoneNumber"
+                            label="Phone Number"
+                            value={phoneNumber}
+                            autoComplete="tel"
+                            disabled={!props.editing}
+                            handleUserInput={setPhoneNumber}
+                        />
+                        <ContactInfoSwitch
+                            id="phoneNumberPublic"
+                            checked={phoneNumberPublic}
+                            disabled={!props.editing}
+                            handleUserInput={setPhoneNumberPublic}
+                        />
                     </Grid>
                     <Grid container item xs={12} sm={6} rowSpacing={2} columnSpacing={2} sx={{ px: 2, pb: 2}}>
-                        <Grid item xs={12} md={8}>
-                            <TextField
-                                id="discord"
-                                name="discord"
-                                label="Discord"
-                                fullWidth
-                                value={discord}
-                                variant="standard"
-                                disabled={!props.editing}
-                                onChange={(e) => setDiscord(e.target.value)}/>
-                        </Grid>
-                        <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
-                            <FormGroup>
-                                <FormControlLabel 
-                                    control={<Switch />} 
-                                    label="Public"
-                                    labelPlacement="start"
-                                    checked={discordPublic}
-                                    disabled={!props.editing}
-                                    onChange={(e) => setDiscordPublic(e.target.checked)}
-                                />
-                            </FormGroup>                        
-                        </Grid>
-                        <Grid item xs={12} md={8}>
-                            <TextField
-                                id="instagram"
-                                name="instagram"
-                                label="Instagram"
-                                fullWidth
-                                value={discord}
-                                variant="standard"
-                                disabled={!props.editing}
-                                onChange={(e) => setInstagram(e.target.value)}/>
-                        </Grid>
-                        <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
-                            <FormGroup>
-                                <FormControlLabel 
-                                    control={<Switch />} 
-                                    label="Public"
-                                    labelPlacement="start"
-                                    checked={instagramPublic}
-                                    disabled={!props.editing}
-                                    onChange={(e) => setInstagramPublic(e.target.checked)}
-                                />
-                            </FormGroup>                        
-                        </Grid>
-                        <Grid item xs={12} md={8}>
-                            <TextField
-                                id="linkedin"
-                                name="linkedin"
-                                label="LinkedIn"
-                                fullWidth
-                                value={linkedin}
-                                variant="standard"
-                                disabled={!props.editing}
-                                onChange={(e) => setLinkedIn(e.target.value)}/>
-                        </Grid>
-                        <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
-                            <FormGroup>
-                                <FormControlLabel 
-                                    control={<Switch />} 
-                                    label="Public"
-                                    labelPlacement="start"
-                                    checked={linkedinPublic}
-                                    disabled={!props.editing}
-                                    onChange={(e) => setLinkedInPublic(e.target.checked)}
-                                />
-                            </FormGroup>
-                        </Grid>
-                        <Grid item xs={12} md={8}>
-                            <TextField
-                                id="facebook"
-                                name="facebook"
-                                label="Facebook"
-                                fullWidth
-                                value={facebook}
-                                variant="standard"
-                                disabled={!props.editing}
-                                onChange={(e) => setFacebook(e.target.value)}/>
-                        </Grid>
-                        <Grid item xs={12} md={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
-                            <FormGroup>
-                                <FormControlLabel 
-                                    control={<Switch />} 
-                                    label="Public"
-                                    labelPlacement="start"
-                                    checked={facebookPublic}
-                                    disabled={!props.editing}
-                                    onChange={(e) => setFacebookPublic(e.target.checked)}
-                                />
-                            </FormGroup>                        
-                        </Grid>
+                        <ContactInfoInput 
+                            id="discord"
+                            label="Discord"
+                            value={discord}
+                            disabled={!props.editing}
+                            handleUserInput={setDiscord}
+                        />
+                        <ContactInfoSwitch
+                            id="discordPublic"
+                            checked={discordPublic}
+                            disabled={!props.editing}
+                            handleUserInput={setDiscordPublic}
+                        />
+                        <ContactInfoInput
+                            id="instagram"
+                            label="Instagram"
+                            value={instagram}
+                            disabled={!props.editing}
+                            handleUserInput={setInstagram}
+                        />
+                        <ContactInfoSwitch
+                            id="instagramPublic"
+                            checked={instagramPublic}
+                            disabled={!props.editing}
+                            handleUserInput={setInstagramPublic}
+                        />
+                        <ContactInfoInput
+                            id="linkedin"
+                            label="LinkedIn"
+                            value={linkedin}
+                            disabled={!props.editing}
+                            handleUserInput={setLinkedIn}
+                        />
+                        <ContactInfoSwitch
+                            id="linkedinPublic"
+                            checked={linkedinPublic}
+                            disabled={!props.editing}
+                            handleUserInput={setLinkedInPublic}
+                        />
+                        <ContactInfoInput
+                            id="facebook"
+                            label="Facebook"
+                            value={facebook}
+                            disabled={!props.editing}
+                            handleUserInput={setFacebook}
+                        />
+                        <ContactInfoSwitch
+                            id="facebookPublic"
+                            checked={facebookPublic}
+                            disabled={!props.editing}
+                            handleUserInput={setFacebookPublic}
+                        />
                     </Grid>
                 </Grid>
 

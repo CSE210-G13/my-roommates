@@ -26,7 +26,7 @@ export default function UserPropertyPref({ user }) {
 
 				<Grid xs={2} display="flex" alignItems="center" justifyContent="center">
 					<Typography variant="h4" align="center">
-						{user.firstName}&apos;s Property Interests:
+						{user.firstName}&apos;s Property Preferences:
 					</Typography>
 				</Grid>
 

@@ -5,13 +5,13 @@ let user = {
   firstName: "John",
   lastName: "McRoommate",
   gender: "Male",
-  college: "UCSD",
+  imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Duck_%2827479065157%29.jpg/640px-Duck_%2827479065157%29.jpg",
+  college: "Warren",
   major: "Roommate Studies",
   schoolYear: "Sophomore",
   bio: "sup, it's me john i'm out here",
   languages: ["English"],
-  moveInDate: "2023-04-01",
-  isPublic: true,
+  isProfilePublic: true,
   contactInfo: {
     email: {
       data: "john@john.com",
@@ -38,13 +38,7 @@ let user = {
       pub: false
     }
   },
-  roommatePref: {
-    gender: "Male",
-    college: "UCSD",
-    major: "Roommate Studies",
-    schoolYear: "Sophomore",
-    languages: ["English"],
-    moveInDate: "2023-04-01",
+  lifestyle: {
     bedtime: "11pm",
     okayWith: {
       children: false,
@@ -54,12 +48,11 @@ let user = {
       alcohol: true,
       couples: false 
     },
-    cleanliness: 3,
     hobbies: [
       "Reading",
       "Walking",
       "Birdwatching"
-    ]
+    ],
   },
   propPref: {
     budget: [0, 1000],

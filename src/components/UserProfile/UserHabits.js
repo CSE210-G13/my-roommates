@@ -50,15 +50,8 @@ export default function UserHabits({ user }) {
 
 				<Grid xs={2} sm={3} display="flex" justifyContent="center">
 					<List>
-						<TextListItem text={`Prefers ${user.roommatePref.gender.toLowerCase()} roommates`} />
-						<TextListItem text={`Prefers roommates who are also interested in ${user.roommatePref.hobbies.map((x) => x.toLowerCase()).join(", ")}`} />
-						<TextListItem text={`Prefers ${user.roommatePref.college} roommates`} />
-						<TextListItem text={`Prefers roommates majoring in ${user.roommatePref.major}`} />
-						<TextListItem text={`Prefers ${user.roommatePref.schoolYear.toLowerCase()} students`} />
-						<TextListItem text={`Prefers roommates who speak ${user.roommatePref.languages.join(", ")}`} />
-						<TextListItem text={`Prefers roommates who are ${user.roommatePref.cleanliness}/5 on cleanliness`} />
-						<TextListItem text={`Prefers roommates who are moving in around ${user.roommatePref.moveInDate}`} />
-						<TextListItem text={`Prefers roommates who sleep around ${user.roommatePref.bedtime}`} />
+						<TextListItem text={`${user.firstName}'s hobbies: ${user.lifestyle.hobbies.map((x) => x.toLowerCase()).join(", ")}`} />
+						<TextListItem text={`${user.firstName} sleeps at ${user.lifestyle.bedtime}`} />
 					</List>
 				</Grid>
 
@@ -73,7 +66,7 @@ export default function UserHabits({ user }) {
  * will be displayed, else the badIcon will be displayed.
  */
 function HabitPrefIcon({ topic, user, goodIcon, badIcon }) {
-	let okayWith = user.roommatePref.okayWith[topic]
+	let okayWith = user.lifestyle.okayWith[topic]
 	let string = `${okayWith ? "Okay " : "Not okay "} with ${topic}`
 	return (
 		<PrefIcon okayWith={okayWith} string={string}

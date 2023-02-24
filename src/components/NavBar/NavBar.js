@@ -55,10 +55,6 @@ export default function ResponsiveAppBar() {
 			})
 			.catch((error) => {
 				// Handle Errors here.
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				router.push('/');
-				alert("Login unsuccessful", errorCode, errorMessage);
 			});
 	};
 	const signout = () => {
@@ -67,10 +63,7 @@ export default function ResponsiveAppBar() {
 				// Sign-out successful.
 				router.push('/');
 			})
-			.catch((error) => {
-				router.push('/');
-				alert("Signout unsuccessful", error);
-			});
+			.catch((error) => {});
 	};
 	const [user, loading] = useAuthState(auth);
 

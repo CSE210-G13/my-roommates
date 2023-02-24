@@ -54,3 +54,40 @@ export class User {
 		this.facebook = facebook;
 	}
 }
+
+export class Property {
+	constructor(
+		uid = '',
+		name = '',
+		imageUrls = [],
+		address = '',
+		price = 0,
+		distanceToSchool = 0,
+		amenities = {
+			airConditioner: false,
+			pool: false,
+			gym: false,
+			parking: false,
+			laundry: false,
+			transportation: false,
+		},
+		numOfBedroom = 0,
+		numOfBathroom = 0,
+		phoneNumber = '',
+		allowPets = false,
+		allowSmoking = false
+	) {
+		this.uid = uid;
+		this.name = name;
+		this.imageUrls = imageUrls;
+		this.address = address;
+		this.price = price;
+		this.distanceToSchool = distanceToSchool;
+		this.amenities = amenities;
+		this.numOfBedroom = numOfBedroom;
+		this.numOfBathroom = numOfBathroom;
+		this.phoneNumber = phoneNumber;
+		this.allowPets = allowPets;
+		this.allowSmoking = allowSmoking;
+	}
+}

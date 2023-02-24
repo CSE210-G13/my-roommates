@@ -3,20 +3,13 @@ import { useState, useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import { Grid, FormControlLabel, FormControl, FormLabel, Slider, FormGroup, Checkbox } from '@mui/material/';
 
-import { amenitiesConst, amenitiesMap } from '@/constants/constants';
+import { amenitiesConst, amenitiesMap, priceMarksConst, distanceMarksConst } from '@/constants/constants';
 import { UserInfoContext } from './FirstTimeUserFlow';
 
 const amenityOptions = amenitiesConst;
 
 export default function PropertyPrefForm() {
 	const { userInfo, setUserInfo } = useContext(UserInfoContext);
-
-	const priceMarks = [500, 1500, 2500, 3500].map((x) => {
-		return { value: x, label: '$' + x.toString() };
-	});
-	const distanceMarks = [5, 15, 25, 35, 45].map((x) => {
-		return { value: x, label: x.toString() };
-	});
 
 	let amenities = userInfo.amenities;
 	const handleAmenitiesChange = (event) => {
@@ -41,7 +34,7 @@ export default function PropertyPrefForm() {
 						max={4000}
 						step={100}
 						valueLabelDisplay="auto"
-						marks={priceMarks}
+						marks={priceMarksConst}
 						onChange={(e) =>
 							setUserInfo({
 								...userInfo,
@@ -59,7 +52,7 @@ export default function PropertyPrefForm() {
 						max={50}
 						step={1}
 						valueLabelDisplay="auto"
-						marks={distanceMarks}
+						marks={distanceMarksConst}
 						onChange={(e) =>
 							setUserInfo({
 								...userInfo,

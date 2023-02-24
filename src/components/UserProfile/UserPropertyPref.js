@@ -60,7 +60,7 @@ export default function UserPropertyPref({ user }) {
 					.filter(([_, wants]) => wants)
 					.map(([name, _]) => amenityIconMap[name])
 					.map(([name, icon]) =>
-						<PrefIcon icon={icon} string={`Wants ${name}`} />)}
+						<PrefIcon key={name} icon={icon} string={`Wants ${name}`} />)}
 
 			</Grid>
 		</Paper>

@@ -129,6 +129,7 @@ export default function SimpleAccordion() {
             {allColleges.map((college) => {
               return (
                 <FormControlLabel
+                  key={college}
                   control={<Checkbox />}
                   type="checkbox"
                   checked={colleges[college]}
@@ -145,6 +146,7 @@ export default function SimpleAccordion() {
             {allSchoolYear.map((year) => {
               return (
                 <FormControlLabel
+                  key={year}
                   control={<Checkbox />}
                   type="checkbox"
                   checked={years[year]}
@@ -260,6 +262,7 @@ export default function SimpleAccordion() {
             {allDislikes.map((dislike) => {
               return (
                 <FormControlLabel
+                  key={dislike}
                   control={<Checkbox />}
                   type="checkbox"
                   checked={dislikes[dislike]}

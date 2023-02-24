@@ -13,6 +13,8 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
+import {paperProps} from './UserHeader.js';
+
 /**
  * Displays basic user information: name, profile picture, gender, college,
  * school year, major, languages, and bio; as well as a button allowing for
@@ -21,7 +23,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
  */
 export default function UserHeader({ user }) {
 	return (
-		<Paper variant="outlined" margin={3} padding={3}>
+		<Paper variant="outlined" sx={paperProps}>
 			<Grid container direction={{ xs: 'column', md: 'row' }}
 				columns={4} spacing={4}>
 

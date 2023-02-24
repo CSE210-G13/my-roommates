@@ -3,6 +3,8 @@ import Typography from '@mui/material/Typography';
 import Carousel from 'react-material-ui-carousel';
 import Stack from "@mui/material/Stack";
 
+import {paperProps} from './UserHeader.js';
+
 /**
  * Creates a carousel for the given properties.
  * TODO: properties is currently just an array of strings, display real property cards here.
@@ -27,7 +29,7 @@ export default function PropertyCarousel({ properties, title }) {
 	let groupsOf3 = groupArr(interestedProp, 3);
 
 	return (
-		<Paper variant="outlined" margin={3} padding={3}>
+		<Paper variant="outlined" sx={paperProps}>
 			<Stack padding={5} spacing={7}>
 				<Typography variant="h5">{title}</Typography>
 				<Carousel navButtonsAlwaysVisible={true} autoPlay={false} animation="slide">

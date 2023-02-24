@@ -18,6 +18,7 @@ import SmokeFreeIcon from '@mui/icons-material/SmokeFree';
 
 import PrefIcon from './PrefIcon.js';
 import TextListItem from './TextListItem.js';
+import {paperProps} from './UserHeader.js';
 
 /**
  * Displays the user's preferred traits for a roommate, along with icons for
@@ -26,7 +27,7 @@ import TextListItem from './TextListItem.js';
 export default function UserHabits({ user }) {
 	// TODO FIND BETTER NO PETS ICON
 	return (
-		<Paper variant="outlined" margin={3} padding={3}>
+		<Paper variant="outlined" sx={paperProps}>
 			<Grid container columns={{ xs: 2, md: 3 }} spacing={5}>
 
 				<Grid xs={2} md={3} display="flex" alignItems="center" justifyContent="center">

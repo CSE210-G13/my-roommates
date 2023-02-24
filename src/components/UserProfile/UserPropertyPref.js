@@ -14,6 +14,7 @@ import SingleBedIcon from '@mui/icons-material/SingleBed';
 import ShowerIcon from '@mui/icons-material/Shower';
 
 import PrefIcon from './PrefIcon.js';
+import {paperProps} from './UserHeader.js';
 
 
 /**
@@ -21,7 +22,7 @@ import PrefIcon from './PrefIcon.js';
  */
 export default function UserPropertyPref({ user }) {
 	return (
-		<Paper variant="outlined" margin={3} padding={3}>
+		<Paper variant="outlined" sx={paperProps}>
 			<Grid container columns={2} spacing={5}>
 
 				<Grid xs={2} display="flex" alignItems="center" justifyContent="center">

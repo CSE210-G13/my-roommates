@@ -6,6 +6,16 @@ import UserPropertyPref from './UserPropertyPref.js';
 import PropertyCarousel from './PropertyCarousel.js';
 
 /**
+ * The properties for Paper components.
+ * TODO: make a constant to use project wide
+ */
+export let paperProps = {
+  mt: { xs: 3, md: 6 }, // margin top
+  mb: { xs: 3 },        // margin bottom
+  p: { xs: 2, md: 3 }   // padding
+}
+
+/**
  * A component that displays general user information, their preferences in
  * roommates and properties, and properties they like.
  * TODO: When logged in, there will be another component that shows properties

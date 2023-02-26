@@ -148,7 +148,7 @@ export default function ResponsiveAppBar() {
 							<Button
 								key={page.title}
 								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: 'white', display: 'block' }}>
+								sx={{ my: 2, color: 'white', display: 'block', fontSize: 16 }}>
 								<Link href={page.link}>{page.title}</Link>
 							</Button>
 						))}
@@ -203,6 +203,11 @@ export default function ResponsiveAppBar() {
 								onClose={handleCloseUserMenu}>
 								<MenuItem key="profile" onClick={handleCloseUserMenu}>
 									<Link href='/profile'>Profile</Link>
+								</MenuItem>
+								<MenuItem key="friends" onClick={handleCloseUserMenu}>
+									<Typography textAlign="center">
+										<Link href="friends">Friends</Link>
+									</Typography>
 								</MenuItem>
 								<MenuItem key="logout" onClick={handleCloseUserMenu}>
 									<Typography onClick={signout} textAlign="center">

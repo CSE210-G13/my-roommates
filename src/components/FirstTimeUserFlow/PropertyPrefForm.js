@@ -29,7 +29,7 @@ export default function PropertyPrefForm() {
 
 	return (
 		<React.Fragment>
-			<Typography variant="h6" gutterBottom>
+			<Typography variant="h6" gutterBottom data-testid="form title">
 				Property Preference
 			</Typography>
 			<Grid container spacing={5}>

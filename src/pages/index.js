@@ -3,7 +3,7 @@ import { useAuthUser } from "@/firebase/auth";
 import RoommatesFilter from "../components/roommatesFilter";
 
 export default function Home() {
-  const [user, loading] = useAuthUser();
+	const [user, loading] = useAuthUser();
 
   if (loading) {
     return <h1>Loading...</h1>;

@@ -11,7 +11,7 @@ const nextConfig = {
         // https://nextjs.org/docs/api-reference/next.config.js/redirects
         source: '/',
         destination: '/roommates',
-        permanent: true,
+        permanent: false,
       },
     ]
   },

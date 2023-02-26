@@ -8,7 +8,7 @@ const nextConfig = {
     return [
       {
         // Redirect / (root of our website) to /roommates
-        // https://stackoverflow.com/questions/63357131/how-to-set-default-page-in-next-js#66840857h
+        // https://nextjs.org/docs/api-reference/next.config.js/redirects
         source: '/',
         destination: '/roommates',
         permanent: true,

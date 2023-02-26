@@ -1,0 +1,1057 @@
+[
+    {
+      "uid": "a35fbcf7-86d6-4b14-b2c3-3a6a2b6f139d",
+      "name": "Luxury Apartment in the Heart of Downtown",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBhcnRtZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60","https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBhcnRtZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+      ],
+      "address": "123 Main St, New York, NY 10001",
+      "price": 3500,
+      "distanceToSchool": 1.5,
+      "amenities": {
+        "airConditioner": true,
+        "pool": true,
+        "gym": true,
+        "parking": true,
+        "laundry": true,
+        "transportation": true
+      },
+      "numOfBedroom": 2,
+      "numOfBathroom": 2,
+      "phoneNumber": "123-456-7890",
+      "allowPets": false,
+      "allowSmoking": false
+    },
+    {
+      "uid": "34d55760-fa3b-4e0d-b5b5-41c5e3fb2ea9",
+      "name": "Cozy Studio in a Quiet Neighborhood",
+      "imageUrls": [
+    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+      ],
+      "address": "456 Elm St, San Francisco, CA 94107",
+      "price": 1500,
+      "distanceToSchool": 2.5,
+      "amenities": {
+        "airConditioner": false,
+        "pool": false,
+        "gym": false,
+        "parking": true,
+        "laundry": true,
+        "transportation": true
+      },
+      "numOfBedroom": 0,
+      "numOfBathroom": 1,
+      "phoneNumber": "555-555-5555",
+      "allowPets": true,
+      "allowSmoking": false
+    },
+    {
+      "uid": "6b8e48f7-bfeb-4c07-83e1-16c6d4e3e008",
+      "name": "Spacious 3-Bedroom House with a Pool",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YXBhcnRtZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+      ],
+      "address": "789 Oak St, Los Angeles, CA 90001",
+      "price": 4500,
+      "distanceToSchool": 3.0,
+      "amenities": {
+        "airConditioner": true,
+        "pool": true,
+        "gym": false,
+        "parking": true,
+        "laundry": true,
+        "transportation": true
+      },
+      "numOfBedroom": 3,
+      "numOfBathroom": 2,
+      "phoneNumber": "555-123-4567",
+      "allowPets": true,
+      "allowSmoking": false
+    },
+    {
+        "uid": "1",
+        "name": "Cozy Studio Apartment",
+        "imageUrls": [
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60","https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "123 Main St, Anytown, USA",
+        "price": 1000,
+        "distanceToSchool": 2,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 0,
+        "numOfBathroom": 1,
+        "phoneNumber": "555-1234",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      {
+        "uid": "2",
+        "name": "Luxury Penthouse",
+        "imageUrls": [
+"https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "456 Park Ave, Anytown, USA",
+        "price": 5000,
+        "distanceToSchool": 5,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 3,
+        "numOfBathroom": 3,
+        "phoneNumber": "555-5678",
+        "allowPets": false,
+        "allowSmoking": false
+      },
+      {
+        "uid": "3",
+        "name": "Spacious Townhouse",
+        "imageUrls": [
+      "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60","https://images.unsplash.com/photo-1630699144867-37acec97df5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "789 Elm St, Anytown, USA",
+        "price": 3000,
+        "distanceToSchool": 3,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 4,
+        "numOfBathroom": 3,
+        "phoneNumber": "555-9012",
+        "allowPets": true,
+        "allowSmoking": false
+    },
+      {
+        "uid": "1a2b3c4d5e",
+        "name": "Luxury Condo in Downtown",
+        "imageUrls": [
+          "https://images.unsplash.com/photo-1580041065738-e72023775cdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "123 Main St, Anytown USA",
+        "price": 1500000,
+        "distanceToSchool": 2.5,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 3,
+        "numOfBathroom": 2,
+        "phoneNumber": "555-123-4567",
+        "allowPets": false,
+        "allowSmoking": false
+      },
+      {
+        "uid": "2b3c4d5e6f",
+        "name": "Cozy Apartment Near Park",
+        "imageUrls": [
+         "https://images.unsplash.com/photo-1493606371202-6275828f90f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "456 Elm St, Anytown USA",
+        "price": 800,
+        "distanceToSchool": 1.2,
+        "amenities": {
+          "airConditioner": false,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 1,
+        "numOfBathroom": 1,
+        "phoneNumber": "555-987-6543",
+        "allowPets": true,
+        "allowSmoking": true
+      },
+      {
+        "uid": "3c4d5e6f7g",
+        "name": "Spacious House with Yard",
+        "imageUrls": [
+        "https://plus.unsplash.com/premium_photo-1663126312373-b2d5264c2edd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "789 Oak St, Anytown USA",
+        "price": 300000,
+        "distanceToSchool": 3.8,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 4,
+        "numOfBathroom": 3,
+        "phoneNumber": "555-555-1212",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      {
+        "uid": "p1j21fj12",
+        "name": "Beautiful Townhouse in Brooklyn",
+        "imageUrls": [
+        "https://images.unsplash.com/photo-1612320648993-61c1cd604b71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60","https://images.unsplash.com/photo-1558778909-1d4ea850da7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "123 Main St, Brooklyn, NY 11201",
+        "price": 3500,
+        "distanceToSchool": 2.5,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 3,
+        "numOfBathroom": 2,
+        "phoneNumber": "(555) 123-4567",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      {
+        "uid": "d2190dsm2",
+        "name": "Luxury Condo in Manhattan",
+        "imageUrls": [
+         "https://images.unsplash.com/photo-1534595038511-9f219fe0c979?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "456 Park Ave, New York, NY 10022",
+        "price": 8000,
+        "distanceToSchool": 1.5,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 2,
+        "numOfBathroom": 2.5,
+        "phoneNumber": "(555) 987-6543",
+        "allowPets": false,
+        "allowSmoking": false
+      },
+      {
+        "uid": "m1n3k3j42",
+        "name": "Cozy Studio in Queens",
+        "imageUrls": [
+ "https://images.unsplash.com/photo-1630699144641-72fa7a6b8aa1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDR8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "789 Elm St, Astoria, NY 11106",
+        "price": 1500,
+        "distanceToSchool": 1,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 0,
+        "numOfBathroom": 1,
+        "phoneNumber": "(555) 555-5555",
+        "allowPets": true,
+        "allowSmoking": true
+      },
+      {
+        "uid": "123abc",
+        "name": "Luxury Condo in Miami Beach",
+        "imageUrls": [
+        "https://images.unsplash.com/photo-1613575831056-0acd5da8f085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTB8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "1234 Ocean Drive, Miami Beach, FL 33139",
+        "price": 1200000,
+        "distanceToSchool": 2,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 3,
+        "numOfBathroom": 3,
+        "phoneNumber": "305-555-1234",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      
+      {
+        "uid": "456def",
+        "name": "Cozy Apartment in Brooklyn",
+        "imageUrls": [
+        "https://images.unsplash.com/photo-1633104069776-ea7e61258ec9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjN8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "5678 Main St, Brooklyn, NY 11201",
+        "price": 2500,
+        "distanceToSchool": 1,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 1,
+        "numOfBathroom": 1,
+        "phoneNumber": "718-555-5678",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      
+      {
+        "uid": "789ghi",
+        "name": "Spacious House in Los Angeles",
+        "imageUrls": [
+      "https://images.unsplash.com/photo-1560448075-cbc16bb4af8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "9101 Wilshire Blvd, Beverly Hills, CA 90210",
+        "price": 5000000,
+        "distanceToSchool": 5,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 5,
+        "numOfBathroom": 7,
+        "phoneNumber": "310-555-7890",
+        "allowPets": true,
+        "allowSmoking": false
+      }
+      ,
+      {
+        "uid": "apartment-1",
+        "name": "Cozy Apartment in the Heart of Downtown",
+        "imageUrls": [
+      "https://images.unsplash.com/photo-1619989652700-9984844cb0ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "123 Main St, Anytown USA",
+        "price": 1500,
+        "distanceToSchool": 2,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 1,
+        "numOfBathroom": 1,
+        "phoneNumber": "555-1234",
+        "allowPets": true,
+        "allowSmoking": false
+      }
+      ,
+      {
+        "uid": "apartment-2",
+        "name": "Luxury Penthouse with Ocean View",
+        "imageUrls": [
+    "https://images.unsplash.com/photo-1580661601179-717c409362f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60","https://images.unsplash.com/photo-1504494683949-7319a9ba12d1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzB8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "456 Ocean Ave, Anytown USA",
+        "price": 5000,
+        "distanceToSchool": 10,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": false
+        },
+        "numOfBedroom": 3,
+        "numOfBathroom": 3,
+        "phoneNumber": "555-5678",
+        "allowPets": false,
+        "allowSmoking": false
+      }
+      ,
+      {
+        "uid": "apartment-3",
+        "name": "Sunny Studio near the Park",
+        "imageUrls": [
+ "https://images.unsplash.com/photo-1501876725168-00c445821c9e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODN8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "789 Park Blvd, Anytown USA",
+        "price": 1000,
+        "distanceToSchool": 5,
+        "amenities": {
+          "airConditioner": false,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 0,
+        "numOfBathroom": 1,
+        "phoneNumber": "555-9012",
+        "allowPets": true,
+        "allowSmoking": true
+      },
+      {
+        "uid": "1234",
+        "name": "Beautiful Downtown Apartment",
+        "imageUrls": [
+         "https://images.unsplash.com/photo-1632323091845-f636f89749fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODZ8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "123 Main St, Anytown USA",
+        "price": 2000,
+        "distanceToSchool": 2.5,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 2,
+        "numOfBathroom": 2,
+        "phoneNumber": "555-1234",
+        "allowPets": false,
+        "allowSmoking": false
+      }
+,
+      {
+        "uid": "5678",
+        "name": "Cozy Suburban Home",
+        "imageUrls": [
+ "https://images.unsplash.com/photo-1560448204-61dc36dc98c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODd8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "456 Elm St, Smallville USA",
+        "price": 1500,
+        "distanceToSchool": 1.2,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": false
+        },
+        "numOfBedroom": 3,
+        "numOfBathroom": 2,
+        "phoneNumber": "555-5678",
+        "allowPets": true,
+        "allowSmoking": false
+      }
+,
+      {
+        "uid": "9012",
+        "name": "Luxury Penthouse Suite",
+        "imageUrls": [
+        "https://images.unsplash.com/photo-1630699144919-681cf308ae82?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTB8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "789 High St, Bigcity USA",
+        "price": 5000,
+        "distanceToSchool": 3.7,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 4,
+        "numOfBathroom": 4,
+        "phoneNumber": "555-9012",
+        "allowPets": false,
+        "allowSmoking": false
+      },
+      {
+        "uid": "a23dse",
+        "name": "Luxury Condo in Downtown LA",
+        "imageUrls": [
+       "https://images.unsplash.com/photo-1587945566191-3b8273fb7c1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "123 Main St, Los Angeles, CA 90012",
+        "price": 500000,
+        "distanceToSchool": 2,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 2,
+        "numOfBathroom": 2,
+        "phoneNumber": "555-1234",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      {
+        "uid": "h23fgr",
+        "name": "Cozy Studio Apartment in San Francisco",
+        "imageUrls": [
+    "https://images.unsplash.com/photo-1504682018535-8ba8ca0afbbb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTAwfHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "456 Oak St, San Francisco, CA 94102",
+        "price": 1500,
+        "distanceToSchool": 1,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": false,
+          "parking": false,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 0,
+        "numOfBathroom": 1,
+        "phoneNumber": "555-5678",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      {
+        "uid": "g67hgf",
+        "name": "Spacious Townhouse in Chicago",
+        "imageUrls": [
+    "https://images.unsplash.com/photo-1528255671579-01b9e182ed1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTZ8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "789 Elm St, Chicago, IL 60611",
+        "price": 3000,
+        "distanceToSchool": 3,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 3,
+        "numOfBathroom": 2,
+        "phoneNumber": "555-9101",
+        "allowPets": false,
+        "allowSmoking": false
+      }
+      ,
+      {
+        "uid": "001",
+        "name": "Cozy Studio Apartment in Downtown Seattle",
+        "imageUrls": [
+          "https://images.unsplash.com/photo-1629042306558-7d1e15cc02fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA0fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "123 Main St, Seattle, WA 98101",
+        "price": 1500,
+        "distanceToSchool": 1.2,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 0,
+        "numOfBathroom": 1,
+        "phoneNumber": "(123) 456-7890",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      {
+        "uid": "002",
+        "name": "Luxury Condo in Downtown Miami",
+        "imageUrls": [
+        "https://images.unsplash.com/photo-1600994562666-98dbd6d44e44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA1fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "456 Collins Ave, Miami, FL 33139",
+        "price": 5000,
+        "distanceToSchool": 3.5,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 3,
+        "numOfBathroom": 3,
+        "phoneNumber": "(305) 123-4567",
+        "allowPets": false,
+        "allowSmoking": false
+      },
+      {
+        "uid": "003",
+        "name": "Charming Cottage in the Woods",
+        "imageUrls": [
+  "https://images.unsplash.com/photo-1597715186877-69a03e8945c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE0fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "789 Forest Rd, Big Sur, CA 93920",
+        "price": 3000,
+        "distanceToSchool": 10.2,
+        "amenities": {
+          "airConditioner": false,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": false
+        },
+        "numOfBedroom": 2,
+        "numOfBathroom": 1,
+        "phoneNumber": "(831) 456-7890",
+        "allowPets": true,
+        "allowSmoking": true
+      },
+      {
+        "uid": "abc123",
+        "name": "Luxury Condo in Downtown",
+        "imageUrls": [
+        "https://images.unsplash.com/photo-1610286986642-057ece0c3656?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE4fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "123 Main St, Anytown, USA",
+        "price": 500000,
+        "distanceToSchool": 2.5,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 3,
+        "numOfBathroom": 2,
+        "phoneNumber": "123-456-7890",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      {
+        "uid": "def456",
+        "name": "Cozy Apartment Near Park",
+        "imageUrls": [
+       "https://images.unsplash.com/photo-1457377491689-0381aa8d90d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTI0fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "456 Elm St, Anytown, USA",
+        "price": 1500,
+        "distanceToSchool": 1.2,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 1,
+        "numOfBathroom": 1,
+        "phoneNumber": "555-555-1212",
+        "allowPets": true,
+        "allowSmoking": true
+      }
+,
+      {
+        "uid": "ghi789",
+        "name": "Spacious Townhouse with Garden",
+        "imageUrls": [
+     "https://images.unsplash.com/photo-1630699376167-3870469e7598?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTMxfHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "789 Oak St, Anytown, USA",
+        "price": 300000,
+        "distanceToSchool": 3.0,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 4,
+        "numOfBathroom": 3,
+        "phoneNumber": "555-123-4567",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      {
+        "uid": "1a2b3c",
+        "name": "Luxury Condo in the Heart of Downtown",
+        "imageUrls": [
+          "https://images.unsplash.com/photo-1602082550187-3f954840a0f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTI5fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "123 Main St, Anytown, USA",
+        "price": 500000,
+        "distanceToSchool": 2.5,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": false
+        },
+        "numOfBedroom": 2,
+        "numOfBathroom": 2,
+        "phoneNumber": "555-555-1234",
+        "allowPets": false,
+        "allowSmoking": false
+      },
+      {
+        "uid": "4d5e6f",
+        "name": "Cozy Apartment in Quiet Neighborhood",
+        "imageUrls": [
+       "https://images.unsplash.com/photo-1486748719772-dac71e23eaa1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTMyfHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "456 Elm St, Suburbia, USA",
+        "price": 1500,
+        "distanceToSchool": 5,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 1,
+        "numOfBathroom": 1,
+        "phoneNumber": "555-555-5678",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      {
+        "uid": "7g8h9i",
+        "name": "Spacious House with Large Yard",
+        "imageUrls": [
+     "https://images.unsplash.com/photo-1484101403633-562f891dc89a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTM3fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "789 Oak St, Countryside, USA",
+        "price": 300000,
+        "distanceToSchool": 10,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": false
+        },
+        "numOfBedroom": 3,
+        "numOfBathroom": 2,
+        "phoneNumber": "555-555-9012",
+        "allowPets": true,
+        "allowSmoking": true
+      },
+
+      {
+        "uid": "dfhfushfusd",
+        "name": "Luxury Condo in Downtown Miami",
+        "imageUrls": [
+        "https://images.unsplash.com/photo-1520699049698-acd2fccb8cc8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQ0fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "123 Main St, Miami, FL 33130",
+        "price": 750000,
+        "distanceToSchool": 2.5,
+        "amenities": {
+          "airConditioner": true,
+          "pool": true,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 3,
+        "numOfBathroom": 2.5,
+        "phoneNumber": "(123) 456-7890",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      {
+        "uid": "def456",
+        "name": "Cozy Apartment in San Francisco",
+        "imageUrls": [
+       "https://images.unsplash.com/photo-1630699293784-9f977570255a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQyfHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "456 Elm St, San Francisco, CA 94109",
+        "price": 3500,
+        "distanceToSchool": 1.2,
+        "amenities": {
+          "airConditioner": false,
+          "pool": false,
+          "gym": false,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 1,
+        "numOfBathroom": 1,
+        "phoneNumber": "(415) 555-1212",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+      {
+        "uid": "gha789",
+        "name": "Spacious Townhouse in Chicago",
+        "imageUrls": [
+"https://images.unsplash.com/photo-1490309465502-86ef8656e567?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQ2fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        ],
+        "address": "789 Oak St, Chicago, IL 60610",
+        "price": 550000,
+        "distanceToSchool": 0.5,
+        "amenities": {
+          "airConditioner": true,
+          "pool": false,
+          "gym": true,
+          "parking": true,
+          "laundry": true,
+          "transportation": true
+        },
+        "numOfBedroom": 2,
+        "numOfBathroom": 2.5,
+        "phoneNumber": "(312) 555-1212",
+        "allowPets": true,
+        "allowSmoking": false
+      },
+
+      {
+  "uid": "1a2b3c4d",
+  "name": "Modern 2BR Apartment",
+  "imageUrls": [
+"https://images.unsplash.com/photo-1560448075-bb485b067938?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTUzfHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+  ],
+  "address": "123 Main St, Anytown, USA",
+  "price": 2000,
+  "distanceToSchool": 1.5,
+  "amenities": {
+    "airConditioner": true,
+    "pool": true,
+    "gym": true,
+    "parking": true,
+    "laundry": true,
+    "transportation": true
+  },
+  "numOfBedroom": 2,
+  "numOfBathroom": 2,
+  "phoneNumber": "555-1234",
+  "allowPets": false,
+  "allowSmoking": false
+}
+,
+{
+  "uid": "5e6f7g8h",
+  "name": "Cozy 1BR Apartment",
+  "imageUrls": [
+   "https://images.unsplash.com/photo-1588148208486-a3b096a44537?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTY3fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+  ],
+  "address": "456 Maple Ave, Anytown, USA",
+  "price": 1500,
+  "distanceToSchool": 2.0,
+  "amenities": {
+    "airConditioner": true,
+    "pool": false,
+    "gym": false,
+    "parking": true,
+    "laundry": true,
+    "transportation": true
+  },
+  "numOfBedroom": 1,
+  "numOfBathroom": 1,
+  "phoneNumber": "555-5678",
+  "allowPets": true,
+  "allowSmoking": false
+},
+
+{
+  "uid": "9i8h7g6f",
+  "name": "Luxury 3BR Condo",
+  "imageUrls": [
+  "https://images.unsplash.com/photo-1561037719-6affdd56efb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTcxfHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+  ],
+  "address": "789 Oak St, Anytown, USA",
+  "price": 4000,
+  "distanceToSchool": 3.5,
+  "amenities": {
+    "airConditioner": true,
+    "pool": true,
+    "gym": true,
+    "parking": true,
+    "laundry": true,
+    "transportation": true
+  },
+  "numOfBedroom": 3,
+  "numOfBathroom": 3,
+  "phoneNumber": "555-9012",
+  "allowPets": true,
+  "allowSmoking": false
+},
+{
+    "uid": "c2f4e258-4cfb-4bb4-a34e-893a73df7523",
+    "name": "Sunny Studio in Downtown LA",
+    "imageUrls": [
+    "https://images.unsplash.com/photo-1501877008226-4fca48ee50c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTc3fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+    ],
+    "address": "123 Main St, Los Angeles, CA 90012",
+    "price": 1800,
+    "distanceToSchool": 1.5,
+    "amenities": {
+      "airConditioner": true,
+      "pool": false,
+      "gym": false,
+      "parking": true,
+      "laundry": true,
+      "transportation": true
+    },
+    "numOfBedroom": 0,
+    "numOfBathroom": 1,
+    "phoneNumber": "(555) 555-1234",
+    "allowPets": true,
+    "allowSmoking": false
+  }
+  ,
+  {
+    "uid": "4ca1fbf4-4f57-4c77-9677-8a95b05f9cc9",
+    "name": "Cozy 2-Bedroom in Brooklyn",
+    "imageUrls": [
+  "https://images.unsplash.com/photo-1621891333819-00c206ec8994?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTcyfHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+    ],
+    "address": "456 Elm St, Brooklyn, NY 11201",
+    "price": 3200,
+    "distanceToSchool": 0.8,
+    "amenities": {
+      "airConditioner": true,
+      "pool": false,
+      "gym": false,
+      "parking": false,
+      "laundry": true,
+      "transportation": true
+    },
+    "numOfBedroom": 2,
+    "numOfBathroom": 1,
+    "phoneNumber": "(555) 555-5678",
+    "allowPets": true,
+    "allowSmoking": false
+  }
+  ,
+  {
+    "uid": "2c534912-6f32-40dd-8776-c9d7c9eb6d43",
+    "name": "Luxury Condo in Miami",
+    "imageUrls": [
+"https://images.unsplash.com/photo-1499955085172-a104c9463ece?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTg2fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+    ],
+    "address": "789 Ocean Dr, Miami, FL 33139",
+    "price": 5500,
+    "distanceToSchool": 3.2,
+    "amenities": {
+      "airConditioner": true,
+      "pool": true,
+      "gym": true,
+      "parking": true,
+      "laundry": true,
+      "transportation": true
+    },
+    "numOfBedroom": 3,
+    "numOfBathroom": 3,
+    "phoneNumber": "(555) 555-9012",
+    "allowPets": false,
+    "allowSmoking": false
+  }  ,
+  {
+    "uid": "saffsdfsfdgfdghghgfdh",
+    "name": "Luxury Condo in the Heart of Downtown",
+    "imageUrls": [
+ "https://images.unsplash.com/photo-1519832979-6fa011b87667?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTk4fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+    ],
+    "address": "123 Main St, Anytown, USA",
+    "price": 500000,
+    "distanceToSchool": 2.5,
+    "amenities": {
+      "airConditioner": true,
+      "pool": true,
+      "gym": true,
+      "parking": true,
+      "laundry": true,
+      "transportation": false
+    },
+    "numOfBedroom": 2,
+    "numOfBathroom": 2,
+    "phoneNumber": "555-555-1234",
+    "allowPets": false,
+    "allowSmoking": false
+  }
+  ,
+  {
+    "uid": "jritututjhgfj",
+    "name": "Cozy Apartment in Quiet Neighborhood",
+    "imageUrls": [
+  "https://images.unsplash.com/photo-1469022563428-aa04fef9f5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjA4fHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+    ],
+    "address": "456 Elm St, Suburbia, USA",
+    "price": 1500,
+    "distanceToSchool": 5,
+    "amenities": {
+      "airConditioner": true,
+      "pool": false,
+      "gym": false,
+      "parking": true,
+      "laundry": true,
+      "transportation": true
+    },
+    "numOfBedroom": 1,
+    "numOfBathroom": 1,
+    "phoneNumber": "555-555-5678",
+    "allowPets": true,
+    "allowSmoking": false
+  }
+  ,
+  {
+    "uid": "ytyrwkgkhnsdomdhdg",
+    "name": "Spacious House with Large Yard",
+    "imageUrls": [
+     "https://images.unsplash.com/photo-1534655610770-dd69616f05ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjAzfHxhcGFydG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+    ],
+    "address": "789 Oak St, Countryside, USA",
+    "price": 300000,
+    "distanceToSchool": 10,
+    "amenities": {
+      "airConditioner": true,
+      "pool": true,
+      "gym": false,
+      "parking": true,
+      "laundry": true,
+      "transportation": false
+    },
+    "numOfBedroom": 3,
+    "numOfBathroom": 2,
+    "phoneNumber": "555-555-9012",
+    "allowPets": true,
+    "allowSmoking": true
+  }     
+    ]
+    
+    
+

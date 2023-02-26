@@ -26,7 +26,7 @@ export class User {
 		email = ['', false],
 		phoneNumber = ['', false],
 		discord = ['', false],
-		instgram = ['', false],
+		instagram = ['', false],
 		linkedin = ['', false],
 		facebook = ['', false]
 	) {
@@ -49,7 +49,7 @@ export class User {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.discord = discord;
-		this.instgram = instgram;
+		this.instagram = instagram;
 		this.linkedin = linkedin;
 		this.facebook = facebook;
 	}

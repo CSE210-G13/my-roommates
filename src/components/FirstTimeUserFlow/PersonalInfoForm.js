@@ -28,7 +28,7 @@ export default function PersonalInfoForm() {
 
 	return (
 		<React.Fragment>
-			<Typography variant="h6" gutterBottom>
+			<Typography variant="h6" gutterBottom data-testid="form title">
 				Personal Information
 			</Typography>
 			<Grid container spacing={3}>

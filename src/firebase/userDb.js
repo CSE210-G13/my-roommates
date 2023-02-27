@@ -1,6 +1,6 @@
 import { db } from './firebaseConfig';
 import { User } from '@/firebase/classes';
-import { collection, addDoc, getDocs, where, query } from 'firebase/firestore';
+import { collection, addDoc, getDocs, setDoc, where, query, doc } from 'firebase/firestore';
 // ref: https://firebase.google.com/docs/firestore/query-data/get-data
 // Todo
 export async function getUser(userId) {
@@ -19,15 +19,29 @@ export async function getUser(userId) {
 export async function postUser(user) {
 	try {
 		const ref = collection(db, "users").withConverter(userConverter);
-		const docRef = await addDoc(ref, user);
-		console.log('Document written with ID: ', docRef);
+		await addDoc(ref, user);
 	} catch (e) {
 		console.error('Error adding document: ', e);
 	}
 }
 
 export async function updateUser(user){
-	console.log("updating user");
+	try {
+		console.log("updating user");
+		const ref = query(collection(db, "users"), where('uid', '==', user.uid)).withConverter(userConverter);
+		const querySnapshot = await getDocs(ref);
+		let userId;
+		querySnapshot.forEach((doc) => {
+			// doc.data() is never undefined for query doc snapshots
+			userId = doc.id;
+		});
+
+		const updateRef = doc(db, "users", userId);
+		await setDoc(updateRef, {user});		
+	} catch (e) {
+		console.error('Error updating document: ', e);
+	}
+
 }
 
 const userConverter = {

@@ -40,13 +40,16 @@ export default function EditProfile() {
 
     const [editingProfile, setEditingProfile] = useState(false);
 
-    // TODO: submit profile changes to firebase
-    const handleEditingProfile = () => {
-        setEditingProfile(!editingProfile);
-        if (!editingProfile)
+    useEffect(() => {
+        if (!editingProfile && !loading)
         {
             updateUser(userInfo);
         }
+    }, [editingProfile])
+
+    // TODO: submit profile changes to firebase
+    const handleEditingProfile = () => {
+        setEditingProfile(!editingProfile);
     }
     return (
         <UserInfoContext.Provider  value={{ userInfo, setUserInfo }}>

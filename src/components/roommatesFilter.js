@@ -5,7 +5,7 @@ import {
   majorsConst,
   collegesConst,
   schoolYearsConst,
-  dislikesConst,
+  lifestyleConst,
 } from "@/constants/constants";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -26,7 +26,7 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 
 export default function SimpleAccordion() {
-  const allDislikes = dislikesConst;
+  const allLifestyles = lifestyleConst;
   const allLanguages = languagesConst;
   const allMajors = majorsConst;
   const allSchoolYear = schoolYearsConst;
@@ -39,7 +39,7 @@ export default function SimpleAccordion() {
     acc[val] = false;
     return acc;
   }, {});
-  const iniDislikesChecks = allDislikes.reduce((acc, val) => {
+  const iniDislikesChecks = allLifestyles.reduce((acc, val) => {
     acc[val] = false;
     return acc;
   }, {});
@@ -259,7 +259,7 @@ export default function SimpleAccordion() {
           <br />
           <FormGroup>
             <FormLabel>Lifestyle</FormLabel>
-            {allDislikes.map((dislike) => {
+            {allLifestyles.map((dislike) => {
               return (
                 <FormControlLabel
                   key={dislike}
@@ -278,7 +278,7 @@ export default function SimpleAccordion() {
       <br />
       <div style={{ float: "right", margin: "-5px 10px 0px 0px" }}>
         <Button variant="outlined" onClick={handleButtonClick}>
-          Save
+          Search
         </Button>
       </div>
     </div>

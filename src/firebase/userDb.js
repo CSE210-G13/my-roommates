@@ -26,6 +26,10 @@ export async function postUser(user) {
 	}
 }
 
+export async function updateUser(user){
+	console.log("updating user");
+}
+
 const userConverter = {
 	toFirestore: (user) =>	{
 		return {

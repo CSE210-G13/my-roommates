@@ -64,3 +64,11 @@ export async function postMockProperty() {
 	  }
 	}
   }
+export async function getAllProperties() {
+	const querySnapshot = await getDocs(collection(db, 'properties'));
+	let properties = []
+	querySnapshot.forEach((doc) => {
+		properties.push(doc.data());
+	});
+	return properties
+}

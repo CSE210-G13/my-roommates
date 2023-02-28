@@ -32,7 +32,7 @@ function getStepContent(step) {
 	}
 }
 
-export const UserInfoContext = createContext(new User());
+export const UserInfoContext = createContext();
 
 export default function FirstTimeUserFlow() {
 	const [user, loading] = useAuthUser();

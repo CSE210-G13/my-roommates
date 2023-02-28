@@ -32,7 +32,7 @@ function getStepContent(step) {
 	}
 }
 
-export const UserInfoContext = createContext(new User());
+export const UserInfoContext = createContext();
 
 export default function FirstTimeUserFlow() {
 	const [user, loading] = useAuthUser();
@@ -59,6 +59,7 @@ export default function FirstTimeUserFlow() {
 					imageUrl: user.photoURL,
 					firstName: nameSplit[0],
 					lastName: nameSplit[1],
+					email: [user.email, false],
 				});
 			} else {
 				setUserInfo({
@@ -67,6 +68,7 @@ export default function FirstTimeUserFlow() {
 					isUCSD: isUCSD,
 					imageUrl: user.photoURL,
 					firstName: nameSplit[0],
+					email: [user.email, false],
 				});
 			}
 		}

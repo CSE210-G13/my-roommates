@@ -37,6 +37,7 @@ export default function ResponsiveAppBar() {
 
 	const handleOpenUserMenu = (event) => {
 		setAnchorElUser(event.currentTarget);
+		
 	};
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
@@ -201,7 +202,7 @@ export default function ResponsiveAppBar() {
 								open={Boolean(anchorElUser)}
 								onClose={handleCloseUserMenu}>
 								<MenuItem key="profile" onClick={handleCloseUserMenu}>
-									<Typography textAlign="center">Profile</Typography>
+									<Link href='/profile'>Profile</Link>
 								</MenuItem>
 								<MenuItem key="logout" onClick={handleCloseUserMenu}>
 									<Typography onClick={signout} textAlign="center">

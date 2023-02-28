@@ -1,6 +1,7 @@
-import { db } from './firebaseConfig';
+import { db } from "./firebaseConfig";
+import { collection, addDoc, getDocs, setDoc, where, query, doc  } from "firebase/firestore";
+import property_json from "./data/propertyData";
 
-import { collection, addDoc, getDocs, setDoc, where, query, doc } from 'firebase/firestore';
 // ref: https://firebase.google.com/docs/firestore/query-data/get-data
 // Todo
 export async function getUser(userId) {

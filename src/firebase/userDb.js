@@ -21,3 +21,12 @@ export async function postUser(user) {
 		console.error('Error adding document: ', e);
 	}
 }
+
+export async function getAllProperties() {
+	const querySnapshot = await getDocs(collection(db, 'properties'));
+	let properties = []
+	querySnapshot.forEach((doc) => {
+		properties.push(doc.data());
+	});
+	return properties
+}

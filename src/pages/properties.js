@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import PropertyFilter from '@/components/PropertyFilter/PropertyFilter';
 import PropertyCard from '@/components/PropertyCard';
-import { getAllProperties } from '@/firebase/userDb';
+import { getAllProperties } from '@/firebase/propertyDb';
 
 export default function ComplexGrid(props) {
 	return (
@@ -26,6 +26,6 @@ export async function getStaticProps() {
 	const properties = await getAllProperties();
 	return {
 		props: { properties }, // will be passed to the page component as props
-		revalidate: 600,	// update cache every 10 minutes
+		revalidate: 600, // update cache every 10 minutes
 	};
 }

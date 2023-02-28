@@ -53,3 +53,15 @@ const userConverter = {
 		return Object.assign({}, data);
 	},
 };
+
+export async function postMockProperty() {
+	const property = property_json;
+	for (const key in property) {
+	  try {
+		const docRef = await addDoc(collection(db, "properties"), property[key]);
+		console.log("Document written with ID: ", docRef);
+	  } catch (e) {
+		console.error("Error adding document: ", e);
+	  }
+	}
+  }

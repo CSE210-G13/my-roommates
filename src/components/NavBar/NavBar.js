@@ -20,7 +20,7 @@ import { getAuth, signOut, signInWithPopup, GoogleAuthProvider, getAdditionalUse
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const pages = [
-	{ title: 'Property', link: '/property' },
+	{ title: 'Properties', link: '/properties' },
 	{ title: 'Roommates', link: '/roommates' },
 ];
 
@@ -129,7 +129,7 @@ export default function ResponsiveAppBar() {
 						variant="h5"
 						noWrap
 						component="a"
-						href=""
+						href="/"
 						sx={{
 							mr: 2,
 							display: { xs: 'flex', md: 'none' },

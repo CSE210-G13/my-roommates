@@ -1,5 +1,5 @@
 import RoommateGrid from '@/components/RoommateGrid';
-import RoommateFilter from '@/components/roommatesFilter.js';
+import RoommateFilter from '@/components/RoommatesFilter';
 import Grid from '@mui/material/Unstable_Grid2';
 import Head from 'next/head';
 

@@ -20,7 +20,7 @@ import { getAuth, signOut, signInWithPopup, GoogleAuthProvider, getAdditionalUse
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const pages = [
-	{ title: 'Properties', link: '/properties' },
+	{ title: 'Properties', link: '/' },
 	{ title: 'Roommates', link: '/roommates' },
 ];
 
@@ -203,11 +203,6 @@ export default function ResponsiveAppBar() {
 								onClose={handleCloseUserMenu}>
 								<MenuItem key="profile" onClick={handleCloseUserMenu}>
 									<Link href='/profile'>Profile</Link>
-								</MenuItem>
-								<MenuItem key="friends" onClick={handleCloseUserMenu}>
-									<Typography textAlign="center">
-										<Link href="friends">Friends</Link>
-									</Typography>
 								</MenuItem>
 								<MenuItem key="friends" onClick={handleCloseUserMenu}>
 									<Typography textAlign="center">

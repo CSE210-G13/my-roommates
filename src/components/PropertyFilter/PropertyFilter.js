@@ -16,7 +16,7 @@ import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 
-export default function SimpleAccordion() {
+export default function PropertyFilter() {
 	const [budgetMin, setBudgetMin] = useState('');
 	const [budgetMax, setBudgetMax] = useState('');
 	const [numBedrooms, setNumBedrooms] = useState('');

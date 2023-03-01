@@ -30,7 +30,7 @@ export default function SimpleAccordion() {
 	const [petChecked, setPetChecked] = useState(false);
 	const [smokingChecked, setSmokingChecked] = useState(false);
 
-	const handleButtonClick = (event) => {
+	const handleSearch = (event) => {
 		console.log(budgetMax);
 		console.log(budgetMin);
 		console.log(distance);
@@ -221,10 +221,10 @@ export default function SimpleAccordion() {
 					</FormGroup>
 				</AccordionDetails>
 			</Accordion>
-			<br />
-			<div style={{ float: 'right', margin: '-5px 10px 0px 0px' }}>
-				<Button variant="outlined" onClick={handleButtonClick}>
-					Save
+			
+			<div style={{ float: 'right', margin: '10px 0px 0px 0px' }}>
+				<Button variant="outlined" onClick={handleSearch}>
+					Search
 				</Button>
 			</div>
 		</div>

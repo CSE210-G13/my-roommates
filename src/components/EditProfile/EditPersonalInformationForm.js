@@ -240,7 +240,6 @@ export default function EditPersonalInformationForm(props) {
                     <Grid container item xs={12} sm={6} rowSpacing={2} columnSpacing={2} sx={{ px: 2, pb: 2}}>
                         <Grid item xs={12} md={8.7}>
                             <TextField
-                                required
                                 id="discord"
                                 name="discord"
                                 label="Discord"
@@ -265,7 +264,6 @@ export default function EditPersonalInformationForm(props) {
                         </Grid>
                         <Grid item xs={12} md={8.7}>
                             <TextField
-                                required
                                 id="instagram"
                                 name="instagram"
                                 label="Instagram"
@@ -290,7 +288,6 @@ export default function EditPersonalInformationForm(props) {
                         </Grid>
                         <Grid item xs={12} md={8.7}>
                             <TextField
-                                required
                                 id="linkedin"
                                 name="linkedin"
                                 label="LinkedIn"
@@ -315,7 +312,6 @@ export default function EditPersonalInformationForm(props) {
                         </Grid>
                         <Grid item xs={12} md={8.7}>
                             <TextField
-                                required
                                 id="facebook"
                                 name="facebook"
                                 label="Facebook"

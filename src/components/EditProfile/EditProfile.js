@@ -69,33 +69,27 @@ export default function EditProfile() {
                 <Paper
                     variant="outlined"
                     sx={paperProps}>
-                    <React.Fragment>
-                        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            <EditPersonalInformationForm editing={editingProfile}/>
-                        </Box>
-                    </React.Fragment>
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                        <EditPersonalInformationForm editing={editingProfile}/>
+                    </Box>
                 </Paper>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                         <Paper
                             variant="outlined"
                             sx={paperProps}>
-                            <React.Fragment>
-                                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                    <EditRoommatePrefForm user={userInfo} editing={editingProfile}/>
-                                </Box>
-                            </React.Fragment>
+                            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                <EditRoommatePrefForm user={userInfo} editing={editingProfile}/>
+                            </Box>
                         </Paper>     
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Paper
                             variant="outlined"
                             sx={paperProps}>
-                            <React.Fragment>
-                                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                    <EditPropertyPrefForm editing={editingProfile}/> 
-                                </Box>
-                            </React.Fragment>
+                            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                <EditPropertyPrefForm editing={editingProfile}/> 
+                            </Box>
                         </Paper>                    
                     </Grid>
                 </Grid>

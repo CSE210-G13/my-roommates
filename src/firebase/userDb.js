@@ -3,7 +3,6 @@ import { collection, addDoc, getDocs, setDoc, where, query, doc  } from "firebas
 import property_json from "./data/propertyData";
 
 // ref: https://firebase.google.com/docs/firestore/query-data/get-data
-// Todo
 export async function getUser(userId) {
 	const ref = query(collection(db, "users"), where('uid', '==', userId)).withConverter(userConverter);
 	const docSnap = await getDocs(ref);
@@ -16,7 +15,7 @@ export async function getUser(userId) {
 	return user;
 }
 
-// Todo
+// https://firebase.google.com/docs/firestore/manage-data/add-data
 export async function postUser(user) {
 	try {
 		const ref = collection(db, "users").withConverter(userConverter);

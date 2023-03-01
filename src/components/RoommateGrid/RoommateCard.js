@@ -17,7 +17,7 @@ export default function RoommateCard({ user }) {
 		       columns={4} spacing={7} display="flex" justifyContent="center">
 
 					<Grid md={1} display="flex" justifyContent="center">
-						<Avatar sx={{ fontSize: "4vh", minHeight: "8vh", minWidth: "8vh" }}>
+						<Avatar sx={{ fontSize: "4vh", minHeight: "8vh", minWidth: "8vh" }} src={user.imageUrl}>
 							{user.firstName[0]}
 						</Avatar>
 					</Grid>
@@ -36,11 +36,11 @@ export default function RoommateCard({ user }) {
 					</Grid>
 				</Grid>
 
-				<Typography variant="body2" gutterBottom>
+				<Typography variant="body2" align="center" gutterBottom>
 					Hobbies: {user.lifestyle.hobbies.join(", ")}
 				</Typography>
 
-				<Typography variant="body2">
+				<Typography variant="body2" align="center">
 					Looking for a {user.propPref.numBedrooms} bedroom, {user.propPref.numBathrooms} bathroom property
 				</Typography>
 

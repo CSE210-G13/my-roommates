@@ -4,7 +4,7 @@ import RoommateCard from './RoommateCard.js';
 
 export default function RoommateGrid({ users }) {
   return (
-    <Grid container columns={{ xs: 1, sm: 2, md: 3 }} spacing={10} margin={5}>
+    <Grid container columns={{ xs: 1, sm: 2, md: 3 }} spacing={10}>
       {users
         .map((x, i) =>
           <Grid key={"roommate " + i.toString()}

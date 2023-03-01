@@ -1,4 +1,6 @@
 import RoommateGrid from '@/components/RoommateGrid';
+import RoommateFilter from "@/components/roommatesFilter.js";
+import Grid from "@mui/material/Unstable_Grid2";
 import Head from "next/head";
 
 // same dummy user from viewProfile
@@ -84,7 +86,14 @@ export default function roommates() {
       <Head>
         <title>Roommate Suggestions</title>
       </Head>
-      <RoommateGrid users={users}/>
+      <Grid container direction="row" padding={5} spacing={4}>
+        <Grid xs={3}>
+          <RoommateFilter />
+        </Grid>
+        <Grid xs={9}>
+          <RoommateGrid users={users}/>
+        </Grid>
+      </Grid>
     </>
   );
 }

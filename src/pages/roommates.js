@@ -86,7 +86,7 @@ export default function roommates() {
       <Head>
         <title>Roommate Suggestions</title>
       </Head>
-      <Grid container direction="row" padding={5} spacing={4}>
+      <Grid container direction="row" padding={5} spacing={4} margin={1}>
         <Grid xs={3}>
           <RoommateFilter />
         </Grid>

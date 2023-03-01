@@ -15,6 +15,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import { useState } from "react";
+import { propertyFiltering } from "../firebase/filtering";
 
 export default function SimpleAccordion() {
   const [budgetMin, setBudgetMin] = useState("");
@@ -31,12 +32,24 @@ export default function SimpleAccordion() {
   const [smokingChecked, setSmokingChecked] = useState(false);
 
   const handleButtonClick = (event) => {
-    console.log(budgetMax);
-    console.log(budgetMin);
-    console.log(distance);
-    console.log(smokingChecked);
-    // call functions on the backend layer
+    var pref = {
+      budgetMin: budgetMin,
+      budgetMax: budgetMax,
+      numBedrooms: numBedrooms,
+      numBathrooms: numBathrooms,
+      distance: distance,
+      parkingChecked: parkingChecked,
+      laundryChecked: laundryChecked,
+      poolChecked: poolChecked,
+      gymChecked: gymChecked,
+      acChecked: acChecked,
+      petChecked: petChecked,
+      smokingChecked: smokingChecked,
+    };
+    var selectedProperty = propertyFiltering(pref);
+    // TODO: display the selected properties
   };
+
   return (
     <div style={{ margin: "20px 0px 0px 0px" }}>
       <Accordion>
@@ -171,7 +184,7 @@ export default function SimpleAccordion() {
               control={<Checkbox />}
               checked={parkingChecked}
               onChange={(event) => {
-                setParkingChecked(event.target.value);
+                setParkingChecked(event.target.checked);
               }}
               label="On-site parking"
             />
@@ -179,7 +192,7 @@ export default function SimpleAccordion() {
               control={<Checkbox />}
               checked={laundryChecked}
               onChange={(event) => {
-                setLaundryChecked(event.target.value);
+                setLaundryChecked(event.target.checked);
               }}
               label="In-door laundry"
             />
@@ -187,7 +200,7 @@ export default function SimpleAccordion() {
               control={<Checkbox />}
               checked={acChecked}
               onChange={(event) => {
-                setAcChecked(event.target.value);
+                setAcChecked(event.target.checked);
               }}
               label="Have AC"
             />
@@ -195,7 +208,7 @@ export default function SimpleAccordion() {
               control={<Checkbox />}
               checked={poolChecked}
               onChange={(event) => {
-                setPoolChecked(event.target.value);
+                setPoolChecked(event.target.checked);
               }}
               label="Have Pool"
             />
@@ -203,7 +216,7 @@ export default function SimpleAccordion() {
               control={<Checkbox />}
               checked={gymChecked}
               onChange={(event) => {
-                setGymChecked(event.target.value);
+                setGymChecked(event.target.checked);
               }}
               label="Have Gym"
             />
@@ -224,7 +237,7 @@ export default function SimpleAccordion() {
               control={<Checkbox />}
               checked={petChecked}
               onChange={(event) => {
-                setPetChecked(event.target.value);
+                setPetChecked(event.target.checked);
               }}
               label="Pets-friendly"
             />
@@ -245,7 +258,7 @@ export default function SimpleAccordion() {
               control={<Checkbox />}
               checked={smokingChecked}
               onChange={(event) => {
-                setSmokingChecked(event.target.value);
+                setSmokingChecked(event.target.checked);
               }}
               label="Non-smoking"
             />

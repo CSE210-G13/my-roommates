@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import {
 	Grid,
@@ -11,23 +11,20 @@ import {
 	Checkbox,
 } from '@mui/material/';
 
-import { amenitiesConst, priceMarksConst, distanceMarksConst } from '@/constants/constants';
+import { amenitiesConst, amenitiesMap, priceMarksConst, distanceMarksConst } from '@/constants/constants';
+import { UserInfoContext } from './EditProfile';
 
 const amenityOptions = amenitiesConst;
 
 export default function PropertyPrefForm(props) {
+	const { userInfo, setUserInfo } = useContext(UserInfoContext);
 
-	// TODO: get initial state from firebase
-	const initAmenitiesObj = amenityOptions.reduce((acc, val) => {
-		acc[val] = false;
-		return acc;
-	}, {});
-	const [amenities, setAmenities] = useState(initAmenitiesObj);
-
+	let amenities = userInfo.amenities;
 	const handleAmenitiesChange = (event) => {
-		setAmenities({
-			...amenities,
-			[event.target.name]: event.target.checked,
+		amenities[amenitiesMap[event.target.name]] = event.target.checked;
+		setUserInfo({
+			...userInfo,
+			amenities: amenities,
 		});
 	};
 	
@@ -40,27 +37,39 @@ export default function PropertyPrefForm(props) {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-					<FormLabel>Price Range (Monthly/Person)</FormLabel>
+					<FormLabel>Max Price (Monthly/Person)</FormLabel>
 					<Slider 
-						defaultValue={20} 
+						value={userInfo.maxPropertyPrice} 
 						min={100} 
 						max={4000} 
 						step={100} 
 						valueLabelDisplay="auto" 
 						marks={priceMarksConst} 
 						disabled={!props.editing}
+						onChange={(e) =>
+							setUserInfo({
+								...userInfo,
+								maxPropertyPrice: e.target.value,
+							})
+						}
 					/>
 				</Grid>
                 <Grid item xs={12} sm={6}>
                     <FormLabel>Distance to School (Miles)</FormLabel>
                     <Slider 
-						defaultValue={0} 
+						value={userInfo.maxDistanceToSchool}
 						min={0} 
 						max={50} 
 						step={1} 
 						valueLabelDisplay="auto" 
 						marks={distanceMarksConst} 
 						disabled={!props.editing}
+						onChange={(e) =>
+							setUserInfo({
+								...userInfo,
+								maxDistanceToSchool: e.target.value,
+							})
+						}
 					/>
                 </Grid>
                 <Grid item xs={12}>
@@ -74,9 +83,9 @@ export default function PropertyPrefForm(props) {
 											control={
 												<Checkbox
 													name={amenityString}
-													checked={amenities[amenityString]}
-													onChange={handleAmenitiesChange}
+													checked={userInfo.amenities[amenitiesMap[amenityString]]}
 													disabled={!props.editing}
+													onChange={handleAmenitiesChange}
 												/>
 											}
 											label={amenityString}

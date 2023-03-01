@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -12,23 +12,20 @@ import {
 } from '@mui/material/';
 
 import { lifestyleConst, lifestyleMap } from '@/constants/constants';
+import { UserInfoContext } from './EditProfile';
 
 export default function EditRoommatePrefForm(props) {
 	// TODO: get initial state from firebase, change to use user info and match david code
-	const initLifestyleSelection = lifestyleConst.reduce((acc, val) => {
-		acc[val] = false;
-		return acc;
-	}, {});
+	const { userInfo, setUserInfo } = useContext(UserInfoContext);
 
+	let lifestyle = userInfo.lifestyle;
 	const handleLifestyleChange = (event) => {
-		setLifeStyle({
-			...lifestyle,
-			[event.target.name]: event.target.checked,
+		lifestyle[lifestyleMap[event.target.name]] = event.target.checked;
+		setUserInfo({
+			...userInfo,
+			lifestyle: lifestyle,
 		});
 	};
-
-	const [lifestyle, setLifestyle] = useState(initLifestyleSelection);
-    const [bedtime, setBedtime] = useState('');
 
     return (
         <React.Fragment>
@@ -43,12 +40,12 @@ export default function EditRoommatePrefForm(props) {
                     <TextField
 						id="time"
 						type="time"
-						defaultValue="22:00"
+						value={userInfo.bedtime}
 						inputProps={{
 							step: 1800,
 						}}
 						disabled={!props.editing}
-						onChange={(e) => setBedtime(e.target.value)}
+						onChange={(e) => setUserInfo({ ...userInfo, bedtime: e.target.value })}
 						fullWidth
 					/>
                 </Grid>
@@ -63,7 +60,7 @@ export default function EditRoommatePrefForm(props) {
 											control={
 												<Checkbox
 													name={lifestyleString}
-													checked={lifestyle[lifestyleString]}
+													checked={userInfo.lifestyle[lifestyleMap[lifestyleString]]}
 													onChange={handleLifestyleChange}
 												/>
 											}

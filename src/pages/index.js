@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useAuthUser } from "@/firebase/auth";
+import RoommatesFilter from "../components/roommatesFilter";
 
 export default function Home() {
   const [user, loading] = useAuthUser();
@@ -9,6 +10,7 @@ export default function Home() {
   }
   return (
     <>
+      <RoommatesFilter />
       <h1>{user ? user.displayName : "Need to login"}</h1>
       <Head>
         <title>Create Next App</title>

@@ -22,7 +22,7 @@ export default function RoommatePrefForm() {
 
 	return (
 		<React.Fragment>
-			<Typography variant="h6" gutterBottom>
+			<Typography variant="h6" gutterBottom data-testid="form title">
 				Lifestyle and Habits
 			</Typography>
 			<Grid container spacing={3}>

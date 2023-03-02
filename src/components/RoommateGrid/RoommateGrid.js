@@ -1,18 +1,15 @@
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from '@mui/material/Grid';
 
 import RoommateCard from './RoommateCard.js';
 
 export default function RoommateGrid({ users }) {
-  return (
-    <Grid container columns={{ xs: 1, sm: 2, md: 3 }} spacing={10}>
-      {users
-        .map((x, i) =>
-          <Grid key={"roommate " + i.toString()}
-            display="flex"
-            justifyContent="center"
-            alignItems="center" xs={1}>
-            <RoommateCard user={x} />
-          </Grid>)}
-    </Grid>
-  )
+	return (
+		<Grid container direction="row" spacing={0} sx={{ px: 5 }}>
+			{users.map((x, i) => (
+				<Grid item display="flex" justifyContent="center" alignItems="center" key={i} sm>
+					<RoommateCard user={x} />
+				</Grid>
+			))}
+		</Grid>
+	);
 }

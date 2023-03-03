@@ -34,7 +34,7 @@ export default function RoommateCard({ user }) {
 				</Grid>
 			</CardContent>
 			<CardActions>
-				<Link href="/viewProfile" passHref>
+				<Link href={`/user/${user.uid}`} passHref>
 					<Button>View Profile</Button>
 				</Link>
 			</CardActions>

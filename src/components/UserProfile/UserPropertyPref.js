@@ -1,17 +1,9 @@
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import Typography from '@mui/material/Typography';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 
-import PetsIcon from '@mui/icons-material/Pets';
-import SmokingRoomsIcon from '@mui/icons-material/SmokingRooms';
-import SmokeFreeIcon from '@mui/icons-material/SmokeFree';
-import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
 import MapIcon from '@mui/icons-material/Map';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import SingleBedIcon from '@mui/icons-material/SingleBed';
-import ShowerIcon from '@mui/icons-material/Shower';
 
 import DirectionsTransitIcon from '@mui/icons-material/DirectionsTransit';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
@@ -29,11 +21,11 @@ import { paperProps } from './UserProfile.js';
  */
 export default function UserPropertyPref({ user }) {
 	let amenityIconMap = {
-		ac: ["AC", AcUnitIcon],
+		airConditioner: ["AC", AcUnitIcon],
 		pool: ["a pool", PoolIcon],
 		gym: ["a gym", FitnessCenterIcon],
 		parking: ["parking", LocalParkingIcon],
-		inUnitLaundry: ["in unit laundry", LocalLaundryServiceIcon],
+		laundry: ["in unit laundry", LocalLaundryServiceIcon],
 		transportation: ["to be close to transit", DirectionsTransitIcon]
 	}
 
@@ -47,16 +39,10 @@ export default function UserPropertyPref({ user }) {
 					</Typography>
 				</Grid>
 
-				<PrefIcon icon={MapIcon} string={`Wants to be ${user.propPref.distance[0]} to ${user.propPref.distance[1]} miles away from ${user.college}`} />
-				<PrefIcon icon={AttachMoneyIcon} string={`Has a budget of $${user.propPref.budget[0]} to $${user.propPref.budget[1]} per month`} />
-				<PrefIcon icon={SingleBedIcon} string={`Wants a ${user.propPref.numBedrooms} bedroom property`} />
-				<PrefIcon icon={ShowerIcon} string={`Wants a ${user.propPref.numBathrooms} bathroom property`} />
-				<PropPrefIcon topic="pet friendly" okayWith={user.propPref.petFriendly} goodIcon={PetsIcon} badIcon={DoNotDisturbIcon} />
-				<PropPrefIcon topic="smoke free" okayWith={user.propPref.smokingBanned} goodIcon={SmokeFreeIcon} badIcon={SmokingRoomsIcon} />
+				<PrefIcon icon={MapIcon} string={`Wants to be at maximum ${user.maxDistanceToSchool} miles away from UCSD`} />
+				<PrefIcon icon={AttachMoneyIcon} string={`Has a maximum budget of $${user.maxPropertyPrice} per month`} />
 
-				<Grid xs={2}><Divider /></Grid>
-
-				{Object.entries(user.propPref.amenities)
+				{Object.entries(user.amenities)
 					.filter(([_, wants]) => wants)
 					.map(([name, _]) => amenityIconMap[name])
 					.map(([name, icon]) =>
@@ -66,19 +52,3 @@ export default function UserPropertyPref({ user }) {
 		</Paper>
 	)
 }
-
-/**
- * A wrapper to take a topic, a true or false boolean, and a cooresponding good
- * or bad icon. If the topic is true the goodIcon will be displayed, else the
- * badIcon will be displayed.
- */
-function PropPrefIcon({ topic, okayWith, goodIcon, badIcon }) {
-	let string = `${okayWith ? "Wants " : "Does not want "} a ${topic} property`
-	return (
-		<PrefIcon okayWith={okayWith}
-			string={string}
-			icon={okayWith ? goodIcon : badIcon}
-		/>
-	)
-}
-

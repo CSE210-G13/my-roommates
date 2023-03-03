@@ -20,9 +20,6 @@ export let paperProps = {}
  */
 export default function UserProfile({ user }) {
 
-      // <Grid sm={1}>
-      //   <UserPropertyPref user={user} />
-      // </Grid>
 
       // <Grid sm={2}>
       //   <PropertyCarousel properties={user.interestedProp}
@@ -46,6 +43,9 @@ export default function UserProfile({ user }) {
         <UserHabits user={user} />
       </Grid>
 
+      <Grid sm={1}>
+        <UserPropertyPref user={user} />
+      </Grid>
 
     </Grid>
   )

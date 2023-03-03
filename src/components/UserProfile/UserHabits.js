@@ -26,6 +26,15 @@ import { paperProps } from './UserProfile.js';
  */
 export default function UserHabits({ user }) {
 	// TODO FIND BETTER NO PETS ICON
+	// Convert 24h time to 12h time
+	let [hours, minutes] = user.bedtime.split(':');
+
+	// https://stackoverflow.com/questions/14402922/how-to-change-24hr-time-to-12hr-time-with-javascript#14403158
+	// handles 0 case very cleanly
+	let amPmHours = ((parseInt(hours) + 11) % 12) + 1;
+	let amPm = hours < 12 ? "AM" : "PM";
+	let amPmStr = `${amPmHours}:${minutes} ${amPm}`
+	
 	return (
 		<Paper variant="outlined" sx={paperProps}>
 			<Grid container columns={{ xs: 2, md: 3 }} spacing={5}>
@@ -40,7 +49,7 @@ export default function UserHabits({ user }) {
 					goodIcon={StrollerIcon} badIcon={NoStrollerIcon} />
 				<HabitPrefIcon topic="pets" user={user}
 					goodIcon={PetsIcon} badIcon={DoNotDisturbIcon} />
-				<HabitPrefIcon topic="smoking" user={user}
+				<HabitPrefIcon topic="smoke" user={user}
 					goodIcon={SmokingRoomsIcon} badIcon={SmokeFreeIcon} />
 				<HabitPrefIcon topic="parties" user={user}
 					goodIcon={EventAvailableIcon} badIcon={EventBusyIcon} />
@@ -51,8 +60,7 @@ export default function UserHabits({ user }) {
 
 				<Grid xs={2} sm={3} display="flex" justifyContent="center">
 					<List>
-						<TextListItem text={`${user.firstName}'s hobbies: ${user.lifestyle.hobbies.map((x) => x.toLowerCase()).join(", ")}`} />
-						<TextListItem text={`${user.firstName} sleeps at ${user.lifestyle.bedtime}`} />
+						<TextListItem text={`${user.firstName} sleeps at ${amPmStr}`} />
 					</List>
 				</Grid>
 
@@ -67,7 +75,12 @@ export default function UserHabits({ user }) {
  * will be displayed, else the badIcon will be displayed.
  */
 function HabitPrefIcon({ topic, user, goodIcon, badIcon }) {
-	let okayWith = user.lifestyle.okayWith[topic]
+	let okayWith = user.lifestyle[topic]
+	// bad hack: change smoke to smoking in format string
+	// to resolve awkward backend naming
+	if (topic == "smoke") {
+		topic = "smoking";
+	}
 	let string = `${okayWith ? "Okay " : "Not okay "} with ${topic}`
 	return (
 		<PrefIcon okayWith={okayWith} string={string}

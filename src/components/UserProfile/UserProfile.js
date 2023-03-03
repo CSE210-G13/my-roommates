@@ -19,18 +19,7 @@ export let paperProps = {}
  * both this user and the logged in user like.
  */
 export default function UserProfile({ user }) {
-
-
-      // <Grid sm={2}>
-      //   <PropertyCarousel properties={user.interestedProp}
-      //     title={`Properties ${user.firstName} is interested in...`} />
-      // </Grid>
-
-      // <Grid sm={2}>
-      //   <PropertyCarousel properties={user.interestedProp}
-      //     title={`Properties you and ${user.firstName} are interested in...`} />
-      // </Grid>
-
+  // TODO: When property saving has proper user_ids, implement property cards
   return (
     <Grid container direction={{ xs: "column", sm: "row" }}
       columns={2} spacing={10} margin={{ xs: 1, sm: 2 }}>
@@ -46,6 +35,17 @@ export default function UserProfile({ user }) {
       <Grid sm={1}>
         <UserPropertyPref user={user} />
       </Grid>
+
+      <Grid sm={2}>
+        <PropertyCarousel properties={["prop 1", "prop 2"]}
+          title={`Properties ${user.firstName} is interested in...`} />
+      </Grid>
+
+      <Grid sm={2}>
+        <PropertyCarousel properties={["prop 1", "prop 2"]}
+          title={`Properties you and ${user.firstName} are interested in...`} />
+      </Grid>
+
 
     </Grid>
   )

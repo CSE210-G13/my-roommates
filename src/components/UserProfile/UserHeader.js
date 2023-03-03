@@ -28,7 +28,7 @@ export default function UserHeader({ user }) {
 				columns={4} spacing={4}>
 
 				<Grid md={1} display="flex" alignItems="center" justifyContent="center">
-					<Avatar sx={{ fontSize: "8vh", minHeight: "15vh", minWidth: "15vh" }}>
+					<Avatar sx={{ fontSize: "5em", minHeight: "2em", minWidth: "2em" }}>
 						{user.firstName[0]}
 					</Avatar>
 				</Grid>

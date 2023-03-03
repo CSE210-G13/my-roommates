@@ -45,7 +45,7 @@ export default function UserHeader({ user }) {
 							`Languages: ${user.languages.join(", ")}`].join(" · ")}
 						</Typography>
 
-						<Typography align="center">{user.bio}</Typography>
+						{user.bio ? <Typography align="center">{user.bio}</Typography> : null }
 					</Stack>
 				</Grid>
 
@@ -77,8 +77,14 @@ function ContactInfo({ user }) {
 	// leaking private info!
 
 	// Switch these two lines to show public or all contact info
-	let publicContactInfo = Object.entries(user.contactInfo).filter(([_, val]) => val.pub && val.data !== "");
-	// let publicContactInfo = Object.entries(user.contactInfo).filter(([_, val]) => val.data !== "");
+	let publicContactInfo = [["email", user.email],
+	["phone", user.phoneNumber],
+	["discord", user.discord],
+	["instagram", user.instagram],
+	["linkedin", user.linkedin],
+	["facebook", user.facebook]]
+		.filter(([_, [data, pub]]) => data)  // `&& pub` to only show public data
+		.map(([key, [data, _]]) => [key, data]);
 
 	let iconMap = {
 		email: EmailIcon,
@@ -95,7 +101,7 @@ function ContactInfo({ user }) {
 			{publicContactInfo.map(([key, value]) =>
 				<Stack alignItems="center" spacing={1} key={key}>
 					{React.createElement(iconMap[key], { fontSize: "large" })}
-					<Typography>{value.data}</Typography>
+					<Typography>{value}</Typography>
 				</Stack>
 			)}
 

@@ -2,6 +2,16 @@ import { db } from './firebaseConfig';
 import { collection, addDoc, getDocs, setDoc, where, query, doc } from 'firebase/firestore';
 import property_json from './data/propertyData';
 
+export async function getAllUsers() {
+	const querySnapshot = await getDocs(collection(db, 'users'));
+	let users = [];
+	querySnapshot.forEach((doc) => {
+		users.push(doc.data());
+	});
+	console.log(users);
+	return users;
+}
+
 // ref: https://firebase.google.com/docs/firestore/query-data/get-data
 export async function getUser(userId) {
 	const ref = query(collection(db, 'users'), where('uid', '==', userId)).withConverter(userConverter);

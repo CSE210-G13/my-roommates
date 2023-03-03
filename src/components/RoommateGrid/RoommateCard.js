@@ -29,14 +29,6 @@ export default function RoommateCard({ user }) {
 							<Typography variant="body2" color="text.secondary" align="center">
 								{[user.gender, user.schoolYear, user.college, user.major].join(' · ')}
 							</Typography>
-							<Typography variant="body2" align="center" gutterBottom>
-								Hobbies: {user.lifestyle.hobbies.join(', ')}
-							</Typography>
-
-							<Typography variant="body2" align="center">
-								Looking for a {user.propPref.numBedrooms} bedroom, {user.propPref.numBathrooms} bathroom
-								property
-							</Typography>
 						</Stack>
 					</Grid>
 				</Grid>

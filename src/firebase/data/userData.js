@@ -14,7 +14,7 @@ const user_json = [
     numBedroom: 1,
     numBathroom: 1,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -54,7 +54,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: true,
@@ -94,7 +94,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 1,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: false,
@@ -134,7 +134,7 @@ const user_json = [
     numBedroom: 1,
     numBathroom: 1,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -175,7 +175,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: true,
@@ -215,7 +215,7 @@ const user_json = [
     numBedroom: 1,
     numBathroom: 1,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -255,7 +255,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: false,
@@ -295,7 +295,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 1,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -336,7 +336,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -376,7 +376,7 @@ const user_json = [
     numBedroom: 1,
     numBathroom: 1,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: true,
@@ -416,7 +416,7 @@ const user_json = [
     numBedroom: 1,
     numBathroom: 1,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -456,7 +456,7 @@ const user_json = [
     numBedroom: 3,
     numBathroom: 3,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: false,
@@ -497,7 +497,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -537,7 +537,7 @@ const user_json = [
     numBedroom: 3,
     numBathroom: 3,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: false,
@@ -577,7 +577,7 @@ const user_json = [
     numBedroom: 1,
     numBathroom: 1,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: true,
@@ -618,7 +618,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -658,7 +658,7 @@ const user_json = [
     numBedroom: 3,
     numBathroom: 3,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: true,
@@ -698,7 +698,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: false,
@@ -738,7 +738,7 @@ const user_json = [
     numBedroom: 3,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: true,
@@ -778,7 +778,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: false,
@@ -818,7 +818,7 @@ const user_json = [
     numBedroom: 3,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -858,7 +858,7 @@ const user_json = [
     numBedroom: 3,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: false,
@@ -898,7 +898,7 @@ const user_json = [
     numBedroom: 3,
     numBathroom: 3,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -938,7 +938,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -978,7 +978,7 @@ const user_json = [
     numBedroom: 3,
     numBathroom: 3,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: true,
@@ -1018,7 +1018,7 @@ const user_json = [
     numBedroom: 3,
     numBathroom: 3,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: true,
@@ -1058,7 +1058,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -1098,7 +1098,7 @@ const user_json = [
     numBedroom: 3,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: false,
@@ -1138,7 +1138,7 @@ const user_json = [
     numBedroom: 4,
     numBathroom: 3,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -1178,7 +1178,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: true,
@@ -1218,7 +1218,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,
@@ -1258,7 +1258,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: false,
@@ -1298,7 +1298,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: false,
       parties: false,
@@ -1338,7 +1338,7 @@ const user_json = [
     numBedroom: 2,
     numBathroom: 2,
     lifestyle: {
-      smoke: false,
+      smoking: false,
       children: false,
       pets: true,
       parties: false,

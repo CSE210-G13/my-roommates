@@ -20,7 +20,7 @@ import { getAuth, signOut, signInWithPopup, GoogleAuthProvider, getAdditionalUse
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const pages = [
-	{ title: 'Property', link: '/property' },
+	{ title: 'Properties', link: '/' },
 	{ title: 'Roommates', link: '/roommates' },
 ];
 
@@ -37,7 +37,6 @@ export default function ResponsiveAppBar() {
 
 	const handleOpenUserMenu = (event) => {
 		setAnchorElUser(event.currentTarget);
-		
 	};
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
@@ -129,7 +128,7 @@ export default function ResponsiveAppBar() {
 						variant="h5"
 						noWrap
 						component="a"
-						href=""
+						href="/"
 						sx={{
 							mr: 2,
 							display: { xs: 'flex', md: 'none' },
@@ -148,7 +147,7 @@ export default function ResponsiveAppBar() {
 							<Button
 								key={page.title}
 								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: 'white', display: 'block' }}>
+								sx={{ my: 2, color: 'white', display: 'block', fontSize: 16 }}>
 								<Link href={page.link}>{page.title}</Link>
 							</Button>
 						))}
@@ -202,7 +201,12 @@ export default function ResponsiveAppBar() {
 								open={Boolean(anchorElUser)}
 								onClose={handleCloseUserMenu}>
 								<MenuItem key="profile" onClick={handleCloseUserMenu}>
-									<Link href='/profile'>Profile</Link>
+									<Link href="/profile">Profile</Link>
+								</MenuItem>
+								<MenuItem key="friends" onClick={handleCloseUserMenu}>
+									<Typography textAlign="center">
+										<Link href="friends">Friends</Link>
+									</Typography>
 								</MenuItem>
 								<MenuItem key="logout" onClick={handleCloseUserMenu}>
 									<Typography onClick={signout} textAlign="center">

@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import PropertyFilter from '@/components/PropertyFilter/PropertyFilter';
 import PropertyCard from '@/components/PropertyCard';
 import { getAllProperties } from '@/firebase/propertyDb';
 
-export default function Home(props) {
+export default function ComplexGrid(props) {
 	return (
 		<div style={{ display: 'flex', padding: '10px 0px 0px 20px' }}>
 			<PropertyFilter />

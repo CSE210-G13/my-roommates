@@ -1,5 +1,10 @@
 import { db } from "./firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collegesConst,
+  lifestyleConst,
+  schoolYearsConst,
+} from "@/constants/constants";
 
 export async function propertyFiltering(preference) {
   const properties = collection(db, "properties");
@@ -139,6 +144,118 @@ export async function propertyFiltering(preference) {
     });
     count += 1;
   }
+  var priorityList = [];
+  while (count > 0) {
+    for (var m in ids) {
+      if (ids[m] == count) {
+        priorityList.push(m);
+      }
+    }
+    count -= 1;
+  }
+  return priorityList;
+}
+
+export async function roommatesFiltering(preference) {
+  const dislikes = lifestyleConst;
+  const colleges = collegesConst;
+  const years = schoolYearsConst;
+  const roommates = collection(db, "user_mock_data");
+  var count = 0;
+  // key: id; value: number of satisfied requirements
+  var ids = {};
+
+  if (preference["femaleChecked"] == true) {
+    var q = query(roommates, where("gender", "==", "Female"));
+    var querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      ids[doc.id] = (ids[doc.id] || 0) + 1;
+    });
+    count += 1;
+  }
+
+  if (preference["maleChecked"] == true) {
+    var q = query(roommates, where("gender", "==", "Male"));
+    var querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      ids[doc.id] = (ids[doc.id] || 0) + 1;
+    });
+    count += 1;
+  }
+
+  if (preference["bedtimeFrom"]) {
+    var q = query(roommates, where("bedtime", ">=", preference["bedtimeFrom"]));
+    var querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      ids[doc.id] = (ids[doc.id] || 0) + 1;
+    });
+    count += 1;
+  }
+
+  if (preference["bedtimeTo"]) {
+    var q = query(roommates, where("bedtime", "<=", preference["bedtimeTo"]));
+    var querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      ids[doc.id] = (ids[doc.id] || 0) + 1;
+    });
+    count += 1;
+  }
+  if (preference["languages"].length > 0) {
+    var q = query(
+      roommates,
+      where("languages", "array-contains-any", preference["languages"])
+    );
+    var querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      ids[doc.id] = (ids[doc.id] || 0) + 1;
+    });
+    count += 1;
+  }
+
+  if (preference["majors"].length > 0) {
+    var q = query(roommates, where("major", "in", preference["majors"]));
+    var querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      ids[doc.id] = (ids[doc.id] || 0) + 1;
+    });
+    count += 1;
+  }
+  for (const d of dislikes) {
+    if (preference["dislikes"][d] == true) {
+      var q = query(
+        roommates,
+        where("lifestyle." + d.toLowerCase(), "==", true)
+      );
+      var querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        ids[doc.id] = (ids[doc.id] || 0) + 1;
+      });
+      count += 1;
+    }
+  }
+
+  for (const c of colleges) {
+    if (preference["colleges"][c] == true) {
+      var q = query(roommates, where("college", "==", c));
+      var querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        ids[doc.id] = (ids[doc.id] || 0) + 1;
+      });
+      count += 1;
+    }
+  }
+
+  for (const y of years) {
+    if (preference["years"][y] == true) {
+      var q = query(roommates, where("schoolYear", "==", y));
+      var querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        ids[doc.id] = (ids[doc.id] || 0) + 1;
+      });
+      count += 1;
+    }
+  }
+
   var priorityList = [];
   while (count > 0) {
     for (var m in ids) {

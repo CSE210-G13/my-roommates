@@ -49,7 +49,7 @@ export default function UserHabits({ user }) {
 					goodIcon={StrollerIcon} badIcon={NoStrollerIcon} />
 				<HabitPrefIcon topic="pets" user={user}
 					goodIcon={PetsIcon} badIcon={DoNotDisturbIcon} />
-				<HabitPrefIcon topic="smoke" user={user}
+				<HabitPrefIcon topic="smoking" user={user}
 					goodIcon={SmokingRoomsIcon} badIcon={SmokeFreeIcon} />
 				<HabitPrefIcon topic="parties" user={user}
 					goodIcon={EventAvailableIcon} badIcon={EventBusyIcon} />
@@ -76,11 +76,6 @@ export default function UserHabits({ user }) {
  */
 function HabitPrefIcon({ topic, user, goodIcon, badIcon }) {
 	let okayWith = user.lifestyle[topic]
-	// bad hack: change smoke to smoking in format string
-	// to resolve awkward backend naming
-	if (topic == "smoke") {
-		topic = "smoking";
-	}
 	let string = `${okayWith ? "Okay " : "Not okay "} with ${topic}`
 	return (
 		<PrefIcon okayWith={okayWith} string={string}

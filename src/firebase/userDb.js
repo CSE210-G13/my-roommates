@@ -79,7 +79,6 @@ export async function postMockProperty() {
 }
 
 export async function postMockUser() {
-  console.log("inside mock user");
   const userData = user_json;
   for (const key in userData) {
     try {

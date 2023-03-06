@@ -97,7 +97,11 @@ function ContactInfo({ user }) {
 	};
 
 	return (
-		<Grid container direction={{ xs: "column", sm: "row" }} columns={{ xs: 1, sm: 2, md: 3, lg: 6 }}>
+		<Grid container direction={{ xs: "column", sm: "row" }}
+		columns={{ xs: 1,
+							 sm: Math.min(2, publicContactInfo.length),
+							 md: Math.min(3, publicContactInfo.length),
+							 lg: Math.min(6, publicContactInfo.length) }}>
 
 			{publicContactInfo.map(([key, value]) =>
 				<Grid xs={1} display="flex" justifyContent="center" alignItems="center" key={key}>

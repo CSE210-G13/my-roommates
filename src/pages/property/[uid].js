@@ -5,7 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { CardActionArea, Divider, Container } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
@@ -24,15 +24,16 @@ import PoolIcon from '@mui/icons-material/Pool';
 import LocalLaundryServiceIcon from '@mui/icons-material/LocalLaundryService';
 import LocalParkingIcon from '@mui/icons-material/LocalParking';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
+import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import BadgeIcon from '@mui/icons-material/Badge';
 
 import { getProperty } from '@/firebase/propertyDb';
 
 function PrefIcon({ icon, string }) {
 	return (
-		<Stack spacing={1} padding={2} alignItems="center">
-			{React.createElement(icon, { fontSize: 'large' })}
-			<Typography align="center">{string}</Typography>
+		<Stack direction="row" spacing={1} padding={2} alignItems="center">
+			{icon}
+			<Typography fontSize="1.15rem">{string}</Typography>
 		</Stack>
 	);
 }
@@ -61,29 +62,20 @@ export default function ComplexGrid({ property }) {
 	let groupsOf3 = groupArr(x, 4);
 
 	return (
-		<Card sx={{ m: '80px', width: 'auto', backgroundColor: '#F8F8F2' }} onClick={() => callme()}>
-			<Grid
-				container
-				direction="row"
-				justifyContent="flex-start"
-				alignItems="center"
-				spacing={4}
-				sx={{ paddingTop: '40px' }}>
-				<Grid item xs={9}>
-					<Typography align="right" variant="h4" component="div">
-						{property.name}
-					</Typography>
-				</Grid>
-				<Grid align="center" item xs={3}>
-					<IconButton aria-label="add to favorites">
-						<FavoriteIcon fontSize="large" />
-					</IconButton>
-				</Grid>
-			</Grid>
+		<Container sx={{ mt: '80px', width: 'auto', backgroundColor: '#F8F8F2' }} onClick={() => callme()}>
+			<Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
+				<p></p>
+				<Typography variant="h4">{property.name}</Typography>
+				<IconButton aria-label="add to favorites">
+					<FavoriteIcon fontSize="large" />
+				</IconButton>
+			</Stack>
+
+			<Divider />
 
 			<Grid container direction="row" justifyContent="space-around" alignItems="center" spacing={4}>
-				<Grid>
-					<Carousel navButtonsAlwaysVisible sx={{ width: '400px', margin: '50px' }}>
+				<Grid item xs={12} sm={6} md={5} xl={4}>
+					<Carousel navButtonsAlwaysVisible sx={{ maxWidth: '600px', margin: '50px' }}>
 						{x &&
 							x.map((obj, i) => {
 								return (
@@ -98,31 +90,81 @@ export default function ComplexGrid({ property }) {
 							})}
 					</Carousel>
 				</Grid>
-				<Grid>
-					<CardContent>
-						<PrefIcon icon={MapIcon} string={'9500 Gilman Dr, La Jolla, CA, 92037'} />
-						<PrefIcon icon={AttachMoneyIcon} string={`2000 per month`} />
-						<PrefIcon icon={SingleBedIcon} string={`3 Bedroom Property`} />
-						<PrefIcon icon={ShowerIcon} string={`2 Attached Bathroom`} />
-						<PrefIcon icon={PetsIcon} string={`Pet Friendly`} />
-					</CardContent>
-				</Grid>
-				<Grid>
-					<CardContent>
-						<PrefIcon icon={FitnessCenterIcon} string={` Gym/Fitness Center`} />
-						<PrefIcon icon={PoolIcon} string={`Swimming Pool`} />
-						<PrefIcon icon={LocalLaundryServiceIcon} string={` Indoor Laundry Service`} />
-						<PrefIcon icon={LocalParkingIcon} string={`Visitors Parking`} />
-						<PrefIcon icon={AcUnitIcon} string={`Air Conditioner`} />
-					</CardContent>
-				</Grid>
-				<Grid>
-					<CardContent>
-						<PrefIcon icon={SmokeFreeIcon} string={`Smoke free property`} />
-						<PrefIcon icon={BadgeIcon} string={`Harry Styles`} />
-						<PrefIcon icon={EmailIcon} string={`abc@gmail.com`} />
-						<PrefIcon icon={SmartphoneIcon} string={`+ (823) 123 1231`} />
-					</CardContent>
+
+				<Grid item xs={12} sm={6} md={7} xl={8}>
+					<Typography variant="h5" mt={3}>
+						Information
+					</Typography>
+					<Grid container direction="row" justifyContent="flex-start" alignItems="flex-start" spacing={1}>
+						<Grid item xs={12} md={4} lg={4}>
+							<PrefIcon icon={<AttachMoneyIcon sx={{ fontSize: 40 }} />} string={`${property.price} / month`} />
+						</Grid>
+						<Grid item xs={12} md={4} xl={4}>
+							<PrefIcon
+								icon={<SingleBedIcon sx={{ fontSize: 40 }} />}
+								string={`${property.numOfBedroom} Bedroom(s)`}
+							/>
+						</Grid>
+						<Grid item xs={12} md={4} xl={4}>
+							<PrefIcon
+								icon={<ShowerIcon sx={{ fontSize: 40 }} />}
+								string={`${property.numOfBathroom} Bathroom(s)`}
+							/>
+						</Grid>
+						<Grid item xs={12} md={4} xl={4}>
+							<PrefIcon icon={<MapIcon sx={{ fontSize: 40 }} />} string={property.address} />
+						</Grid>
+						<Grid item xs={12} md={4} xl={2}>
+							<PrefIcon icon={<SmartphoneIcon sx={{ fontSize: 40 }} />} string={property.phoneNumber} />
+						</Grid>
+					</Grid>
+
+					<Divider />
+					<Typography variant="h5" mt={3}>
+						Amenties
+					</Typography>
+					<Grid container direction="row" justifyContent="flex-start" spacing={1}>
+						{property.allowPets ? (
+							<Grid item xs={12} md={4} xl={2}>
+								<PrefIcon icon={<PetsIcon sx={{ fontSize: 40 }} />} string={'Pets Friendly'} />
+							</Grid>
+						) : null}
+						{property.amenities.allowSmoking ? (
+							<Grid item xs={12} md={4} xl={2}>
+								<PrefIcon icon={<SmokeFreeIcon sx={{ fontSize: 40 }} />} string={'Smoke Free'} />
+							</Grid>
+						) : null}
+						{property.amenities.airConditioner ? (
+							<Grid item xs={12} md={4} xl={2}>
+								<PrefIcon icon={<AcUnitIcon sx={{ fontSize: 40 }} />} string={'Air Conditioner'} />
+							</Grid>
+						) : null}
+						{property.amenities.gym ? (
+							<Grid item xs={12} md={4} xl={2}>
+								<PrefIcon icon={<FitnessCenterIcon sx={{ fontSize: 40 }} />} string={'Fitness Center'} />
+							</Grid>
+						) : null}
+						{property.amenities.laundry ? (
+							<Grid item xs={12} md={4} xl={2}>
+								<PrefIcon icon={<LocalLaundryServiceIcon sx={{ fontSize: 40 }} />} string={'Indoor Laundry'} />
+							</Grid>
+						) : null}
+						{property.amenities.parking ? (
+							<Grid item xs={12} md={4} xl={2}>
+								<PrefIcon icon={<LocalParkingIcon sx={{ fontSize: 40 }} />} string={'Parking'} />
+							</Grid>
+						) : null}
+						{property.amenities.pool ? (
+							<Grid item xs={12} md={4} xl={2}>
+								<PrefIcon icon={<PoolIcon sx={{ fontSize: 40 }} />} string={'Swimming Pool'} />
+							</Grid>
+						) : null}
+						{property.amenities.transportation ? (
+							<Grid item xs={12} md={4} xl={2}>
+								<PrefIcon icon={<DirectionsBusIcon sx={{ fontSize: 40 }} />} string={'Public Transportation'} />
+							</Grid>
+						) : null}
+					</Grid>
 				</Grid>
 			</Grid>
 
@@ -162,7 +204,7 @@ export default function ComplexGrid({ property }) {
 					))}
 				</Carousel>
 			</Stack>
-		</Card>
+		</Container>
 	);
 }
 

@@ -176,7 +176,7 @@ export default function EditPersonalInformationForm(props) {
                                 fullWidth
                                 rows={4}
                                 value={userInfo.bio}
-                                placeholder="Tell everyone a little about yourself"
+                                placeholder="What are your hobbies, interests, ..."
                                 inputProps={{ maxLength: 150 }}
                                 disabled={!props.editing}
                                 onChange={(e) => {setUserInfo({...userInfo, bio: e.target.value});}}

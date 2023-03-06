@@ -15,11 +15,9 @@ export let paperProps = {}
 /**
  * A component that displays general user information, their preferences in
  * roommates and properties, and properties they like.
- * TODO: When logged in, there will be another component that shows properties
- * both this user and the logged in user like.
  */
 export default function UserProfile({ user, likedProperties }) {
-  // TODO: When property saving has proper user_ids, implement property cards
+  // TODO: Implement property cards and get property data from backend
   // Currently displays property ID out of laziness
   let likedCarousel = null;
 
@@ -31,6 +29,8 @@ export default function UserProfile({ user, likedProperties }) {
   }
 
   // TODO: union logged in user liked properties with this user's liked properties
+  // Deal with getting current user being sync code and getting their property likes as
+  // async code
   // <Grid sm={2}>
   //   <PropertyCarousel properties={["prop 1", "prop 2"]}
   //     title={`Properties you and ${user.firstName} are interested in...`} />

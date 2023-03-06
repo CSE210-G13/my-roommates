@@ -39,7 +39,7 @@ export default function UserPropertyPref({ user }) {
 					</Typography>
 				</Grid>
 
-				<PrefIcon icon={MapIcon} string={`Wants to be at maximum ${user.maxDistanceToSchool} miles away from UCSD`} />
+				<PrefIcon icon={MapIcon} string={`Wants to be at maximum ${user.maxDistanceToSchool} mile${user.maxDistanceToSchool > 1 ? "s" : ""} away from UCSD`} />
 				<PrefIcon icon={AttachMoneyIcon} string={`Has a maximum budget of $${user.maxPropertyPrice} per month`} />
 
 				{Object.entries(user.amenities)

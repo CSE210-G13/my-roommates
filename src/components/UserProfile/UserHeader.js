@@ -101,7 +101,7 @@ function ContactInfo({ user }) {
 
 			{publicContactInfo.map(([key, value]) =>
 				<Grid xs={1} display="flex" justifyContent="center" alignItems="center" key={key}>
-					<Link rel="noopener noreferrer" target="_blank" href={handleToUrl(key, value)} passHref>
+					<Link rel="noopener noreferrer" target="_blank" href={handleToUrl(key, value)}>
 						<Stack alignItems="center" spacing={1}>
 							{React.createElement(iconMap[key], { fontSize: "large" })}
 							<Typography>{value}</Typography>

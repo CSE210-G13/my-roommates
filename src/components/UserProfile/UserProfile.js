@@ -18,8 +18,24 @@ export let paperProps = {}
  * TODO: When logged in, there will be another component that shows properties
  * both this user and the logged in user like.
  */
-export default function UserProfile({ user }) {
+export default function UserProfile({ user, likedProperties }) {
   // TODO: When property saving has proper user_ids, implement property cards
+  // Currently displays property ID out of laziness
+  let likedCarousel = null;
+
+  if (likedProperties && likedProperties.length > 0) {
+     likedCarousel = <Grid sm={2}>
+        <PropertyCarousel properties={likedProperties}
+          title={`Properties ${user.firstName} is interested in...`} />
+      </Grid>;
+  }
+
+  // TODO: union logged in user liked properties with this user's liked properties
+  // <Grid sm={2}>
+  //   <PropertyCarousel properties={["prop 1", "prop 2"]}
+  //     title={`Properties you and ${user.firstName} are interested in...`} />
+  // </Grid>
+
   return (
     <Grid container direction={{ xs: "column", sm: "row" }}
       columns={2} spacing={10} margin={{ xs: 1, sm: 2 }}>
@@ -36,16 +52,7 @@ export default function UserProfile({ user }) {
         <UserPropertyPref user={user} />
       </Grid>
 
-      <Grid sm={2}>
-        <PropertyCarousel properties={["prop 1", "prop 2"]}
-          title={`Properties ${user.firstName} is interested in...`} />
-      </Grid>
-
-      <Grid sm={2}>
-        <PropertyCarousel properties={["prop 1", "prop 2"]}
-          title={`Properties you and ${user.firstName} are interested in...`} />
-      </Grid>
-
+      {likedCarousel}
 
     </Grid>
   )

@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import Stack from "@mui/material/Stack";
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 
 import EmailIcon from '@mui/icons-material/Email';
 import SmartphoneIcon from '@mui/icons-material/Smartphone';
@@ -100,10 +101,12 @@ function ContactInfo({ user }) {
 
 			{publicContactInfo.map(([key, value]) =>
 				<Grid xs={1} display="flex" justifyContent="center" alignItems="center">
-					<Stack alignItems="center" spacing={1} key={key}>
-						{React.createElement(iconMap[key], { fontSize: "large" })}
-						<Typography>{value}</Typography>
-					</Stack>
+					<Link rel="noopener noreferrer" target="_blank" href={handleToUrl(key, value)} passHref>
+						<Stack alignItems="center" spacing={1} key={key}>
+							{React.createElement(iconMap[key], { fontSize: "large" })}
+							<Typography>{value}</Typography>
+						</Stack>
+					</Link>
 				</Grid>
 			)}
 
@@ -111,4 +114,15 @@ function ContactInfo({ user }) {
 	)
 }
 
+function handleToUrl(type, handle) {
+	switch (type) {
+		case "email": return `mailto:${handle}`
+		case "phone": return `tel:${handle}`
+		case "discord": return `https://www.discord.com`
+		case "instagram": return `https://www.instagram.com/${handle}`
+		case "linkedin": return `https://www.linkedin.com/in/${handle}`
+		case "facebook": return `https://www.facebook.com`
+		default: return ""
+	}
+}
 

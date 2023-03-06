@@ -11,6 +11,8 @@ import PoolIcon from '@mui/icons-material/Pool';
 import LocalLaundryServiceIcon from '@mui/icons-material/LocalLaundryService';
 import LocalParkingIcon from '@mui/icons-material/LocalParking';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
+import SingleBedIcon from '@mui/icons-material/SingleBed';
+import ShowerIcon from '@mui/icons-material/Shower';
 
 import PrefIcon from './PrefIcon.js';
 import { paperProps } from './UserProfile.js';
@@ -41,6 +43,8 @@ export default function UserPropertyPref({ user }) {
 
 				<PrefIcon icon={MapIcon} string={`Wants to be at maximum ${user.maxDistanceToSchool} mile${user.maxDistanceToSchool > 1 ? "s" : ""} away from UCSD`} />
 				<PrefIcon icon={AttachMoneyIcon} string={`Has a maximum budget of $${user.maxPropertyPrice} per month`} />
+				<PrefIcon icon={SingleBedIcon} string={`Wants a ${user.numBedrooms} bedroom property`} />
+				<PrefIcon icon={ShowerIcon} string={`Wants a ${user.numBathrooms} bathroom property`} />
 
 				{Object.entries(user.amenities)
 					.filter(([_, wants]) => wants)

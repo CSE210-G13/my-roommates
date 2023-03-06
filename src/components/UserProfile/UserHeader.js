@@ -121,7 +121,7 @@ function handleToUrl(type, handle) {
 		case "discord": return `https://www.discord.com`
 		case "instagram": return `https://www.instagram.com/${handle}`
 		case "linkedin": return `https://www.linkedin.com/in/${handle}`
-		case "facebook": return `https://www.facebook.com`
+		case "facebook": return `https://www.facebook.com/${handle}`
 		default: return ""
 	}
 }

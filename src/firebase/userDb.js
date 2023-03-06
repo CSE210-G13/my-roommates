@@ -12,7 +12,7 @@ import property_json from "./data/propertyData";
 import user_json from "./data/userData";
 
 export async function getAllUsers() {
-  const allUsers = "user_mock_data";
+  const allUsers = "users";
   const querySnapshot = await getDocs(collection(db, allUsers));
   let users = [];
   querySnapshot.forEach((doc) => {

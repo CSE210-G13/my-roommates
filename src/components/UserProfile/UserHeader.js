@@ -100,9 +100,9 @@ function ContactInfo({ user }) {
 		<Grid container direction={{ xs: "column", sm: "row" }} columns={{ xs: 1, sm: 2, md: 3, lg: 6 }}>
 
 			{publicContactInfo.map(([key, value]) =>
-				<Grid xs={1} display="flex" justifyContent="center" alignItems="center">
+				<Grid xs={1} display="flex" justifyContent="center" alignItems="center" key={key}>
 					<Link rel="noopener noreferrer" target="_blank" href={handleToUrl(key, value)} passHref>
-						<Stack alignItems="center" spacing={1} key={key}>
+						<Stack alignItems="center" spacing={1}>
 							{React.createElement(iconMap[key], { fontSize: "large" })}
 							<Typography>{value}</Typography>
 						</Stack>

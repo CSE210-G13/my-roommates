@@ -11,6 +11,16 @@ import {
 import property_json from "./data/propertyData";
 import user_json from "./data/userData";
 
+export async function getAllUsers() {
+	const allUsers = "user_mock_data";
+	const querySnapshot = await getDocs(collection(db, allUsers));
+	let users = [];
+	querySnapshot.forEach((doc) => {
+		users.push(doc.data());
+	});
+	return users;
+}
+
 // ref: https://firebase.google.com/docs/firestore/query-data/get-data
 export async function getUser(userId) {
   const ref = query(

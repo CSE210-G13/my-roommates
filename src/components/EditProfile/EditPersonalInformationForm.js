@@ -88,9 +88,9 @@ export default function EditPersonalInformationForm(props) {
                                         setUserInfo({ ...userInfo, gender: e.target.value })
                                     }}
                                 >
-                                    <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                    <FormControlLabel value="female" control={<Radio />} label="Female" />
-                                    <FormControlLabel value="other" control={<Radio />} label="Other" />
+                                    <FormControlLabel value="Male" control={<Radio />} label="Male" />
+                                    <FormControlLabel value="Female" control={<Radio />} label="Female" />
+                                    <FormControlLabel value="Other" control={<Radio />} label="Other" />
                                 </RadioGroup>
                             </FormControl>
                         </Grid>
@@ -176,7 +176,7 @@ export default function EditPersonalInformationForm(props) {
                                 fullWidth
                                 rows={4}
                                 value={userInfo.bio}
-                                placeholder="Tell everyone a little about yourself"
+                                placeholder="What are your hobbies, interests, ..."
                                 inputProps={{ maxLength: 150 }}
                                 disabled={!props.editing}
                                 onChange={(e) => {setUserInfo({...userInfo, bio: e.target.value});}}

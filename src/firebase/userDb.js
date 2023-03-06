@@ -11,9 +11,8 @@ import {
 import property_json from "./data/propertyData";
 import user_json from "./data/userData";
 
-const allUsers = "user_mock_data";
-
 export async function getAllUsers() {
+	const allUsers = "user_mock_data";
 	const querySnapshot = await getDocs(collection(db, allUsers));
 	let users = [];
 	querySnapshot.forEach((doc) => {

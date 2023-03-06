@@ -27,7 +27,12 @@ export default function RoommateCard({ user }) {
 							</Typography>
 
 							<Typography variant="body2" color="text.secondary" align="center">
-								{[user.gender, user.schoolYear, user.college, user.major].join(' · ')}
+								{[user.gender, user.schoolYear, user.college, user.major].filter((x) => x !== '').join(' · ')}
+							</Typography>
+
+							<Typography variant="body2" align="center">
+								Looking for a {user.numBedrooms} bedroom, {user.numBathrooms} bathroom
+								property
 							</Typography>
 						</Stack>
 					</Grid>

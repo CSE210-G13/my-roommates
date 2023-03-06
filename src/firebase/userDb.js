@@ -2,13 +2,14 @@ import { db } from './firebaseConfig';
 import { collection, addDoc, getDocs, setDoc, where, query, doc } from 'firebase/firestore';
 import property_json from './data/propertyData';
 
+const allUsers = "user_mock_data";
+
 export async function getAllUsers() {
-	const querySnapshot = await getDocs(collection(db, 'users'));
+	const querySnapshot = await getDocs(collection(db, allUsers));
 	let users = [];
 	querySnapshot.forEach((doc) => {
 		users.push(doc.data());
 	});
-	console.log(users);
 	return users;
 }
 

@@ -45,7 +45,7 @@ export default function UserHeader({ user }) {
 							`Languages: ${user.languages.join(", ")}`].join(" · ")}
 						</Typography>
 
-						{user.bio ? <Typography align="center">{user.bio}</Typography> : null }
+						{user.bio ? <Typography align="center">{user.bio}</Typography> : null}
 					</Stack>
 				</Grid>
 
@@ -96,16 +96,18 @@ function ContactInfo({ user }) {
 	};
 
 	return (
-		<Stack direction="row" justifyContent="space-evenly">
+		<Grid container direction={{ xs: "column", sm: "row" }} columns={{ xs: 1, sm: 2, md: 3, lg: 6 }}>
 
 			{publicContactInfo.map(([key, value]) =>
-				<Stack alignItems="center" spacing={1} key={key}>
-					{React.createElement(iconMap[key], { fontSize: "large" })}
-					<Typography>{value}</Typography>
-				</Stack>
+				<Grid xs={1} display="flex" justifyContent="center" alignItems="center">
+					<Stack alignItems="center" spacing={1} key={key}>
+						{React.createElement(iconMap[key], { fontSize: "large" })}
+						<Typography>{value}</Typography>
+					</Stack>
+				</Grid>
 			)}
 
-		</Stack>
+		</Grid>
 	)
 }
 

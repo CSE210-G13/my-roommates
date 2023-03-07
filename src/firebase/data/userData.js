@@ -46,9 +46,9 @@ const user_json = [
     firstName: "Walter",
     lastName: "White",
     gender: "Female",
-    college: "Not applicable",
-    major: "Not applicable",
-    schoolYear: "Not applicable",
+    college: "",
+    major: "",
+    schoolYear: "",
     languages: ["English", "French", "German"],
     bedtime: "22:30",
     numBedrooms: "2",
@@ -75,9 +75,9 @@ const user_json = [
     email: ["jane.smith@example.com", true],
     phoneNumber: ["(555) 555-5555", true],
     discord: ["janesmith#5678", false],
-    instagram: ["janesmith", true],
-    linkedin: ["linkedin.com/in/janesmith", true],
-    facebook: ["facebook.com/janesmith", false],
+    instagram: ["janehsmith", true],
+    linkedin: ["anesmith", true],
+    facebook: ["esmith", false],
   },
   {
     uid: "1",
@@ -120,7 +120,7 @@ const user_json = [
     facebook: ["", false],
   },
   {
-    uid: "2",
+    uid: "2dfsdfs",
     isUCSD: false,
     imageUrl: "",
     firstName: "Jane",
@@ -196,9 +196,9 @@ const user_json = [
     email: ["alicesmith@example.com", true],
     phoneNumber: ["(123) 456-7890", true],
     discord: ["alicesmith#5678", false],
-    instagram: ["alicesmith_", true],
-    linkedin: ["https://www.linkedin.com/in/alicesmith/", true],
-    facebook: ["https://www.facebook.com/alicesmith/", false],
+    instagram: ["alicesmith", true],
+    linkedin: ["alicesmith", true],
+    facebook: ["licesmith", false],
   },
   {
     uid: "1234",
@@ -241,7 +241,7 @@ const user_json = [
     facebook: ["ghjghj", false],
   },
   {
-    uid: "",
+    uid: "mgkdmgdkgmdlkgl",
     isUCSD: false,
     imageUrl: "",
     firstName: "John",
@@ -281,7 +281,7 @@ const user_json = [
     facebook: ["", false],
   },
   {
-    uid: "",
+    uid: "484848858471",
     isUCSD: true,
     imageUrl: "",
     firstName: "Jane",
@@ -322,7 +322,7 @@ const user_json = [
   },
 
   {
-    uid: "abc123",
+    uid: "abc123pp",
     isUCSD: false,
     imageUrl: "",
     firstName: "John",
@@ -520,7 +520,7 @@ const user_json = [
     discord: ["fsfsdfsd#5678", false],
     instagram: ["fsfsdfsd", true],
     linkedin: ["fsfsdfsd", true],
-    "facebo,ok": ["fsfsdfsd", false],
+    facebook: ["fsfsdfsd", false],
   },
   {
     uid: "u1",
@@ -604,7 +604,7 @@ const user_json = [
   },
 
   {
-    uid: "2",
+    uid: "215252202",
     isUCSD: false,
     imageUrl: "",
     firstName: "Sarah",
@@ -644,7 +644,7 @@ const user_json = [
     facebook: ["sarahlee", true],
   },
   {
-    uid: "XYZ789",
+    uid: "XYZ7890",
     isUCSD: false,
     imageUrl: "",
     firstName: "Emily",
@@ -684,7 +684,7 @@ const user_json = [
     facebook: ["emilyjones", true],
   },
   {
-    uid: "ABC123",
+    uid: "ABC1dsfd23",
     isUCSD: true,
     imageUrl: "",
     firstName: "Mike",
@@ -724,7 +724,7 @@ const user_json = [
     facebook: ["mikechang", false],
   },
   {
-    uid: "XYZ789",
+    uid: "XYZ7892",
     isUCSD: true,
     imageUrl: "",
     firstName: "Samantha",
@@ -764,7 +764,7 @@ const user_json = [
     facebook: ["sam.nguyen", false],
   },
   {
-    uid: "PQR456",
+    uid: "dsfsdafs56",
     isUCSD: false,
     imageUrl: "",
     firstName: "David",
@@ -884,7 +884,7 @@ const user_json = [
     facebook: ["brandonn", false],
   },
   {
-    uid: "ABC123",
+    uid: "ABC8585123",
     isUCSD: false,
     imageUrl: "",
     firstName: "Anna",
@@ -924,7 +924,7 @@ const user_json = [
     facebook: ["annalee", false],
   },
   {
-    uid: "XYZ789",
+    uid: "XYZ78910",
     isUCSD: false,
     imageUrl: "",
     firstName: "Alex",
@@ -964,7 +964,7 @@ const user_json = [
     facebook: ["alexnguyen", false],
   },
   {
-    uid: "PQR456",
+    uid: "sjfisdjfis",
     isUCSD: true,
     imageUrl: "",
     firstName: "Emily",
@@ -1204,7 +1204,7 @@ const user_json = [
     facebook: ["bobsmith", true],
   },
   {
-    uid: "XYZ789",
+    uid: "XYZ789fd",
     isUCSD: false,
     imageUrl: "",
     firstName: "Samantha",
@@ -1244,7 +1244,7 @@ const user_json = [
     facebook: ["samanthajohnson", false],
   },
   {
-    uid: "PQR456",
+    uid: "dPQR456",
     isUCSD: true,
     imageUrl: "",
     firstName: "David",
@@ -1284,7 +1284,7 @@ const user_json = [
     facebook: ["davidnguyen", false],
   },
   {
-    uid: "ABC123",
+    uid: "ABC123kk",
     isUCSD: true,
     imageUrl: "",
     firstName: "Hannah",

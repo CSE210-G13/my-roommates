@@ -12,13 +12,13 @@ import property_json from "./data/propertyData";
 import user_json from "./data/userData";
 
 export async function getAllUsers() {
-	const allUsers = "user_mock_data";
-	const querySnapshot = await getDocs(collection(db, allUsers));
-	let users = [];
-	querySnapshot.forEach((doc) => {
-		users.push(doc.data());
-	});
-	return users;
+  const allUsers = "users";
+  const querySnapshot = await getDocs(collection(db, allUsers));
+  let users = [];
+  querySnapshot.forEach((doc) => {
+    users.push(doc.data());
+  });
+  return users;
 }
 
 // ref: https://firebase.google.com/docs/firestore/query-data/get-data
@@ -92,10 +92,7 @@ export async function postMockUser() {
   const userData = user_json;
   for (const key in userData) {
     try {
-      const docRef = await addDoc(
-        collection(db, "user_mock_data"),
-        userData[key]
-      );
+      const docRef = await addDoc(collection(db, "users"), userData[key]);
       console.log("Document written with ID: ", docRef);
     } catch (e) {
       console.error("Error adding document: ", e);

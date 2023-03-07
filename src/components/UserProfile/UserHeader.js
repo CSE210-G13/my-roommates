@@ -41,9 +41,10 @@ export default function UserHeader({ user }) {
 						</Typography>
 
 						<Typography align="center">
-							{[user.gender, user.college, user.schoolYear,
-							`Major: ${user.major}`,
-							`Languages: ${user.languages.join(", ")}`].join(" · ")}
+							{[user.gender, user.schoolYear, user.college,
+							user.major ? `Major: ${user.major}` : "",
+							user.languages ? `Languages: ${user.languages.join(", ")}` : ""]
+							.filter(x => x).join(" · ")}
 						</Typography>
 
 						{user.bio ? <Typography align="center">{user.bio}</Typography> : null}
@@ -98,10 +99,12 @@ function ContactInfo({ user }) {
 
 	return (
 		<Grid container direction={{ xs: "column", sm: "row" }}
-		columns={{ xs: 1,
-							 sm: Math.min(2, publicContactInfo.length),
-							 md: Math.min(3, publicContactInfo.length),
-							 lg: Math.min(6, publicContactInfo.length) }}>
+			columns={{
+				xs: 1,
+				sm: Math.min(2, publicContactInfo.length),
+				md: Math.min(3, publicContactInfo.length),
+				lg: Math.min(6, publicContactInfo.length)
+			}}>
 
 			{publicContactInfo.map(([key, value]) =>
 				<Grid xs={1} display="flex" justifyContent="center" alignItems="center" key={key}>

@@ -6,6 +6,7 @@ import {
   schoolYearsConst,
 } from "@/constants/constants";
 import { getUser } from "./userDb";
+import { getAllUsers } from "./userDb";
 
 export async function propertyFiltering(preference) {
   const properties = collection(db, "properties");
@@ -265,16 +266,35 @@ export async function roommatesFiltering(preference) {
       count += 1;
     }
   }
+  const exact_match_count = count;
+  var exact_match = [];
   var priorityList = [];
-  while (count > 0) {
-    for (var m in ids) {
-      if (ids[m] == count) {
-        var uData = await getUser(m);
-        priorityList.push(uData);
-      }
-    }
-    count -= 1;
-  }
 
-  return priorityList;
+  // handle the case which user doesn't filter anything
+  if (exact_match_count == 0) {
+    var allUsersData = await getAllUsers();
+    var limit_count = 0;
+    while (limit_count < 10) {
+      exact_match.push(allUsersData[limit_count]);
+      limit_count += 1;
+    }
+    return [1, exact_match, priorityList];
+  } else {
+    while (count >= 0) {
+      for (var m in ids) {
+        if ((exact_match_count == count) & (ids[m] == count)) {
+          var uData = await getUser(m);
+          exact_match.push(uData);
+        } else {
+          if (ids[m] == count) {
+            var uData = await getUser(m);
+            priorityList.push(uData);
+          }
+        }
+      }
+      count -= 1;
+    }
+
+    return [1, exact_match, priorityList];
+  }
 }

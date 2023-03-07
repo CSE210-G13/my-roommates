@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Divider, Container } from '@mui/material';
@@ -15,7 +14,6 @@ import MapIcon from '@mui/icons-material/Map';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import ShowerIcon from '@mui/icons-material/Shower';
-import EmailIcon from '@mui/icons-material/Email';
 import SmartphoneIcon from '@mui/icons-material/Smartphone';
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -25,9 +23,14 @@ import LocalLaundryServiceIcon from '@mui/icons-material/LocalLaundryService';
 import LocalParkingIcon from '@mui/icons-material/LocalParking';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
-import BadgeIcon from '@mui/icons-material/Badge';
 
+import { useAuthUser } from '@/firebase/auth';
 import { getProperty } from '@/firebase/propertyDb';
+import {
+	addUserPropertyPreference,
+	getPropertyListFromUserID,
+	deleteUserPropertyMapping,
+} from '@/firebase/userLikedProperties';
 
 function PrefIcon({ icon, string }) {
 	return (
@@ -53,21 +56,43 @@ function groupArr(data, n) {
 		}, []);
 }
 
-export default function ComplexGrid({ property }) {
-	const callme = () => {
-		console.log('hi');
+export default function PropertyDetails({ property }) {
+	const [user, loading] = useAuthUser();
+	const [like, setLike] = useState(false);
+
+	useEffect(() => {
+		if (user) {
+			getPropertyListFromUserID(user.uid, property.uid)
+				.then((res) => {
+					console.log(res);
+					setLike(res.includes(property.uid));
+				})
+				.catch((err) => {
+					console.log('err', err);
+				});
+		}
+	}, [user, property.uid]);
+
+	const handleLike = (e) => {
+		setLike(!like);
+		if (like) {
+			deleteUserPropertyMapping(user.uid, property.uid);
+		} else {
+			addUserPropertyPreference(user.uid, property.uid);
+		}
 	};
-	const x = [1, 2, 3, 4, 5, 6, 7, 8];
+
+	const x = [1, 2, 3];
 
 	let groupsOf3 = groupArr(x, 4);
 
 	return (
-		<Container sx={{ mt: '80px', width: 'auto', backgroundColor: '#F8F8F2' }} onClick={() => callme()}>
-			<Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
+		<Container maxWidth="false" sx={{  m: '80px', width: 'auto', backgroundColor: '#F8F8F2' }}>
+			<Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2} py={3}>
 				<p></p>
 				<Typography variant="h4">{property.name}</Typography>
-				<IconButton aria-label="add to favorites">
-					<FavoriteIcon fontSize="large" />
+				<IconButton aria-label="add to favorites" onClick={handleLike}>
+					{like ? <FavoriteIcon fontSize="large" sx={{ color: 'red' }} /> : <FavoriteIcon fontSize="large" />}
 				</IconButton>
 			</Stack>
 
@@ -185,11 +210,7 @@ export default function ComplexGrid({ property }) {
 							{items.map((x) => (
 								<Card key={'prop ' + x}>
 									<CardActionArea sx={{ display: 'flex' }}>
-										<Avatar
-											alt="Remy Sharp"
-											src="/static/images/avatar/1.jpg"
-											sx={{ width: 50, height: 50, margin: '25px' }}
-										/>
+										<Avatar alt="Remy Sharp" src="" sx={{ width: 50, height: 50, margin: '25px' }} />
 										<Typography
 											variant="h5"
 											color="text.priamry"
@@ -210,6 +231,7 @@ export default function ComplexGrid({ property }) {
 
 export async function getServerSideProps(context) {
 	let property = await getProperty(context.params.uid);
+
 	return {
 		props: {
 			property,

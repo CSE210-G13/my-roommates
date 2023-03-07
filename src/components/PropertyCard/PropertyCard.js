@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import {
 	Grid,
 	Card,
@@ -14,9 +15,41 @@ import {
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 
+import { useAuthUser } from '@/firebase/auth';
+import {
+	addUserPropertyPreference,
+	getPropertyListFromUserID,
+	deleteUserPropertyMapping,
+} from '@/firebase/userLikedProperties';
+
 export default function PropertyCard({ property }) {
+	const [user, loading] = useAuthUser();
+	const [like, setLike] = useState(false);
+
+	useEffect(() => {
+		if (user) {
+			getPropertyListFromUserID(user.uid, property.uid)
+				.then((res) => {
+					console.log(res);
+					setLike(res.includes(property.uid));
+				})
+				.catch((err) => {
+					console.log('err', err);
+				});
+		}
+	}, [user, property.uid]);
+
+	const handleLike = (e) => {
+		setLike(!like);
+		if (like) {
+			deleteUserPropertyMapping(user.uid, property.uid);
+		} else {
+			addUserPropertyPreference(user.uid, property.uid);
+		}
+	};
+
 	return (
-		<Card sx={{ m: '20px', width: 345, height: 380 }}>
+		<Card sx={{ m: '20px', width: 350, height: 370, position: 'relative' }}>
 			<CardActionArea href={`/property/${property.uid}`}>
 				<CardMedia sx={{ height: '180px' }} image={property.imageUrls[0]} alt="property image" />
 				<CardContent>
@@ -29,10 +62,11 @@ export default function PropertyCard({ property }) {
 				</CardContent>
 			</CardActionArea>
 
-			<CardActions disableSpacing>
-				<IconButton aria-label="add to favorites">
-					<FavoriteIcon />
+			<CardActions disableSpacing style={{ position: 'absolute', bottom: '0' }}>
+				<IconButton aria-label="add to favorites" onClick={handleLike}>
+					{like ? <FavoriteIcon fontSize="large" sx={{ color: 'red' }} /> : <FavoriteIcon fontSize="large" />}
 				</IconButton>
+
 				<IconButton aria-label="share">
 					<ShareIcon />
 				</IconButton>

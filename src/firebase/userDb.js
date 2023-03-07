@@ -24,7 +24,7 @@ export async function getAllUsers() {
 // ref: https://firebase.google.com/docs/firestore/query-data/get-data
 export async function getUser(userId) {
   const ref = query(
-    collection(db, "user_mock_data"),
+    collection(db, "users"),
     where("uid", "==", userId)
   ).withConverter(userConverter);
   const docSnap = await getDocs(ref);

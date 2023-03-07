@@ -5,6 +5,7 @@ import {
   lifestyleConst,
   schoolYearsConst,
 } from "@/constants/constants";
+import { getUser } from "./userDb";
 
 export async function propertyFiltering(preference) {
   const properties = collection(db, "properties");
@@ -160,7 +161,7 @@ export async function roommatesFiltering(preference) {
   const dislikes = lifestyleConst;
   const colleges = collegesConst;
   const years = schoolYearsConst;
-  const roommates = collection(db, "user_mock_data");
+  const roommates = collection(db, "users");
   var count = 0;
   // key: id; value: number of satisfied requirements
   var ids = {};
@@ -169,7 +170,8 @@ export async function roommatesFiltering(preference) {
     var q = query(roommates, where("gender", "==", "Female"));
     var querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      ids[doc.id] = (ids[doc.id] || 0) + 1;
+      var uid = doc.data().uid;
+      ids[uid] = (ids[uid] || 0) + 1;
     });
     count += 1;
   }
@@ -178,7 +180,8 @@ export async function roommatesFiltering(preference) {
     var q = query(roommates, where("gender", "==", "Male"));
     var querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      ids[doc.id] = (ids[doc.id] || 0) + 1;
+      var uid = doc.data().uid;
+      ids[uid] = (ids[uid] || 0) + 1;
     });
     count += 1;
   }
@@ -187,7 +190,8 @@ export async function roommatesFiltering(preference) {
     var q = query(roommates, where("bedtime", ">=", preference["bedtimeFrom"]));
     var querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      ids[doc.id] = (ids[doc.id] || 0) + 1;
+      var uid = doc.data().uid;
+      ids[uid] = (ids[uid] || 0) + 1;
     });
     count += 1;
   }
@@ -196,7 +200,8 @@ export async function roommatesFiltering(preference) {
     var q = query(roommates, where("bedtime", "<=", preference["bedtimeTo"]));
     var querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      ids[doc.id] = (ids[doc.id] || 0) + 1;
+      var uid = doc.data().uid;
+      ids[uid] = (ids[uid] || 0) + 1;
     });
     count += 1;
   }
@@ -207,7 +212,8 @@ export async function roommatesFiltering(preference) {
     );
     var querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      ids[doc.id] = (ids[doc.id] || 0) + 1;
+      var uid = doc.data().uid;
+      ids[uid] = (ids[uid] || 0) + 1;
     });
     count += 1;
   }
@@ -216,7 +222,8 @@ export async function roommatesFiltering(preference) {
     var q = query(roommates, where("major", "in", preference["majors"]));
     var querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      ids[doc.id] = (ids[doc.id] || 0) + 1;
+      var uid = doc.data().uid;
+      ids[uid] = (ids[uid] || 0) + 1;
     });
     count += 1;
   }
@@ -228,7 +235,8 @@ export async function roommatesFiltering(preference) {
       );
       var querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        ids[doc.id] = (ids[doc.id] || 0) + 1;
+        var uid = doc.data().uid;
+        ids[uid] = (ids[uid] || 0) + 1;
       });
       count += 1;
     }
@@ -239,7 +247,8 @@ export async function roommatesFiltering(preference) {
       var q = query(roommates, where("college", "==", c));
       var querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        ids[doc.id] = (ids[doc.id] || 0) + 1;
+        var uid = doc.data().uid;
+        ids[uid] = (ids[uid] || 0) + 1;
       });
       count += 1;
     }
@@ -250,20 +259,22 @@ export async function roommatesFiltering(preference) {
       var q = query(roommates, where("schoolYear", "==", y));
       var querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        ids[doc.id] = (ids[doc.id] || 0) + 1;
+        var uid = doc.data().uid;
+        ids[uid] = (ids[uid] || 0) + 1;
       });
       count += 1;
     }
   }
-
   var priorityList = [];
   while (count > 0) {
     for (var m in ids) {
       if (ids[m] == count) {
-        priorityList.push(m);
+        var uData = await getUser(m);
+        priorityList.push(uData);
       }
     }
     count -= 1;
   }
+
   return priorityList;
 }

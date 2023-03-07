@@ -294,7 +294,8 @@ export async function roommatesFiltering(preference) {
       }
       count -= 1;
     }
-
-    return [1, exact_match, priorityList];
+    var limited_exact_match = exact_match.slice(0, 10);
+    var limited_priorityList = priorityList.slice(0, 10);
+    return [1, limited_exact_match, limited_priorityList];
   }
 }

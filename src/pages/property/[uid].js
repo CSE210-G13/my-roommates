@@ -54,7 +54,7 @@ function groupArr(data, n) {
 
 export default function ComplexGrid({ property }) {
 	const callme = () => {
-		console.log('hi');
+		//console.log('hi');
 	};
 	const x = [1, 2, 3, 4, 5, 6, 7, 8];
 

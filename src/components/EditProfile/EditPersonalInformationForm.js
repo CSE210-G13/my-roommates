@@ -32,7 +32,7 @@ export default function EditPersonalInformationForm(props) {
 
     const handleChangeProfilePic = (event) => {
         // TODO: integrate with firebase
-        console.log("upload an image");
+        //console.log("upload an image");
 	};
 
     return (

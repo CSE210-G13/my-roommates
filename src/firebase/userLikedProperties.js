@@ -17,7 +17,7 @@ export async function addUserPropertyPreference(userID, propertyID) {
       user_id: userID,
       property_id: propertyID,
     });
-    console.log("added user property Mapping: ", docRef);
+    //console.log("added user property Mapping: ", docRef);
   } catch (e) {
     console.error("Error adding document: ", e);
   }
@@ -34,7 +34,7 @@ export async function getPropertyListFromUserID(userID) {
     querySnapshot.forEach((doc) => {
       propertyList.push(doc.get("property_id"));
     });
-    console.log("List of PropertyID: ", propertyList);
+    //console.log("List of PropertyID: ", propertyList);
   } catch (e) {
     console.error("Error in getting property list: ", e);
   }
@@ -55,7 +55,7 @@ export async function getUserListFromPropertyID(propertyID) {
     querySnapshot.forEach((doc) => {
       userList.push(doc.get("user_id"));
     });
-    console.log("List of userID: ", userList);
+    //console.log("List of userID: ", userList);
   } catch (e) {
     console.error("Error in getting user list: ", e);
   }
@@ -75,7 +75,7 @@ export async function checkUserPropertyMapping(userID, propertyID) {
     if (!querySnapshot.empty) {
       exist = true;
     }
-    console.log("Mapping exist: ", exist);
+    //console.log("Mapping exist: ", exist);
   } catch (e) {
     console.error("Error in getting mapping: ", e);
   }
@@ -94,7 +94,7 @@ export async function deleteUserPropertyMapping(userID, propertyID) {
     querySnapshot.forEach((doc) => {
       deleteDoc(doc.ref);
     });
-    console.log("Deleted the mapping for: ", userID, propertyID);
+    //console.log("Deleted the mapping for: ", userID, propertyID);
   } catch (e) {
     console.error("Error in deleting mapping: ", e);
   }

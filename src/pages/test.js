@@ -31,7 +31,7 @@ class App extends React.Component {
     //deleteUserPropertyMapping(this.state.input1, this.state.input2);
 
     addUserRequest(this.state.input1, this.state.input2);
-    console.log(this.state.input1, this.state.input2);
+    //console.log(this.state.input1, this.state.input2);
   };
 
   render() {

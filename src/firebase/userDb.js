@@ -81,7 +81,7 @@ export async function postMockProperty() {
   for (const key in property) {
     try {
       const docRef = await addDoc(collection(db, "properties"), property[key]);
-      console.log("Document written with ID: ", docRef);
+      //console.log("Document written with ID: ", docRef);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -93,7 +93,7 @@ export async function postMockUser() {
   for (const key in userData) {
     try {
       const docRef = await addDoc(collection(db, "users"), userData[key]);
-      console.log("Document written with ID: ", docRef);
+      //console.log("Document written with ID: ", docRef);
     } catch (e) {
       console.error("Error adding document: ", e);
     }

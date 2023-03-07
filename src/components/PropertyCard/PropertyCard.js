@@ -16,8 +16,10 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 
 import { useAuthUser } from '@/firebase/auth';
+import { getUser } from '@/firebase/userDb';
 import {
 	addUserPropertyPreference,
+	getUserListFromPropertyID,
 	getPropertyListFromUserID,
 	deleteUserPropertyMapping,
 } from '@/firebase/userLikedProperties';
@@ -25,17 +27,30 @@ import {
 export default function PropertyCard({ property }) {
 	const [user, loading] = useAuthUser();
 	const [like, setLike] = useState(false);
+	const [likeUsers, setLikeUsers] = [];
+	const [avatarUrls, setAvatarUrls] = useState([]);
 
 	useEffect(() => {
 		if (user) {
 			getPropertyListFromUserID(user.uid, property.uid)
 				.then((res) => {
-					console.log(res);
 					setLike(res.includes(property.uid));
 				})
 				.catch((err) => {
-					console.log('err', err);
+					console.log(err);
 				});
+
+			getUserListFromPropertyID(property.uid)
+				.then((res) => {
+					let urls = [];
+					for (const uid of res) {
+						getUser(uid).then((u) => {
+							urls.push(u.imageUrl);
+							setAvatarUrls(urls);
+						});
+					}
+				})
+				.catch((err) => console.log(err));
 		}
 	}, [user, property.uid]);
 
@@ -71,6 +86,9 @@ export default function PropertyCard({ property }) {
 					<ShareIcon />
 				</IconButton>
 				<AvatarGroup max={4}>
+					{avatarUrls.map(url=>{
+						return <Avatar alt="Remy Sharp" src={url} key={url} />
+					})}
 					<Avatar alt="Remy Sharp" src="" />
 					<Avatar alt="Travis Howard" src="" />
 					<Avatar alt="Cindy Baker" src="" />

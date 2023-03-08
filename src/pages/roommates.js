@@ -9,17 +9,11 @@ export default function Roommates(props) {
   const [user, loading] = useAuthUser();
   const [FilterRoommates, setFilterRoommates] = useState([0, [], []]);
 
-  console.log("inside roommates page");
-  console.log(FilterRoommates);
+  // do not show current user in grid if they are logged in
   let users =
     user == null ? props.users : props.users.filter((u) => u.uid !== user.uid);
-  // do not show current user in grid if they are logged in
-  if (FilterRoommates[1].length > 0) {
-    console.log(">0");
-    console.log(FilterRoommates);
-    console.log("index 1 array:");
-    console.log(FilterRoommates[1].length);
 
+  if (FilterRoommates[1].length > 0) {
     users = FilterRoommates[1];
   }
 

@@ -89,18 +89,9 @@ export default function RoommatesFilter(props) {
       dislikes: dislikes,
       years: years,
     };
-    // const returnedList = roommatesFiltering(pref);
-    console.log("print returned list in handleSearch");
-    let returnedList = roommatesFiltering(pref).then((returnedList) =>
-      // for (const r in returnedList)
+    roommatesFiltering(pref).then((returnedList) =>
       props.onFilteringRoommates(returnedList)
     );
-
-    // // console.log(typeof returnedList);
-    // let users_data = [];
-    // // returnedList.forEach((r) => {
-    // //   users_data.append(getUser(returnedList[r]));
-    // // });
   };
 
   return (

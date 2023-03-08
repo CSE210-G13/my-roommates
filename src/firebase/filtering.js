@@ -163,9 +163,13 @@ export async function roommatesFiltering(preference) {
   const colleges = collegesConst;
   const years = schoolYearsConst;
   const roommates = collection(db, "users");
-  var count = 0;
+  var exact_match_count = 0;
   // key: id; value: number of satisfied requirements
   var ids = {};
+  var gender_flag = false;
+  var bedtime_flag = false;
+  var colleges_flag = false;
+  var years_flag = false;
 
   if (preference["femaleChecked"] == true) {
     var q = query(roommates, where("gender", "==", "Female"));
@@ -174,7 +178,7 @@ export async function roommatesFiltering(preference) {
       var uid = doc.data().uid;
       ids[uid] = (ids[uid] || 0) + 1;
     });
-    count += 1;
+    gender_flag = true;
   }
 
   if (preference["maleChecked"] == true) {
@@ -184,7 +188,7 @@ export async function roommatesFiltering(preference) {
       var uid = doc.data().uid;
       ids[uid] = (ids[uid] || 0) + 1;
     });
-    count += 1;
+    gender_flag = true;
   }
 
   if (preference["bedtimeFrom"]) {
@@ -194,7 +198,7 @@ export async function roommatesFiltering(preference) {
       var uid = doc.data().uid;
       ids[uid] = (ids[uid] || 0) + 1;
     });
-    count += 1;
+    bedtime_flag = true;
   }
 
   if (preference["bedtimeTo"]) {
@@ -204,8 +208,9 @@ export async function roommatesFiltering(preference) {
       var uid = doc.data().uid;
       ids[uid] = (ids[uid] || 0) + 1;
     });
-    count += 1;
+    bedtime_flag = true;
   }
+
   if (preference["languages"].length > 0) {
     var q = query(
       roommates,
@@ -216,7 +221,7 @@ export async function roommatesFiltering(preference) {
       var uid = doc.data().uid;
       ids[uid] = (ids[uid] || 0) + 1;
     });
-    count += 1;
+    exact_match_count += 1;
   }
 
   if (preference["majors"].length > 0) {
@@ -226,8 +231,9 @@ export async function roommatesFiltering(preference) {
       var uid = doc.data().uid;
       ids[uid] = (ids[uid] || 0) + 1;
     });
-    count += 1;
+    exact_match_count += 1;
   }
+
   for (const d of dislikes) {
     if (preference["dislikes"][d] == true) {
       var q = query(
@@ -239,7 +245,7 @@ export async function roommatesFiltering(preference) {
         var uid = doc.data().uid;
         ids[uid] = (ids[uid] || 0) + 1;
       });
-      count += 1;
+      exact_match_2 += 1;
     }
   }
 
@@ -251,7 +257,7 @@ export async function roommatesFiltering(preference) {
         var uid = doc.data().uid;
         ids[uid] = (ids[uid] || 0) + 1;
       });
-      count += 1;
+      colleges_flag = true;
     }
   }
 
@@ -263,15 +269,32 @@ export async function roommatesFiltering(preference) {
         var uid = doc.data().uid;
         ids[uid] = (ids[uid] || 0) + 1;
       });
-      count += 1;
+      years_flag = true;
     }
   }
-  const exact_match_count = count;
+
+  // count the number of exact match
+  if (years_flag == true) {
+    exact_match_count += 1;
+  }
+
+  if (colleges_flag == true) {
+    exact_match_count += 1;
+  }
+
+  if (bedtime_flag == true) {
+    exact_match_count += 1;
+  }
+
+  if (gender_flag == true) {
+    exact_match_count += 1;
+  }
+
   var exact_match = [];
   var priorityList = [];
-
+  var count = exact_match_count;
   // handle the case which user doesn't filter anything
-  if (exact_match_count == 0) {
+  if (count == 0) {
     var allUsersData = await getAllUsers();
     var limit_count = 0;
     while (limit_count < 10) {

@@ -33,26 +33,32 @@ export default function Roommates(props) {
         <div>
           {(FilterRoommates.length > 0) & (FilterRoommates[0] == 1) ? (
             <div>
-              <h1>Exact-Match Filtering Result</h1>
               {(FilterRoommates.length > 0) &
               (FilterRoommates[1].length > 0) ? (
-                <RoommateGrid users={FilterRoommates[1]} />
+                <div>
+                  <h3 style={{ margin: "20px 0px 0px 20px" }}>
+                    EXACT-MATCH Filtering Result
+                  </h3>
+                  <RoommateGrid users={FilterRoommates[1]} />
+                </div>
               ) : (
-                <h2>
-                  Sorry there is no exact match based on your filtering
-                  preferences
-                </h2>
+                <h3 style={{ margin: "20px 0px 0px 20px" }}>
+                  Sorry, there is no EXACT-MATCH result based on your filtering
+                  preferences...
+                </h3>
               )}
               {FilterRoommates[2].length > 0 ? (
                 <div>
-                  <h1>Non-exact-Match Filtering Result</h1>
+                  <h3 style={{ margin: "20px 0px 0px 20px" }}>
+                    Non-EXACT-MATCH Filtering Result
+                  </h3>
                   <RoommateGrid users={FilterRoommates[2]} />
                 </div>
               ) : (
-                <h2>
-                  Sorry there is no not-exact-match based on your filtering
+                <h3 style={{ margin: "20px 0px 0px 20px" }}>
+                  Sorry, there is no non-EXACT-MATCH based on your filtering
                   preferences
-                </h2>
+                </h3>
               )}
             </div>
           ) : (

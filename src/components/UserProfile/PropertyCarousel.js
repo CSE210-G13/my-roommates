@@ -10,7 +10,7 @@ import { paperProps } from './UserProfile.js';
  * TODO: properties is currently just an array of strings, display real property cards here.
  */
 export default function PropertyCarousel({ properties, title }) {
-	let interestedProp = properties;
+	let interestedProp = properties.map((x) => x.name);
 
 	// from https://stackoverflow.com/a/44069560
 	function groupArr(data, n) {

@@ -245,7 +245,7 @@ export async function roommatesFiltering(preference) {
         var uid = doc.data().uid;
         ids[uid] = (ids[uid] || 0) + 1;
       });
-      exact_match_2 += 1;
+      exact_match_count += 1;
     }
   }
 

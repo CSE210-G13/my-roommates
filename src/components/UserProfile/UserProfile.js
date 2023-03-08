@@ -5,6 +5,9 @@ import UserHabits from './UserHabits.js';
 import UserPropertyPref from './UserPropertyPref.js';
 import PropertyCarousel from './PropertyCarousel.js';
 
+import { getPropertyListFromUserID } from '@/firebase/userLikedProperties';
+
+
 /**
  * The properties for Paper components.
  * This is intentionally empty - I'm using default style, but this gives
@@ -16,25 +19,37 @@ export let paperProps = {}
  * A component that displays general user information, their preferences in
  * roommates and properties, and properties they like.
  */
-export default function UserProfile({ user, likedProperties }) {
+export default function UserProfile({ user, likedProperties, currentUserUID }) {
   // TODO: Implement property cards and get property data from backend
   // Currently displays property ID out of laziness
   let likedCarousel = null;
 
   if (likedProperties && likedProperties.length > 0) {
-     likedCarousel = <Grid sm={2}>
-        <PropertyCarousel properties={likedProperties}
-          title={`Properties ${user.firstName} is interested in...`} />
-      </Grid>;
+    likedCarousel = <Grid sm={2}>
+      <PropertyCarousel properties={likedProperties}
+        title={`Properties ${user.firstName} is interested in...`} />
+    </Grid>;
+
+    if (currentUserUID) {
+      getPropertyListFromUserID(currentUserUID).then((currentUserLikedUIDs) => {
+        console.log(currentUserLikedUIDs);
+        console.log(likedProperties.map((p) => p.uid))
+        let commonProperties = likedProperties.filter((prop) => currentUserLikedUIDs.includes(prop.uid));
+        console.log(commonProperties);
+        if (commonProperties.length > 0) {
+          // I now have the data, but right now I'm in an async context inside the promise
+          // the react component has already been rendered
+          // I'm unsure how to add this element into the tree without huge errors
+          
+          // const root = hydrateRoot(document.getElementById("commonProps"), <Grid sm={2}>
+          //   <PropertyCarousel properties={commonProperties}
+          //     title={`Properties you and ${user.firstName} are interested in...`} />
+          // </Grid>);
+        }
+      })
+    }
   }
 
-  // TODO: union logged in user liked properties with this user's liked properties
-  // Deal with getting current user being sync code and getting their property likes as
-  // async code
-  // <Grid sm={2}>
-  //   <PropertyCarousel properties={["prop 1", "prop 2"]}
-  //     title={`Properties you and ${user.firstName} are interested in...`} />
-  // </Grid>
 
   return (
     <Grid container direction={{ xs: "column", sm: "row" }}
@@ -53,6 +68,8 @@ export default function UserProfile({ user, likedProperties }) {
       </Grid>
 
       {likedCarousel}
+
+      <div id="commonProps" />
 
     </Grid>
   )

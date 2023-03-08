@@ -3,9 +3,12 @@ import UserProfile from '@/components/UserProfile';
 import { getUser } from '@/firebase/userDb';
 import {getProperty} from '@/firebase/propertyDb';
 import {getPropertyListFromUserID} from '@/firebase/userLikedProperties';
+import { useAuthUser } from '@/firebase/auth';
 import Head from 'next/head';
 
 export default function roommates({ user, likedProperties }) {
+  let [currentUser, loading] = useAuthUser();
+
 	let title = `${user.firstName} ${user.lastName} | Roomies`
   return (
 		<>
@@ -13,7 +16,7 @@ export default function roommates({ user, likedProperties }) {
 			<title>{title}</title>
 		</Head>
     <main>
-      <UserProfile user={user} likedProperties={likedProperties}/>
+      <UserProfile user={user} likedProperties={likedProperties} currentUserUID={currentUser ? currentUser.uid : null}/>
     </main>
 		</>
   )

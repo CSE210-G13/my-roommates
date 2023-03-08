@@ -13,11 +13,12 @@ import {
 } from '@mui/material/';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
+import Link from 'next/link';
 
 export default function PropertyCard({ property }) {
 	return (
 		<Card sx={{ m: '20px', width: 345, height: 380 }}>
-			<CardActionArea href={`/property/${property.uid}`}>
+			<CardActionArea LinkComponent={Link} href={`/property/${property.uid}`}>
 				<CardMedia sx={{ height: '180px' }} image={property.imageUrls[0]} alt="property image" />
 				<CardContent>
 					<Typography gutterBottom variant="h5" component="div">

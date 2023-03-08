@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import {
 	Grid,
@@ -37,7 +38,7 @@ export default function PropertyCard({ property }) {
 					setLike(res.includes(property.uid));
 				})
 				.catch((err) => {
-					console.log(err);
+					console.err(err);
 				});
 
 			getUserListFromPropertyID(property.uid)
@@ -50,44 +51,47 @@ export default function PropertyCard({ property }) {
 						});
 					}
 				})
-				.catch((err) => console.log(err));
+				.catch((err) => console.err(err));
 		}
 	}, [user, property.uid]);
 
-	const handleLike = (e) => {
-		setLike(!like);
-		if (like) {
-			deleteUserPropertyMapping(user.uid, property.uid);
-		} else {
+	const handleLike = () => {
+		let newLike = !like;
+		setLike(newLike);
+		if (newLike) {
 			addUserPropertyPreference(user.uid, property.uid);
+		} else {
+			deleteUserPropertyMapping(user.uid, property.uid);
 		}
 	};
 
 	return (
 		<Card sx={{ m: '20px', width: 350, height: 370, position: 'relative' }}>
-			<CardActionArea href={`/property/${property.uid}`}>
-				<CardMedia sx={{ height: '180px' }} image={property.imageUrls[0]} alt="property image" />
-				<CardContent>
-					<Typography gutterBottom variant="h5" component="div">
-						{property.name}
-					</Typography>
-					<Typography variant="body2" color="text.secondary">
-						{property.address}
-					</Typography>
-				</CardContent>
+			<CardActionArea>
+				<Link href={`/property/${property.uid}`}>
+					<CardMedia sx={{ height: '180px' }} image={property.imageUrls[0]} alt="property image" />
+					<CardContent>
+						<Typography gutterBottom variant="h5" component="div">
+							{property.name}
+						</Typography>
+						<Typography variant="body2" color="text.secondary">
+							{property.address}
+						</Typography>
+					</CardContent>
+				</Link>
 			</CardActionArea>
 
 			<CardActions disableSpacing style={{ position: 'absolute', bottom: '0' }}>
 				<IconButton aria-label="add to favorites" onClick={handleLike}>
-					{like ? <FavoriteIcon fontSize="large" sx={{ color: 'red' }} /> : <FavoriteIcon fontSize="large" />}
+					<FavoriteIcon fontSize="large" sx={like ? { color: 'red' } : {}} />
 				</IconButton>
 
 				<IconButton aria-label="share">
 					<ShareIcon />
 				</IconButton>
 				<AvatarGroup max={4}>
-					{avatarUrls.map(url=>{
-						return <Avatar alt="Remy Sharp" src={url} key={url} />
+					{avatarUrls.map((url) => {
+						return <Avatar alt="Avatar" src={url} key={url} />;
 					})}
 					<Avatar alt="Remy Sharp" src="" />
 					<Avatar alt="Travis Howard" src="" />

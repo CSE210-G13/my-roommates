@@ -35,6 +35,8 @@ import {
 } from '@/firebase/userLikedProperties';
 import { getUser } from '@/firebase/userDb';
 
+const iconStyle = { fontSize: 40 };
+
 function PrefIcon({ icon, string }) {
 	return (
 		<Stack direction="row" spacing={1} padding={2} alignItems="center">
@@ -42,21 +44,6 @@ function PrefIcon({ icon, string }) {
 			<Typography fontSize="1.15rem">{string}</Typography>
 		</Stack>
 	);
-}
-
-function groupArr(data, n) {
-	return data
-		.map((item, i) => {
-			const groupIndex = Math.floor(i / n);
-			return {
-				groupIndex: groupIndex,
-				item: item,
-			};
-		})
-		.reduce((groups, entry) => {
-			groups[entry.groupIndex] = [...(groups[entry.groupIndex] ? groups[entry.groupIndex] : []), entry.item];
-			return groups;
-		}, []);
 }
 
 export default function PropertyDetails({ property, users }) {
@@ -70,17 +57,18 @@ export default function PropertyDetails({ property, users }) {
 					setLike(res.includes(property.uid));
 				})
 				.catch((err) => {
-					console.log('err', err);
+					console.err('err', err);
 				});
 		}
 	}, [user, property.uid]);
 
-	const handleLike = (e) => {
-		setLike(!like);
-		if (like) {
-			deleteUserPropertyMapping(user.uid, property.uid);
-		} else {
+	const handleLike = () => {
+		let newLike = !like;
+		setLike(newLike);
+		if (newLike) {
 			addUserPropertyPreference(user.uid, property.uid);
+		} else {
+			deleteUserPropertyMapping(user.uid, property.uid);
 		}
 	};
 
@@ -93,7 +81,7 @@ export default function PropertyDetails({ property, users }) {
 					<p></p>
 					<Typography variant="h4">{property.name}</Typography>
 					<IconButton aria-label="add to favorites" onClick={handleLike}>
-						{like ? <FavoriteIcon fontSize="large" sx={{ color: 'red' }} /> : <FavoriteIcon fontSize="large" />}
+						<FavoriteIcon fontSize="large" sx={like ? { color: 'red' } : {}} />
 					</IconButton>
 				</Stack>
 
@@ -123,28 +111,25 @@ export default function PropertyDetails({ property, users }) {
 						</Typography>
 						<Grid container direction="row" justifyContent="flex-start" alignItems="flex-start" spacing={1}>
 							<Grid item xs={12} md={4} lg={4}>
-								<PrefIcon
-									icon={<AttachMoneyIcon sx={{ fontSize: 40 }} />}
-									string={`${property.price} / month`}
-								/>
+								<PrefIcon icon={<AttachMoneyIcon sx={iconStyle} />} string={`${property.price} / month`} />
 							</Grid>
 							<Grid item xs={12} md={4} xl={4}>
 								<PrefIcon
-									icon={<SingleBedIcon sx={{ fontSize: 40 }} />}
+									icon={<SingleBedIcon sx={iconStyle} />}
 									string={`${property.numOfBedroom} Bedroom(s)`}
 								/>
 							</Grid>
 							<Grid item xs={12} md={4} xl={4}>
 								<PrefIcon
-									icon={<ShowerIcon sx={{ fontSize: 40 }} />}
+									icon={<ShowerIcon sx={iconStyle} />}
 									string={`${property.numOfBathroom} Bathroom(s)`}
 								/>
 							</Grid>
 							<Grid item xs={12} md={4} xl={4}>
-								<PrefIcon icon={<MapIcon sx={{ fontSize: 40 }} />} string={property.address} />
+								<PrefIcon icon={<MapIcon sx={iconStyle} />} string={property.address} />
 							</Grid>
 							<Grid item xs={12} md={4} xl={2}>
-								<PrefIcon icon={<SmartphoneIcon sx={{ fontSize: 40 }} />} string={property.phoneNumber} />
+								<PrefIcon icon={<SmartphoneIcon sx={iconStyle} />} string={property.phoneNumber} />
 							</Grid>
 						</Grid>
 
@@ -155,48 +140,42 @@ export default function PropertyDetails({ property, users }) {
 						<Grid container direction="row" justifyContent="flex-start" spacing={1}>
 							{property.allowPets ? (
 								<Grid item xs={12} md={4} xl={2}>
-									<PrefIcon icon={<PetsIcon sx={{ fontSize: 40 }} />} string={'Pets Friendly'} />
+									<PrefIcon icon={<PetsIcon sx={iconStyle} />} string={'Pets Friendly'} />
 								</Grid>
 							) : null}
 							{property.amenities.allowSmoking ? (
 								<Grid item xs={12} md={4} xl={2}>
-									<PrefIcon icon={<SmokeFreeIcon sx={{ fontSize: 40 }} />} string={'Smoke Free'} />
+									<PrefIcon icon={<SmokeFreeIcon sx={iconStyle} />} string={'Smoke Free'} />
 								</Grid>
 							) : null}
 							{property.amenities.airConditioner ? (
 								<Grid item xs={12} md={4} xl={2}>
-									<PrefIcon icon={<AcUnitIcon sx={{ fontSize: 40 }} />} string={'Air Conditioner'} />
+									<PrefIcon icon={<AcUnitIcon sx={iconStyle} />} string={'Air Conditioner'} />
 								</Grid>
 							) : null}
 							{property.amenities.gym ? (
 								<Grid item xs={12} md={4} xl={2}>
-									<PrefIcon icon={<FitnessCenterIcon sx={{ fontSize: 40 }} />} string={'Fitness Center'} />
+									<PrefIcon icon={<FitnessCenterIcon sx={iconStyle} />} string={'Fitness Center'} />
 								</Grid>
 							) : null}
 							{property.amenities.laundry ? (
 								<Grid item xs={12} md={4} xl={2}>
-									<PrefIcon
-										icon={<LocalLaundryServiceIcon sx={{ fontSize: 40 }} />}
-										string={'Indoor Laundry'}
-									/>
+									<PrefIcon icon={<LocalLaundryServiceIcon sx={iconStyle} />} string={'Indoor Laundry'} />
 								</Grid>
 							) : null}
 							{property.amenities.parking ? (
 								<Grid item xs={12} md={4} xl={2}>
-									<PrefIcon icon={<LocalParkingIcon sx={{ fontSize: 40 }} />} string={'Parking'} />
+									<PrefIcon icon={<LocalParkingIcon sx={iconStyle} />} string={'Parking'} />
 								</Grid>
 							) : null}
 							{property.amenities.pool ? (
 								<Grid item xs={12} md={4} xl={2}>
-									<PrefIcon icon={<PoolIcon sx={{ fontSize: 40 }} />} string={'Swimming Pool'} />
+									<PrefIcon icon={<PoolIcon sx={iconStyle} />} string={'Swimming Pool'} />
 								</Grid>
 							) : null}
 							{property.amenities.transportation ? (
 								<Grid item xs={12} md={4} xl={2}>
-									<PrefIcon
-										icon={<DirectionsBusIcon sx={{ fontSize: 40 }} />}
-										string={'Public Transportation'}
-									/>
+									<PrefIcon icon={<DirectionsBusIcon sx={iconStyle} />} string={'Public Transportation'} />
 								</Grid>
 							) : null}
 						</Grid>

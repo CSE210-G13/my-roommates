@@ -51,7 +51,7 @@ export default function SimpleAccordion() {
   };
 
   return (
-    <div style={{ margin: "20px 0px 0px 0px" }}>
+    <div style={{ margin: '20px 0px 0px 0px', width: '20%', maxWidth: '350px', minWidth: '150px' }}>
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

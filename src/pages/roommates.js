@@ -22,7 +22,7 @@ export default function Roommates(props) {
       <Head>
         <title>Roommate Suggestions</title>
       </Head>
-      <div style={{ display: "flex", padding: "10px 0px 0px 0px" }}>
+      <div style={{ display: "flex", padding: "10px 0px 0px 20px" }}>
         <RoommateFilter onFilteringRoommates={setFilterRoommates} />
         {(FilterRoommates.length > 0) & (FilterRoommates[0] == 1) ? (
           <div>

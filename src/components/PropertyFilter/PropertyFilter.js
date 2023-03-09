@@ -275,7 +275,7 @@ export default function SimpleAccordion() {
       <br />
       <div style={{ float: "right", margin: "-5px 10px 0px 0px" }}>
         <Button variant="outlined" onClick={handleButtonClick}>
-          Save
+          Search
         </Button>
       </div>
     </div>

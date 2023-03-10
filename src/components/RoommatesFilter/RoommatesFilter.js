@@ -25,8 +25,9 @@ import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import { roommatesFiltering } from "@/firebase/filtering";
+import { getUser } from "@/firebase/userDb";
 
-export default function RoommatesFilter() {
+export default function RoommatesFilter(props) {
   const allLifestyles = lifestyleConst;
   const allLanguages = languagesConst;
   const allMajors = majorsConst;
@@ -88,7 +89,9 @@ export default function RoommatesFilter() {
       dislikes: dislikes,
       years: years,
     };
-    const returnedList = roommatesFiltering(pref);
+    roommatesFiltering(pref).then((returnedList) =>
+      props.onFilteringRoommates(returnedList)
+    );
   };
 
   return (

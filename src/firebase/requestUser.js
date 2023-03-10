@@ -93,6 +93,24 @@ export async function userPendingList(userID) {
   return pendingList;
 }
 
+//Get list of Accepted Request
+export async function userAcceptedList(userID) {
+  let acceptedList = new Array();
+  // console.log('in userAcceptedList');
+  try {
+    const q = query(collection(db, tableName), where("user_id", "==", userID));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      acceptedList = doc.get("accepted_list");
+    });
+    console.log("List of accepted userID: ", acceptedList);
+  } catch (e) {
+    console.error("Error in getting accepted user list: ", e);
+  }
+  return acceptedList;
+}
+
 //Check whether the user request is accepted or not
 export async function checkUserRequest(userID, fromUserID) {
   let check = false;
@@ -107,7 +125,28 @@ export async function checkUserRequest(userID, fromUserID) {
       }
     });
     console.log("User is accepted: ", check);
+    return check;
   } catch (e) {
     console.error("Error in checkUserRequest: ", e);
+  }
+}
+
+//Check whether the user request is accepted or not
+export async function checkUserPending(userID, fromUserID) {
+  let check = false;
+  let pendingList = new Array();
+  try {
+    var q = query(collection(db, tableName), where("user_id", "==", userID));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      pendingList = doc.get("pending_list");
+      if (pendingList.includes(fromUserID)) {
+        check = true;
+      }
+    });
+    console.log("User is pending: ", check);
+    return check;
+  } catch (e) {
+    console.error("Error in checkUserPending: ", e);
   }
 }

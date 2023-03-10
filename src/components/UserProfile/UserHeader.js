@@ -14,7 +14,12 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
+import { useAuthUser } from '@/firebase/auth';
 import { paperProps } from './UserProfile.js';
+import { addUserRequest, checkUserRequest, checkUserPending } from '@/firebase/requestUser';
+import { User } from '@/firebase/classes';
+import { getUser } from '@/firebase/userDb';
+import { useState, useEffect } from 'react';
 
 /**
  * Displays basic user information: name, profile picture, gender, college,
@@ -22,7 +27,33 @@ import { paperProps } from './UserProfile.js';
  * roommate requests, pending request, or connected. TODO: Tie the button to
  * firebase to actually get current connection status and make requests.
  */
-export default function UserHeader({ user }) {
+export default function UserHeader({ user }) {	
+	const [authUser, loading] = useAuthUser();
+	const [userInfo, setUserInfo] = useState(new User());
+	const [pending, setPending] = useState(false);
+
+	useEffect(() => {
+		checkUserPending(user.uid, userInfo.uid)
+							.then((bool) => (bool))
+							.then((bool) => setPending(bool));		
+	}, []);
+
+
+    useEffect(() => {
+        if (authUser) {
+            getUser(authUser.uid)
+                .then((user) =>  user )
+                .then((user) => setUserInfo(user));
+        }
+    }, [authUser]);
+
+	const handleRequest = () => {
+		if (!pending) {
+			addUserRequest(user.uid, userInfo.uid);
+			setPending(!pending);
+		}
+	}
+
 	return (
 		<Paper variant="outlined" sx={paperProps}>
 			<Grid container direction={{ xs: 'column', md: 'row' }}
@@ -52,7 +83,7 @@ export default function UserHeader({ user }) {
 				</Grid>
 
 				<Grid md={1} display="flex" alignItems="center" justifyContent="center">
-					<Button variant="contained">Request roommate?</Button>
+					<Button variant="contained" onClick={handleRequest}>{(pending) ? 'Pending Request' : 'Request Roommate?'}</Button>
 				</Grid>
 
 				<Grid xs={4}>

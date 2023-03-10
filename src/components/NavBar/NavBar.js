@@ -205,7 +205,7 @@ export default function ResponsiveAppBar() {
 								</MenuItem>
 								<MenuItem key="friends" onClick={handleCloseUserMenu}>
 									<Typography textAlign="center">
-										<Link href="friends">Friends</Link>
+										<Link href="/friends">Friends</Link>
 									</Typography>
 								</MenuItem>
 								<MenuItem key="logout" onClick={handleCloseUserMenu}>

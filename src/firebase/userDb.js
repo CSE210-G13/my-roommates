@@ -33,6 +33,7 @@ export async function getUser(userId) {
     // Convert to User object
     user = doc.data();
   });
+  // console.log(user.uid);
   return user;
 }
 

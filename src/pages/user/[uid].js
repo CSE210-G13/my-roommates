@@ -1,6 +1,7 @@
 import React from 'react';
 import UserProfile from '@/components/UserProfile';
 import { getUser } from '@/firebase/userDb';
+import {getProperty} from '@/firebase/propertyDb';
 import {getPropertyListFromUserID} from '@/firebase/userLikedProperties';
 import Head from 'next/head';
 
@@ -20,7 +21,8 @@ export default function roommates({ user, likedProperties }) {
 
 export async function getServerSideProps(context) {
 	let user = await getUser(context.params.uid);
-	let likedProperties = await getPropertyListFromUserID(context.params.uid);
+	let likedPropertyUIDs = await getPropertyListFromUserID(context.params.uid);
+	let likedProperties = await Promise.all(likedPropertyUIDs.map(getProperty));
 	return {
 		props: {
 			user,

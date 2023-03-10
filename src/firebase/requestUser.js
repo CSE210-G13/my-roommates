@@ -35,7 +35,6 @@ export async function addUserRequest(toUserID, fromUserID) {
         accepted_list: [],
         pending_list: [fromUserID],
       });
-      console.log("Added document to user : ", toUserID);
     }
   } catch (e) {
     console.error("Error adding document: ", e);
@@ -65,7 +64,6 @@ export async function acceptRequest(toUserID, fromUserID) {
           accepted_list: [userIDToAdd],
           pending_list: [],
         });
-        console.log("Added document to user : ", userID);
       }
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -86,7 +84,6 @@ export async function userPendingList(userID) {
     querySnapshot.forEach((doc) => {
       pendingList = doc.get("pending_list");
     });
-    console.log("List of pending userID: ", pendingList);
   } catch (e) {
     console.error("Error in getting  pending user list: ", e);
   }
@@ -104,7 +101,6 @@ export async function userAcceptedList(userID) {
     querySnapshot.forEach((doc) => {
       acceptedList = doc.get("accepted_list");
     });
-    console.log("List of accepted userID: ", acceptedList);
   } catch (e) {
     console.error("Error in getting accepted user list: ", e);
   }
@@ -124,7 +120,6 @@ export async function checkUserRequest(userID, fromUserID) {
         check = true;
       }
     });
-    console.log("User is accepted: ", check);
     return check;
   } catch (e) {
     console.error("Error in checkUserRequest: ", e);
@@ -144,7 +139,6 @@ export async function checkUserPending(userID, fromUserID) {
         check = true;
       }
     });
-    console.log("User is pending: ", check);
     return check;
   } catch (e) {
     console.error("Error in checkUserPending: ", e);

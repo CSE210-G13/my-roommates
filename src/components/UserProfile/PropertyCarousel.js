@@ -30,7 +30,7 @@ export default function PropertyCarousel({ properties, title }) {
 
 	return (
 		<Paper variant="outlined" sx={paperProps}>
-			<Stack padding={5} spacing={7}>
+			<Stack padding={5}>
 				<Typography variant="h5">{title}</Typography>
 				<Carousel navButtonsAlwaysVisible={true} autoPlay={false} animation="slide">
 					{
@@ -38,7 +38,7 @@ export default function PropertyCarousel({ properties, title }) {
 							.map((items) => <Grid container columns={3} key={"group " + items[0] + title} direction="row" spacing={3}
 								alignItems="center" justifyContent="space-evenly">
 								{items.map((x) => <Grid xs={1} key={x.uid}>
-									<Card sx={{ height: 380 }}>
+									<Card sx={{minHeight: 320}}>
 										<PropertyCardHeader property={x} />
 									</Card>
 								</Grid>)}

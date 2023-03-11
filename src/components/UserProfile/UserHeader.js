@@ -34,9 +34,8 @@ export default function UserHeader({ user }) {
 
 	useEffect(() => {
 		checkUserPending(user.uid, userInfo.uid)
-							.then((bool) => (bool))
-							.then((bool) => setPending(bool));		
-	}, []);
+			.then((bool) => setPending(bool));		
+	});
 
 
     useEffect(() => {

@@ -4,10 +4,10 @@ import Grid from "@mui/material/Grid";
 import PropertyFilter from "@/components/PropertyFilter/PropertyFilter";
 import PropertyCard from "@/components/PropertyCard";
 import { getAllProperties } from "@/firebase/propertyDb";
-
+import { useState } from "react";
 export default function ComplexGrid(props) {
   const [FilterProperties, setFilterProperties] = useState([0, [], []]);
-  if (FilterProperties[1].length > 0) {
+  if ((FilterProperties.length > 0) & (FilterProperties[1].length > 0)) {
     props.properties = FilterProperties[1];
   }
 

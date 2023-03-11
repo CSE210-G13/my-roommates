@@ -17,7 +17,7 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import { propertyFiltering } from "../../firebase/filtering";
 
-export default function SimpleAccordion() {
+export default function PropertyFilter(props) {
   const [budgetMin, setBudgetMin] = useState("");
   const [budgetMax, setBudgetMax] = useState("");
   const [numBedrooms, setNumBedrooms] = useState("");
@@ -46,8 +46,10 @@ export default function SimpleAccordion() {
       petChecked: petChecked,
       smokingChecked: smokingChecked,
     };
-    var selectedProperty = propertyFiltering(pref);
-    // TODO: display the selected properties
+
+    propertyFiltering(pref).then((returnedList) =>
+      props.onFilteringProperties(returnedList)
+    );
   };
 
   return (

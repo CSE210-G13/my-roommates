@@ -85,7 +85,7 @@ export default function FirstTimeUserFlow() {
 
 	const handleSubmit = () => {
 		postUser(userInfo);
-		router.push('/');
+		router.push('/profile');
 	};
 
 	return (

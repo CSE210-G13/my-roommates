@@ -19,7 +19,7 @@ jest.mock("firebase/firestore", () => ({
   deleteDoc: jest.fn(),
 }));
 
-describe("User Liked Properties", () => {
+describe("Property Database", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });

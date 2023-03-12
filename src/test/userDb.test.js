@@ -8,17 +8,27 @@ import {
   doc,
 } from "firebase/firestore";
 
-import { getAllUsers } from "@/firebase/userDb";
+import {
+  getAllUsers,
+  getUser,
+  postUser,
+  updateUser,
+  postMockProperty,
+  postMockUser,
+} from "@/firebase/userDb";
+
+import { db } from "@/firebase/firebaseConfig";
 
 const tableName = "users";
 jest.mock("firebase/firestore", () => ({
+  setDoc: jest.fn(),
   getFirestore: jest.fn(),
   collection: jest.fn(),
   addDoc: jest.fn(),
   query: jest.fn(),
   getDocs: jest.fn(),
   where: jest.fn(),
-  deleteDoc: jest.fn(),
+  doc: jest.fn(),
 }));
 
 describe("User Liked Properties", () => {
@@ -72,44 +82,114 @@ describe("User Liked Properties", () => {
     ]);
   });
 
-  it("Get Property based on the propertyID.", async () => {
-    const propertyID = "1234";
-    const mockDocData = { name: "Test property" };
+  it("Get user Information from userID.", async () => {
+    const userID = "1234";
+    query.mockImplementationOnce(() => ({
+      withConverter: jest.fn(),
+    }));
     const querySnapshot = {
       forEach: (fn) => {
         fn({
-          data: () => ({
-            uid: "1234",
-            name: "Beautiful Downtown Apartment",
-            address: "123 Main St, Anytown USA",
-          }),
+          data: () => [
+            {
+              uid: "1231",
+              firstName: "Walter",
+              lastName: "White",
+              gender: "Female",
+            },
+          ],
+        });
+      },
+    };
+    getDocs.mockImplementation(() => querySnapshot);
+
+    // Call the tested function.
+    let testReturn = await getUser(userID);
+
+    expect(query).toHaveBeenCalledWith(
+      collection(tableName),
+      where("uid", "==", userID)
+    );
+    expect(collection).toHaveBeenCalledWith(tableName);
+    expect(testReturn).toEqual([
+      {
+        uid: "1231",
+        firstName: "Walter",
+        lastName: "White",
+        gender: "Female",
+      },
+    ]);
+  });
+
+  it("Add user Information.", async () => {
+    const userID = "12345";
+
+    collection.mockImplementationOnce(() => ({
+      withConverter: jest.fn(),
+    }));
+
+    // Call the tested function.
+    await postUser(userID);
+
+    expect(collection).toBeCalledWith(db, tableName);
+  });
+
+  it("Update user Information.", async () => {
+    const userID = "12345";
+    const querySnapshot = {
+      forEach: (fn) => {
+        fn({
+          data: () => [
+            {
+              uid: "1231",
+              firstName: "Walter",
+              lastName: "White",
+              gender: "Female",
+            },
+          ],
         });
       },
     };
     getDocs.mockImplementation(() => querySnapshot);
 
     query.mockImplementationOnce(() => ({
-      withConverter: jest.fn().mockReturnValue({
-        get: jest
-          .fn()
-          .mockResolvedValue([
-            { data: jest.fn().mockReturnValue(mockDocData) },
-          ]),
-      }),
+      withConverter: jest.fn(),
+    }));
+
+    doc.mockImplementationOnce(() => ({
+      withConverter: jest.fn().mockReturnValueOnce("test_Ref"),
     }));
 
     // Call the tested function.
-    let testReturn = await getProperty(propertyID);
+    await updateUser(userID);
 
     expect(query).toHaveBeenCalledWith(
       collection(tableName),
-      where("uid", "==", propertyID)
+      where("uid", "==", userID)
     );
-    expect(collection).toHaveBeenCalledWith(tableName);
-    expect(testReturn).toEqual({
-      uid: "1234",
-      name: "Beautiful Downtown Apartment",
-      address: "123 Main St, Anytown USA",
-    });
+    expect(setDoc).toHaveBeenCalledWith("test_Ref", userID);
+  });
+
+  it("Add Mock Property Information.", async () => {
+    const userID = "12345";
+
+    // Call the tested function.
+    await postMockProperty(userID);
+
+    expect(collection).toBeCalledTimes(45);
+  });
+
+  it("Add Mock Property Information.", async () => {
+    // Call the tested function.
+    await postMockProperty();
+
+    expect(collection).toBeCalledTimes(45);
+  });
+
+  it("Add Mock User Information.", async () => {
+    // Call the tested function.
+    await postMockUser();
+
+    expect(collection).toBeCalledTimes(34);
   });
 });

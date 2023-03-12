@@ -63,7 +63,6 @@ describe("Properties Db", () => {
 
   it("Get Property based on the propertyID.", async () => {
     const propertyID = "1234";
-    const mockDocData = { name: "Test property" };
     const querySnapshot = {
       forEach: (fn) => {
         fn({
@@ -78,13 +77,7 @@ describe("Properties Db", () => {
     getDocs.mockImplementation(() => querySnapshot);
 
     query.mockImplementationOnce(() => ({
-      withConverter: jest.fn().mockReturnValue({
-        get: jest
-          .fn()
-          .mockResolvedValue([
-            { data: jest.fn().mockReturnValue(mockDocData) },
-          ]),
-      }),
+      withConverter: jest.fn(),
     }));
 
     // Call the tested function.

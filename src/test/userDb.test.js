@@ -171,15 +171,6 @@ describe("User Database", () => {
   });
 
   it("Add Mock Property Information.", async () => {
-    const userID = "12345";
-
-    // Call the tested function.
-    await postMockProperty(userID);
-
-    expect(collection).toBeCalledTimes(45);
-  });
-
-  it("Add Mock Property Information.", async () => {
     // Call the tested function.
     await postMockProperty();
 

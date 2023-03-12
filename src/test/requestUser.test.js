@@ -38,20 +38,7 @@ describe("User Request logic", () => {
     jest.clearAllMocks();
   });
 
-  [
-    {
-      user_id: "1231",
-      pending_list: ["Walter", "Joe"],
-      accepted_list: ["White"],
-    },
-    {
-      uid: "1234",
-      pending_list: ["Joe"],
-      accepted_list: ["White"],
-    },
-  ];
-
-  it("test 1: Add fromUserID to pending list of toUserID.", async () => {
+  it("test 1: Add fromUserID to pending list of toUserID. when DB entry present", async () => {
     const toUserID = "12345";
     const fromUserID = "ABCDE";
 
@@ -81,7 +68,7 @@ describe("User Request logic", () => {
     expect(collection).toHaveBeenCalledWith(tableName);
   });
 
-  it("test 2: Add fromUserID to pending list of toUserID.", async () => {
+  it("test 2: Add fromUserID to pending list of toUserID.  when DB entry is not present", async () => {
     const toUserID = "12345";
     const fromUserID = "ABCDE";
 
@@ -117,7 +104,7 @@ describe("User Request logic", () => {
     expect(collection).toHaveBeenCalledWith(tableName);
   });
 
-  it("test 1: Add user to accepted list both users.", async () => {
+  it("test 1: Add user to accepted list both users. when DB entry present", async () => {
     const toUserID = "12345";
     const fromUserID = "ABCDE";
 
@@ -147,7 +134,7 @@ describe("User Request logic", () => {
     expect(collection).toHaveBeenCalledWith(tableName);
   });
 
-  it("test 2: Add user to accepted list both users.", async () => {
+  it("test 2: Add user to accepted list both users. when DB entry is not present", async () => {
     const toUserID = "12345";
     const fromUserID = "ABCDE";
 

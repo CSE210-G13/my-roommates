@@ -16,7 +16,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 
 import { useAuthUser } from '@/firebase/auth';
 import { paperProps } from './UserProfile.js';
-import { addUserRequest, checkUserRequest, checkUserPending } from '@/firebase/requestUser';
+import { addUserRequest, checkUserRequest, checkUserPending, checkUserFriends } from '@/firebase/requestUser';
 import { User } from '@/firebase/classes';
 import { getUser } from '@/firebase/userDb';
 import { useState, useEffect } from 'react';
@@ -31,11 +31,16 @@ export default function UserHeader({ user }) {
 	const [authUser, loading] = useAuthUser();
 	const [userInfo, setUserInfo] = useState(new User());
 	const [pending, setPending] = useState(false);
+	const [accepted, setAccepted] = useState(false);
 
 	useEffect(() => {
-		checkUserPending(user.uid, userInfo.uid)
-			.then((bool) => setPending(bool));		
-	});
+		if (userInfo.uid !== ''){
+			checkUserPending(user.uid, userInfo.uid)
+				.then((bool) => setPending(bool));
+			checkUserRequest(user.uid, userInfo.uid)
+				.then((bool) => setAccepted(bool));
+		}
+	}, [userInfo]);
 
 
     useEffect(() => {
@@ -82,7 +87,13 @@ export default function UserHeader({ user }) {
 				</Grid>
 
 				<Grid md={1} display="flex" alignItems="center" justifyContent="center">
-					<Button variant="contained" onClick={handleRequest}>{(pending) ? 'Pending Request' : 'Request Roommate?'}</Button>
+					<Button variant="contained" onClick={handleRequest}>
+						{(pending) 
+							? 'Pending Request'
+							: (accepted) 
+								? 'Connected' 
+								: 'Request Roommate?'}
+					</Button>
 				</Grid>
 
 				<Grid xs={4}>

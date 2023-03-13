@@ -30,11 +30,6 @@ const allLanguages = languagesConst;
 export default function EditPersonalInformationForm(props) {
     const { userInfo, setUserInfo } = useContext(UserInfoContext);
 
-    const handleChangeProfilePic = (event) => {
-        // TODO: integrate with firebase
-        console.log("upload an image");
-	};
-
     return (
             <React.Fragment>
                 <Grid container>
@@ -45,7 +40,7 @@ export default function EditPersonalInformationForm(props) {
                     </Grid>
                     <Grid container item xs={12} sm={6} rowSpacing={2} p={2}>
                         <Grid item xs={12}>
-                            <IconButton onClick={handleChangeProfilePic}>
+                            <IconButton>
                                     <Avatar alt={userInfo.firstName + ' ' + userInfo.lastName} src={userInfo.imageUrl} sx={{ width: "10rem", height: "10rem" }}/>
                             </IconButton>
                         </Grid>

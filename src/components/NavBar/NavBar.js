@@ -116,8 +116,8 @@ export default function ResponsiveAppBar() {
 								display: { xs: 'block', md: 'none' },
 							}}>
 							{pages.map((page) => (
-								<Link href={page.link}>
-									<MenuItem key={page.title} onClick={handleCloseNavMenu}>
+								<Link key={page.title} href={page.link}>
+									<MenuItem onClick={handleCloseNavMenu}>
 										<Typography textAlign="center">{page.title}</Typography>
 									</MenuItem>
 								</Link>
@@ -144,9 +144,8 @@ export default function ResponsiveAppBar() {
 					{/* For large screen */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
-							<Link href={page.link}>
+							<Link key={page.title} href={page.link}>
 								<Button
-									key={page.title}
 									onClick={handleCloseNavMenu}
 									sx={{ my: 2, color: 'white', display: 'block', fontSize: 16 }}>
 									{page.title}
@@ -220,7 +219,7 @@ export default function ResponsiveAppBar() {
 							</Menu>
 						</Box>
 					) : (
-						<Button onClick={login} variant="contained" color="warning">
+						<Button onClick={login} variant="contained" color="secondary">
 							Login
 						</Button>
 					)}

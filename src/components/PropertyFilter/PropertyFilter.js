@@ -276,7 +276,7 @@ export default function PropertyFilter(props) {
       </Accordion>
       <br />
       <div style={{ float: "right", margin: "-5px 10px 0px 0px" }}>
-        <Button variant="outlined" onClick={handleButtonClick}>
+        <Button variant="contained" onClick={handleButtonClick}>
           Search
         </Button>
       </div>

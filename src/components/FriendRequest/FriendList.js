@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Stack, ListItem, ListItemText, ListItemAvatar, ListItemButton, Avatar } from '@mui/material/';
+import { Button, Stack, ListItem, ListItemText, ListItemAvatar, ListItemButton, Avatar, Link } from '@mui/material/';
 import { getUser } from '@/firebase/userDb';
 import { User } from '@/firebase/classes';
 import { useState, useEffect } from 'react';
@@ -18,21 +18,33 @@ export default function FriendList({ isRequest, uid, userInfoUID, handleAccept }
 			<ListItem
 				disablePadding
 				secondaryAction={
-					isRequest && (
+					isRequest ? (
 						<Stack direction="row" spacing={2}>
 							<Button variant="contained" size="small" onClick={() => handleAccept(uid, userInfoUID)}>
 								Accept
 							</Button>
+							<Button variant="outlined" color="error" size="small">
+								Reject
+							</Button>
 						</Stack>
+					) : (
+						<Button variant="outlined" color="error" size="small">
+							Delete
+						</Button>
 					)
 				}>
-				<ListItemButton>
+				<ListItem>
 					<ListItemAvatar>
 						<Avatar src={userInfo.imageUrl}></Avatar>
 					</ListItemAvatar>
-					<ListItemText primary={userInfo.firstName + ' ' + userInfo.lastName} secondary="Jan 9, 2014" />
-				</ListItemButton>
+					<ListItemText 
+						primary={userInfo.firstName + ' ' + userInfo.lastName} 
+						secondary={[userInfo.gender, userInfo.schoolYear, userInfo.college, userInfo.major].filter((x) => x !== '').join(' · ')} />
+				</ListItem>
 			</ListItem>
+			<Link href={`/user/${userInfo.uid}`} passHref>
+				<Button sx={{ py: 0, ml: "64px"}}>View Profile</Button>
+			</Link>
 		</>
 	);
 }

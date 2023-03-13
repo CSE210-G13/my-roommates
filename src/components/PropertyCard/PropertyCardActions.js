@@ -36,7 +36,7 @@ export default function PropertyCardActions({ property }) {
           let urls = [];
           for (const uid of res) {
             getUser(uid).then((u) => {
-              urls.push(u.imageUrl);
+              urls.push(u?.imageUrl);
               setAvatarUrls(urls);
             });
           }

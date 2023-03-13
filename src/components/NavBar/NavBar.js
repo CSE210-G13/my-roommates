@@ -116,11 +116,11 @@ export default function ResponsiveAppBar() {
 								display: { xs: 'block', md: 'none' },
 							}}>
 							{pages.map((page) => (
-								<MenuItem key={page.title} onClick={handleCloseNavMenu}>
-									<Typography textAlign="center">
-										<Link href={page.link}>{page.title}</Link>
-									</Typography>
-								</MenuItem>
+								<Link href={page.link}>
+									<MenuItem key={page.title} onClick={handleCloseNavMenu}>
+										<Typography textAlign="center">{page.title}</Typography>
+									</MenuItem>
+								</Link>
 							))}
 						</Menu>
 					</Box>
@@ -144,12 +144,14 @@ export default function ResponsiveAppBar() {
 					{/* For large screen */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
-							<Button
-								key={page.title}
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: 'white', display: 'block', fontSize: 16 }}>
-								<Link href={page.link}>{page.title}</Link>
-							</Button>
+							<Link href={page.link}>
+								<Button
+									key={page.title}
+									onClick={handleCloseNavMenu}
+									sx={{ my: 2, color: 'white', display: 'block', fontSize: 16 }}>
+									{page.title}
+								</Button>
+							</Link>
 						))}
 					</Box>
 					{user || loading ? (
@@ -200,14 +202,16 @@ export default function ResponsiveAppBar() {
 								}}
 								open={Boolean(anchorElUser)}
 								onClose={handleCloseUserMenu}>
-								<MenuItem key="profile" onClick={handleCloseUserMenu}>
-									<Link href="/profile">Profile</Link>
-								</MenuItem>
-								<MenuItem key="friends" onClick={handleCloseUserMenu}>
-									<Typography textAlign="center">
-										<Link href="/friends">Friends</Link>
-									</Typography>
-								</MenuItem>
+								<Link href="/profile">
+									<MenuItem key="profile" onClick={handleCloseUserMenu}>
+										Profile
+									</MenuItem>
+								</Link>
+								<Link href="/friends">
+									<MenuItem key="friends" onClick={handleCloseUserMenu}>
+										<Typography textAlign="center">Friends</Typography>
+									</MenuItem>
+								</Link>
 								<MenuItem key="logout" onClick={handleCloseUserMenu}>
 									<Typography onClick={signout} textAlign="center">
 										Log out

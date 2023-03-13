@@ -14,65 +14,25 @@ export default function Home(props) {
   return (
     <div style={{ display: "flex", padding: "10px 0px 0px 20px" }}>
       <PropertyFilter onFilteringProperties={setFilterProperties} />
-      {(FilterProperties.length > 0) & (FilterProperties[0] == 1) ? (
-        <div>
-          {(FilterProperties.length > 0) & (FilterProperties[1].length > 0) ? (
-            <div>
-              <h3 style={{ margin: "20px 0px 0px 20px" }}>
-                EXACT-MATCH Filtering Result
-              </h3>
-              <Grid container direction="row" spacing={0} sx={{ px: 5 }}>
-                {properties_display.map((property, i) => {
-                  return (
-                    <Grid
-                      item
-                      display="flex"
-                      justifyContent="center"
-                      alignItems="center"
-                      key={i}
-                      sm
-                    >
-                      <PropertyCard property={property} />
-                    </Grid>
-                  );
-                })}
+      {(FilterProperties.length > 0) &
+      (FilterProperties[0] == 1) &
+      (FilterProperties[1].length > 0) ? (
+        <Grid container direction="row" spacing={0} sx={{ px: 5 }}>
+          {properties_display.map((property, i) => {
+            return (
+              <Grid
+                item
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                key={i}
+                sm
+              >
+                <PropertyCard property={property} />
               </Grid>
-            </div>
-          ) : (
-            <h3 style={{ margin: "20px 0px 0px 20px" }}>
-              Sorry, there is no EXACT-MATCH result based on your filtering
-              preferences...
-            </h3>
-          )}
-          {FilterProperties[2].length > 0 ? (
-            <div>
-              <h3 style={{ margin: "20px 0px 0px 20px" }}>
-                Non-EXACT-MATCH Filtering Result
-              </h3>
-              <Grid container direction="row" spacing={0} sx={{ px: 5 }}>
-                {properties_display.map((property, i) => {
-                  return (
-                    <Grid
-                      item
-                      display="flex"
-                      justifyContent="center"
-                      alignItems="center"
-                      key={i}
-                      sm
-                    >
-                      <PropertyCard property={property} />
-                    </Grid>
-                  );
-                })}
-              </Grid>
-            </div>
-          ) : (
-            <h3 style={{ margin: "20px 0px 0px 20px" }}>
-              Sorry, there is no non-EXACT-MATCH based on your filtering
-              preferences
-            </h3>
-          )}
-        </div>
+            );
+          })}
+        </Grid>
       ) : (
         <Grid container direction="row" spacing={0} sx={{ px: 5 }}>
           {properties_display.map((property, i) => {

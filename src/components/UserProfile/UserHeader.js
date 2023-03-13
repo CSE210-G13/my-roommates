@@ -16,7 +16,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 
 import { useAuthUser } from '@/firebase/auth';
 import { paperProps } from './UserProfile.js';
-import { addUserRequest, checkUserRequest, checkUserPending, checkUserFriends } from '@/firebase/requestUser';
+import { addUserRequest, checkUserRequest, checkUserPending } from '@/firebase/requestUser';
 import { User } from '@/firebase/classes';
 import { getUser } from '@/firebase/userDb';
 import { useState, useEffect } from 'react';

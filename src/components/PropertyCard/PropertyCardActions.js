@@ -34,9 +34,10 @@ export default function PropertyCardActions({ property }) {
       getUserListFromPropertyID(property.uid)
         .then((res) => {
           let urls = [];
+          console.log(res);
           for (const uid of res) {
             getUser(uid).then((u) => {
-              urls.push(u.imageUrl);
+              urls.push(u?.imageUrl);
               setAvatarUrls(urls);
             });
           }

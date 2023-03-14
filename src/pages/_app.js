@@ -5,6 +5,14 @@ import NavBar from '@/components/NavBar';
 import { initFirebase } from '../firebase/firebaseConfig';
 
 const theme = createTheme({
+	palette: {
+		primary: {
+			main: '#6096B4',
+		},
+		secondary: {
+			main: '#EEE9DA',
+		},
+	},
 	typography: {
 		button: {
 			textTransform: 'none',

@@ -36,7 +36,7 @@ import {
 import { getUser } from '@/firebase/userDb';
 
 const iconStyle = { fontSize: 40 };
-
+const cardStyle = { backgroundColor: '#F8F8F2' };
 function PrefIcon({ icon, string }) {
 	return (
 		<Stack direction="row" spacing={1} padding={2} alignItems="center">
@@ -76,7 +76,7 @@ export default function PropertyDetails({ property, users }) {
 
 	return (
 		<Container maxWidth="false" sx={{ m: '50px', width: 'auto' }}>
-			<div style={{ backgroundColor: '#F8F8F2' }}>
+			<div style={cardStyle}>
 				<Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2} py={3}>
 					<p></p>
 					<Typography variant="h4">{property.name}</Typography>
@@ -183,12 +183,17 @@ export default function PropertyDetails({ property, users }) {
 				</Grid>
 			</div>
 
-			<Divider />
-			<div style={{ backgroundColor: '#F8F8F2' }}>
+			<div style={cardStyle}>
 				<Typography variant="h5" align="left" mt={5} pt={3} pl={3}>
 					People interested in {property.name}
 				</Typography>
-				<RoommateGrid users={users} />
+				{users.length > 0 ? (
+					<RoommateGrid users={users} />
+				) : (
+					<Typography variant="h6" align="center" mb={5} py={8}>
+						No user likes this property yet
+					</Typography>
+				)}
 			</div>
 		</Container>
 	);

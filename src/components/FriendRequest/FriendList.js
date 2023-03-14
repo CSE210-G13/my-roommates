@@ -35,15 +35,18 @@ export default function FriendList({ isRequest, uid, userInfoUID, handleAccept }
 				}>
 				<ListItem>
 					<ListItemAvatar>
-						<Avatar src={userInfo.imageUrl}></Avatar>
+						<Avatar src={userInfo?.imageUrl ? userInfo.imageUrl : ''}></Avatar>
 					</ListItemAvatar>
-					<ListItemText 
-						primary={userInfo.firstName + ' ' + userInfo.lastName} 
-						secondary={[userInfo.gender, userInfo.schoolYear, userInfo.college, userInfo.major].filter((x) => x !== '').join(' · ')} />
+					<ListItemText
+						primary={userInfo.firstName + ' ' + userInfo.lastName}
+						secondary={[userInfo.gender, userInfo.schoolYear, userInfo.college, userInfo.major]
+							.filter((x) => x !== '')
+							.join(' · ')}
+					/>
 				</ListItem>
 			</ListItem>
 			<Link href={`/user/${userInfo.uid}`} passHref>
-				<Button sx={{ py: 0, ml: "64px"}}>View Profile</Button>
+				<Button sx={{ py: 0, ml: '64px' }}>View Profile</Button>
 			</Link>
 		</>
 	);

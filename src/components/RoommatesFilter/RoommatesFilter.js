@@ -294,7 +294,7 @@ export default function RoommatesFilter(props) {
       </Accordion>
 
       <div style={{ float: "right", margin: "10px 0px 0px 0px" }}>
-        <Button variant="outlined" onClick={handleSearch}>
+        <Button variant="contained" onClick={handleSearch}>
           Search
         </Button>
       </div>

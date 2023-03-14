@@ -7,6 +7,7 @@
 
 # testing
 /coverage
+/cypress
 
 # next.js
 /.next/
@@ -34,3 +35,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#VS code
+.vscode

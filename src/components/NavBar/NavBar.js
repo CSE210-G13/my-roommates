@@ -20,7 +20,7 @@ import { getAuth, signOut, signInWithPopup, GoogleAuthProvider, getAdditionalUse
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const pages = [
-	{ title: 'Property', link: '/property' },
+	{ title: 'Properties', link: '/' },
 	{ title: 'Roommates', link: '/roommates' },
 ];
 
@@ -37,7 +37,6 @@ export default function ResponsiveAppBar() {
 
 	const handleOpenUserMenu = (event) => {
 		setAnchorElUser(event.currentTarget);
-		
 	};
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
@@ -117,11 +116,11 @@ export default function ResponsiveAppBar() {
 								display: { xs: 'block', md: 'none' },
 							}}>
 							{pages.map((page) => (
-								<MenuItem key={page.title} onClick={handleCloseNavMenu}>
-									<Typography textAlign="center">
-										<Link href={page.link}>{page.title}</Link>
-									</Typography>
-								</MenuItem>
+								<Link key={page.title} href={page.link}>
+									<MenuItem onClick={handleCloseNavMenu}>
+										<Typography textAlign="center">{page.title}</Typography>
+									</MenuItem>
+								</Link>
 							))}
 						</Menu>
 					</Box>
@@ -129,7 +128,7 @@ export default function ResponsiveAppBar() {
 						variant="h5"
 						noWrap
 						component="a"
-						href=""
+						href="/"
 						sx={{
 							mr: 2,
 							display: { xs: 'flex', md: 'none' },
@@ -145,12 +144,13 @@ export default function ResponsiveAppBar() {
 					{/* For large screen */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
-							<Button
-								key={page.title}
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: 'white', display: 'block' }}>
-								<Link href={page.link}>{page.title}</Link>
-							</Button>
+							<Link key={page.title} href={page.link}>
+								<Button
+									onClick={handleCloseNavMenu}
+									sx={{ my: 2, color: 'white', display: 'block', fontSize: 16 }}>
+									{page.title}
+								</Button>
+							</Link>
 						))}
 					</Box>
 					{user || loading ? (
@@ -201,9 +201,16 @@ export default function ResponsiveAppBar() {
 								}}
 								open={Boolean(anchorElUser)}
 								onClose={handleCloseUserMenu}>
-								<MenuItem key="profile" onClick={handleCloseUserMenu}>
-									<Link href='/profile'>Profile</Link>
-								</MenuItem>
+								<Link href="/profile">
+									<MenuItem key="profile" onClick={handleCloseUserMenu}>
+										Profile
+									</MenuItem>
+								</Link>
+								<Link href="/friends">
+									<MenuItem key="friends" onClick={handleCloseUserMenu}>
+										<Typography textAlign="center">Friends</Typography>
+									</MenuItem>
+								</Link>
 								<MenuItem key="logout" onClick={handleCloseUserMenu}>
 									<Typography onClick={signout} textAlign="center">
 										Log out
@@ -212,7 +219,7 @@ export default function ResponsiveAppBar() {
 							</Menu>
 						</Box>
 					) : (
-						<Button onClick={login} variant="contained" color="warning">
+						<Button onClick={login} variant="contained" color="secondary">
 							Login
 						</Button>
 					)}

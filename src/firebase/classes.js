@@ -11,7 +11,7 @@ export class User {
 		schoolYear = '',
 		languages = [],
 		bedtime = '22:00',
-		lifestyle = { smoke: false, children: false, pets: false, parties: false, alcohol: false, couples: false },
+		lifestyle = { smoking: false, children: false, pets: false, parties: false, alcohol: false, couples: false },
 		maxPropertyPrice = 0,
 		maxDistanceToSchool = 0,
 		amenities = {
@@ -22,6 +22,8 @@ export class User {
 			laundry: false,
 			transportation: false,
 		},
+		numBedrooms = '',
+		numBathrooms = '',
 		bio = '',
 		email = ['', false],
 		phoneNumber = ['', false],
@@ -45,6 +47,8 @@ export class User {
 		this.maxPropertyPrice = maxPropertyPrice;
 		this.maxDistanceToSchool = maxDistanceToSchool;
 		this.amenities = amenities;
+		this.numBedrooms = numBedrooms,
+		this.numBathrooms = numBathrooms
 		this.bio = bio;
 		this.email = email;
 		this.phoneNumber = phoneNumber;

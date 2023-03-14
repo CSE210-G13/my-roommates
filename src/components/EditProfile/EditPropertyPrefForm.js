@@ -9,9 +9,11 @@ import {
 	Slider,
 	FormGroup,
 	Checkbox,
+	Select,
+	MenuItem
 } from '@mui/material/';
 
-import { amenitiesConst, amenitiesMap, priceMarksConst, distanceMarksConst } from '@/constants/constants';
+import { amenitiesConst, amenitiesMap, priceMarksConst, distanceMarksConst, numBedBathConst } from '@/constants/constants';
 import { UserInfoContext } from './EditProfile';
 
 const amenityOptions = amenitiesConst;
@@ -96,6 +98,39 @@ export default function PropertyPrefForm(props) {
 						</FormGroup>
 					</FormControl>
 				</Grid>
+
+				<Grid item xs={12} sm={6}>
+					<FormControl fullWidth disabled={!props.editing}>
+						<FormLabel>Number of Bedrooms</FormLabel>
+						<Select 
+							value={userInfo.numBedrooms} 
+							onChange={(e) => {
+								setUserInfo({ ...userInfo, numBedrooms: e.target.value});
+							}}>
+								{numBedBathConst.map((num) => (
+									<MenuItem key={num} value={num}>
+										{num}
+									</MenuItem>
+								))}
+						</Select>
+					</FormControl>
+                </Grid>
+				<Grid item xs={12} sm={6}>
+					<FormControl fullWidth disabled={!props.editing}>
+						<FormLabel>Number of Bathrooms</FormLabel>
+						<Select 
+							value={userInfo.numBathrooms} 
+							onChange={(e) => {
+								setUserInfo({ ...userInfo, numBathrooms: e.target.value});
+							}}>
+								{numBedBathConst.map((num) => (
+									<MenuItem key={num} value={num}>
+										{num}
+									</MenuItem>
+								))}
+						</Select>
+					</FormControl>
+                </Grid>
             </Grid>
         </React.Fragment>
     );

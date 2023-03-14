@@ -1,99 +1,71 @@
-import RoommateGrid from '@/components/RoommateGrid';
-import RoommateFilter from "@/components/roommatesFilter.js";
-import Grid from "@mui/material/Unstable_Grid2";
+import RoommateGrid from "@/components/RoommateGrid";
+import RoommateFilter from "@/components/RoommatesFilter";
 import Head from "next/head";
+import { getAllUsers } from "@/firebase/userDb";
+import { useAuthUser } from "@/firebase/auth";
+import { useState } from "react";
 
-// same dummy user from viewProfile
-let user = {
-  firstName: "John",
-  lastName: "McRoommate",
-  gender: "Male",
-  imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Duck_%2827479065157%29.jpg/640px-Duck_%2827479065157%29.jpg",
-  college: "Warren",
-  major: "Roommate Studies",
-  schoolYear: "Sophomore",
-  bio: "sup, it's me john i'm out here",
-  languages: ["English"],
-  isProfilePublic: true,
-  contactInfo: {
-    email: {
-      data: "john@john.com",
-      pub: false 
-    },
-    phone: {
-      data: "555-555-5555",
-      pub: false
-    },
-    discord: {
-      data: "john#5555",
-      pub: false,
-    },
-    instagram: {
-      data: "heresjohnny",
-      pub: true,
-    },
-    linkedin: {
-      data: "johnnyprofessional",
-      pub: true,
-    },
-    facebook: {
-      data: "",
-      pub: false
-    }
-  },
-  lifestyle: {
-    bedtime: "11pm",
-    okayWith: {
-      children: false,
-      pets: true,
-      smoking: false,
-      parties: true,
-      alcohol: true,
-      couples: false 
-    },
-    hobbies: [
-      "Reading",
-      "Walking",
-      "Birdwatching"
-    ],
-  },
-  propPref: {
-    budget: [0, 1000],
-    distance: [0, 15],
-    petFriendly: false,
-    smokingBanned: true,
-    numBedrooms: 2,
-    numBathrooms: 1,
-    amenities: {
-      ac: true,
-      pool: false,
-      gym: true,
-      parking: false,
-      inUnitLaundry: true,
-      transportation: true,
-    }
-  },
-  interestedProp: Array.from(Array(10), (_,i) => i).map((x) => `Property ${x}`),
-  requests: {}
-}
+export default function Roommates(props) {
+  const [user, loading] = useAuthUser();
+  const [FilterRoommates, setFilterRoommates] = useState([0, [], []]);
 
-// List of 10 dummy users
-let users = Array.from({length: 10}, _ => user);
+  // do not show current user in grid if they are logged in
+  let users =
+    user == null ? props.users : props.users.filter((u) => u.uid !== user.uid);
 
-export default function roommates() {
+  if (FilterRoommates[1].length > 0) {
+    users = FilterRoommates[1];
+  }
+
   return (
     <>
       <Head>
         <title>Roommate Suggestions</title>
       </Head>
-      <Grid container direction="row" padding={5} spacing={4} margin={1}>
-        <Grid xs={3}>
-          <RoommateFilter />
-        </Grid>
-        <Grid xs={9}>
-          <RoommateGrid users={users}/>
-        </Grid>
-      </Grid>
+      <div style={{ display: "flex", padding: "10px 0px 0px 20px" }}>
+        <RoommateFilter onFilteringRoommates={setFilterRoommates} />
+        {(FilterRoommates.length > 0) & (FilterRoommates[0] == 1) ? (
+          <div>
+            {(FilterRoommates.length > 0) & (FilterRoommates[1].length > 0) ? (
+              <div>
+                <h3 style={{ margin: "20px 0px 0px 20px" }}>
+                  EXACT-MATCH Filtering Result
+                </h3>
+                <RoommateGrid users={FilterRoommates[1]} />
+              </div>
+            ) : (
+              <h3 style={{ margin: "20px 0px 0px 20px" }}>
+                Sorry, there is no EXACT-MATCH result based on your filtering
+                preferences...
+              </h3>
+            )}
+            {FilterRoommates[2].length > 0 ? (
+              <div>
+                <h3 style={{ margin: "20px 0px 0px 20px" }}>
+                  Non-EXACT-MATCH Filtering Result
+                </h3>
+                <RoommateGrid users={FilterRoommates[2]} />
+              </div>
+            ) : (
+              <h3 style={{ margin: "20px 0px 0px 20px" }}>
+                Sorry, there is no non-EXACT-MATCH based on your filtering
+                preferences
+              </h3>
+            )}
+          </div>
+        ) : (
+          <RoommateGrid users={users} />
+        )}
+      </div>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  let users = await getAllUsers();
+  return {
+    props: {
+      users,
+    },
+  };
 }

@@ -65,15 +65,18 @@ export const majorsConst = [
 	'Visual Arts',
 ];
 
-export const lifestyleConst = ['Smoke', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties']; // this has to match the lifestyle attribute in the User Classs. Not case sensitive
+export const lifestyleConst = ['Smoking', 'Alcohol', 'Pets', 'Couples', 'Children', 'Parties']; 
+// map the display string to the attributes in User Class
+// the value of the map has to match the lifestyle attribute in the User Classs. Not case sensitive
 export const lifestyleMap = {
-	Smoke: 'smoke',
+	Smoking: 'smoking',
 	Alcohol: 'alcohol',
 	Pets: 'pets',
 	Couples: 'couples',
 	Children: 'children',
 	Parties: 'parties',
-}; // map the display string to the attributes in User Class
+}; 
+
 
 export const amenitiesConst = [
 	'Air conditioner',
@@ -83,6 +86,8 @@ export const amenitiesConst = [
 	'Parking',
 	'Public transportation',
 ];
+// map the display string to the attributes in User Class
+// the value of the map has to match the amenities attribute in the User Classs. Not case sensitive
 export const amenitiesMap = {
 	'Air conditioner': 'airConditioner',
 	'Swimming pool': 'pool',
@@ -99,3 +104,5 @@ export const priceMarksConst = [500, 1500, 2500, 3500].map((x) => {
 export const distanceMarksConst = [5, 15, 25, 35, 45].map((x) => {
 	return { value: x, label: x.toString() };
 });
+
+export const numBedBathConst = ["1", "2", "3", "4+"];

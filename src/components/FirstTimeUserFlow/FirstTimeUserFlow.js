@@ -32,7 +32,7 @@ function getStepContent(step) {
 	}
 }
 
-export const UserInfoContext = createContext(new User());
+export const UserInfoContext = createContext();
 
 export default function FirstTimeUserFlow() {
 	const [user, loading] = useAuthUser();
@@ -72,6 +72,7 @@ export default function FirstTimeUserFlow() {
 				});
 			}
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [user]);
 
 	const handleNext = () => {
@@ -84,7 +85,7 @@ export default function FirstTimeUserFlow() {
 
 	const handleSubmit = () => {
 		postUser(userInfo);
-		router.push('/');
+		router.push('/profile');
 	};
 
 	return (

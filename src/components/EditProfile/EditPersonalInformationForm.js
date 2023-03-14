@@ -30,11 +30,6 @@ const allLanguages = languagesConst;
 export default function EditPersonalInformationForm(props) {
     const { userInfo, setUserInfo } = useContext(UserInfoContext);
 
-    const handleChangeProfilePic = (event) => {
-        // TODO: integrate with firebase
-        console.log("upload an image");
-	};
-
     return (
             <React.Fragment>
                 <Grid container>
@@ -45,7 +40,7 @@ export default function EditPersonalInformationForm(props) {
                     </Grid>
                     <Grid container item xs={12} sm={6} rowSpacing={2} p={2}>
                         <Grid item xs={12}>
-                            <IconButton onClick={handleChangeProfilePic}>
+                            <IconButton>
                                     <Avatar alt={userInfo.firstName + ' ' + userInfo.lastName} src={userInfo.imageUrl} sx={{ width: "10rem", height: "10rem" }}/>
                             </IconButton>
                         </Grid>
@@ -88,9 +83,9 @@ export default function EditPersonalInformationForm(props) {
                                         setUserInfo({ ...userInfo, gender: e.target.value })
                                     }}
                                 >
-                                    <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                    <FormControlLabel value="female" control={<Radio />} label="Female" />
-                                    <FormControlLabel value="other" control={<Radio />} label="Other" />
+                                    <FormControlLabel value="Male" control={<Radio />} label="Male" />
+                                    <FormControlLabel value="Female" control={<Radio />} label="Female" />
+                                    <FormControlLabel value="Other" control={<Radio />} label="Other" />
                                 </RadioGroup>
                             </FormControl>
                         </Grid>
@@ -176,7 +171,7 @@ export default function EditPersonalInformationForm(props) {
                                 fullWidth
                                 rows={4}
                                 value={userInfo.bio}
-                                placeholder="Tell everyone a little about yourself"
+                                placeholder="What are your hobbies, interests, ..."
                                 inputProps={{ maxLength: 150 }}
                                 disabled={!props.editing}
                                 onChange={(e) => {setUserInfo({...userInfo, bio: e.target.value});}}

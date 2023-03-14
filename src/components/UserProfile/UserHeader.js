@@ -97,7 +97,7 @@ export default function UserHeader({ user }) {
 				</Grid>
 
 				<Grid xs={4}>
-					<ContactInfo user={user} />
+					<ContactInfo user={user} friends={accepted} />
 				</Grid>
 
 			</Grid>
@@ -111,7 +111,7 @@ export default function UserHeader({ user }) {
  * TODO: Check if the logged in user has a connection with this user, and if
  * so diplay the private contact info. This should be a firebase rule.
  */
-function ContactInfo({ user }) {
+function ContactInfo({ user, friends }) {
 	// TODO: when firebase integrated, make sure if users are friends they get
 	// private contact info if they are not friends, only get public contact info
 	// IMPORTANT: that filtering CANNOT happen on the frontend! the *database*
@@ -126,7 +126,8 @@ function ContactInfo({ user }) {
 	["instagram", user.instagram],
 	["linkedin", user.linkedin],
 	["facebook", user.facebook]]
-		.filter(([_, [data, pub]]) => data)  // `&& pub` to only show public data
+		// check if data exists, if so show only if it's public or if we are friends
+		.filter(([_, [data, pub]]) => data && (pub || friends))
 		.map(([key, [data, _]]) => [key, data]);
 
 	let iconMap = {

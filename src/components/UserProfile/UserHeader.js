@@ -27,14 +27,14 @@ import { useState, useEffect } from 'react';
  * roommate requests, pending request, or connected. TODO: Tie the button to
  * firebase to actually get current connection status and make requests.
  */
-export default function UserHeader({ user }) {	
+export default function UserHeader({ user }) {
 	const [authUser, loading] = useAuthUser();
 	const [userInfo, setUserInfo] = useState(new User());
 	const [pending, setPending] = useState(false);
 	const [accepted, setAccepted] = useState(false);
 
 	useEffect(() => {
-		if (userInfo.uid !== ''){
+		if (userInfo.uid !== '') {
 			checkUserPending(user.uid, userInfo.uid)
 				.then((bool) => setPending(bool));
 			checkUserRequest(user.uid, userInfo.uid)
@@ -43,13 +43,13 @@ export default function UserHeader({ user }) {
 	}, [userInfo]);
 
 
-    useEffect(() => {
-        if (authUser) {
-            getUser(authUser.uid)
-                .then((user) =>  user )
-                .then((user) => setUserInfo(user));
-        }
-    }, [authUser]);
+	useEffect(() => {
+		if (authUser) {
+			getUser(authUser.uid)
+				.then((user) => user)
+				.then((user) => setUserInfo(user));
+		}
+	}, [authUser]);
 
 	const handleRequest = () => {
 		if (!pending) {
@@ -79,7 +79,7 @@ export default function UserHeader({ user }) {
 							{[user.gender, user.schoolYear, user.college,
 							user.major ? `Major: ${user.major}` : "",
 							user.languages ? `Languages: ${user.languages.join(", ")}` : ""]
-							.filter(x => x).join(" · ")}
+								.filter(x => x).join(" · ")}
 						</Typography>
 
 						{user.bio ? <Typography align="center">{user.bio}</Typography> : null}
@@ -88,10 +88,10 @@ export default function UserHeader({ user }) {
 
 				<Grid md={1} display="flex" alignItems="center" justifyContent="center">
 					<Button variant="contained" onClick={handleRequest}>
-						{(pending) 
+						{(pending)
 							? 'Pending Request'
-							: (accepted) 
-								? 'Connected' 
+							: (accepted)
+								? 'Connected'
 								: 'Request Roommate?'}
 					</Button>
 				</Grid>

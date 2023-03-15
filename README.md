@@ -1,3 +1,19 @@
+# Roomies: A Roommate-Finding Web Application
+
+## Background
+As a student at UCSD who are looking for housing, finding a roommate can be a challenging and time-consuming process for individuals seeking compatible living arrangements. It is difficult to find a roommate who aligns with personal preferences, lifestyle, and habits. The Roomies web app aims to simplify the roommate search process by providing a platform for users to find compatible roommates based on their preferences and lifestyle. The web app will help users find roommates who share similar interests, habits, and budgets.
+
+This project was developed by Mingyang Liu, Jiangnan Xu, Brittany Trieu, Aditya Barsainya, and Aidan Denlinger.
+
+## Documentation
+See the project documentation in our [Github Wiki](https://github.com/CSE210-G13/my-roommates/wiki).
+
+## Issue Tracking
+See our sprints and issue tracking in our [Github Project](https://github.com/orgs/CSE210-G13/projects/1).
+
+## Generic Next.js Readme
+This is the generic readme that came with our Next.js project. Note that our documentaton has information on how to get started on the project, but we're leaving this here as a resource.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

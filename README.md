@@ -1,9 +1,13 @@
 # Roomies: A Roommate-Finding Web Application
 
+![The homepage of our app.](https://user-images.githubusercontent.com/47428697/225246052-b10f6e6e-441b-4822-8f6a-9b7a722dd00a.png)
+
+[See the app here!](https://roomie-green.vercel.app/)
+
 ## Background
 As a student at UCSD who are looking for housing, finding a roommate can be a challenging and time-consuming process for individuals seeking compatible living arrangements. It is difficult to find a roommate who aligns with personal preferences, lifestyle, and habits. The Roomies web app aims to simplify the roommate search process by providing a platform for users to find compatible roommates based on their preferences and lifestyle. The web app will help users find roommates who share similar interests, habits, and budgets.
 
-This project was developed by Mingyang Liu, Jiangnan Xu, Brittany Trieu, Aditya Barsainya, and Aidan Denlinger.
+This project was developed by Mingyang Liu, Jiangnan Xu, Brittany Trieu, Aditya Barsainya, and Aidan Denlinger [as a final project for CSE 210, taught by Michael Coblenz in Winter 2023](https://mcoblenz.github.io/CSE210/).
 
 ## Documentation
 See the project documentation in our [Github Wiki](https://github.com/CSE210-G13/my-roommates/wiki).
